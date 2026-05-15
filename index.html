@@ -977,7 +977,11 @@
     .s10-learn-title { font-size: 17px; font-weight: 800; color: #111; margin-bottom: 8px; }
     .s10-desc { font-size: 14px; color: #555; line-height: 1.6; margin-bottom: 16px; }
 
-    .s10-tag-row { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 20px; }
+    .s10-tag-row {
+      display: flex; flex-wrap: nowrap; gap: 8px; margin-bottom: 20px;
+      overflow-x: auto; -webkit-overflow-scrolling: touch; padding-bottom: 4px;
+    }
+    .s10-tag-row::-webkit-scrollbar { display: none; }
     .s10-tag {
       padding: 7px 14px; border-radius: 50px;
       border: 1.5px solid #dde0ee; background: #f5f6fb;
@@ -1009,8 +1013,8 @@
     }
     .s10-reviews-row::-webkit-scrollbar { display: none; }
     .s10-review-card {
-      min-width: 220px; background: #f7f8fb;
-      border-radius: 14px; padding: 12px 14px; flex-shrink: 0;
+      width: 270px; flex-shrink: 0; background: #f7f8fb;
+      border-radius: 14px; padding: 12px 14px; box-sizing: border-box;
     }
     .s10-review-top { display: flex; align-items: center; gap: 6px; margin-bottom: 4px; }
     .s10-review-avatar { width: 28px; height: 28px; border-radius: 50%; object-fit: cover; background: #dde0ee; }
@@ -1018,8 +1022,12 @@
     .s10-review-author { font-size: 12px; font-weight: 600; color: #111; }
     .s10-review-date   { font-size: 11px; color: #aaa; }
     .s10-review-rating { font-size: 12px; color: #f5a623; margin-bottom: 6px; }
-    .s10-review-text   { font-size: 12px; color: #555; line-height: 1.5; }
-    .s10-review-text a { color: #555; text-decoration: underline; cursor: pointer; }
+    .s10-review-text { font-size: 12px; color: #555; line-height: 1.5; }
+    .s10-review-text.truncated {
+      overflow: hidden; display: -webkit-box;
+      -webkit-line-clamp: 3; line-clamp: 3; -webkit-box-orient: vertical;
+    }
+    .s10-review-text a { color: #6685f1; text-decoration: underline; cursor: pointer; font-size: 11px; }
 
     .s10-show-all-btn {
       width: 100%; padding: 14px; background: transparent;
@@ -1029,7 +1037,7 @@
     }
     .s10-bottom {
       flex-shrink: 0; display: flex; align-items: center; justify-content: space-between;
-      padding: 12px 20px 12px; background: #fff; border-top: 1px solid #f0f2f8;
+      gap: 20px; padding: 12px 20px 12px; background: #fff; border-top: 1px solid #f0f2f8;
     }
     .s10-price { font-size: 14px; color: #555; font-weight: 500; text-decoration: underline; text-underline-offset: 2px; }
     .s10-book-btn {
@@ -2265,6 +2273,19 @@
     renderS8Grid();
   }
 
+  /* ── AVIS SUPPLÉMENTAIRES (affichés au clic sur "Afficher tous") ── */
+  const s10ExtraReviews = {
+    1: [{author:'Camille',avatar:'https://i.pravatar.cc/40?img=5',rating:4.5,date:'il y a 2 mois',text:"Marie est passionnée et ça se ressent ! Les pâtes maison sont maintenant un incontournable chez moi."},{author:'Jules',avatar:'https://i.pravatar.cc/40?img=22',rating:5.0,date:'il y a 3 mois',text:"Exactement ce que je cherchais. Recettes simples et authentiques, parfaitement expliquées."}],
+    2: [{author:'Clara',avatar:'https://i.pravatar.cc/40?img=36',rating:4.8,date:'il y a 3 semaines',text:"Carlos est patient et ses explications sont très claires. Mon niveau a vraiment évolué."},{author:'Maxime',avatar:'https://i.pravatar.cc/40?img=19',rating:4.6,date:'il y a 2 mois',text:"Super pédagogie, j'ai progressé vite grâce à la méthode conversation d'abord."}],
+    3: [{author:'Hugo',avatar:'https://i.pravatar.cc/40?img=70',rating:4.0,date:'il y a 1 mois',text:"Cours adapté au niveau débutant, Thomas est patient et de bon conseil."}],
+    4: [{author:'Fabien',avatar:'https://i.pravatar.cc/40?img=25',rating:4.0,date:'il y a 5 semaines',text:"Très pratique, j'ai réparé mon robinet tout seul pour la première fois grâce à ce cours !"}],
+    5: [{author:'Alice',avatar:'https://i.pravatar.cc/40?img=38',rating:4.6,date:'il y a 1 mois',text:"Julie explique avec beaucoup de douceur. J'ai adoré la séance sur les lavis et les fondus."},{author:'Pierre',avatar:'https://i.pravatar.cc/40?img=6',rating:5.0,date:'il y a 2 mois',text:"Magnifique initiation, la pédagogie est impeccable et les résultats sont vraiment bluffants !"}],
+    6: [{author:'Yasmine',avatar:'https://i.pravatar.cc/40?img=57',rating:3.0,date:'il y a 3 mois',text:"Contenu intéressant mais aurait mérité plus d'exemples concrets et d'exercices pratiques."}],
+    7: [{author:'Théo',avatar:'https://i.pravatar.cc/40?img=14',rating:2.8,date:'il y a 1 mois',text:"Les bases sont bien expliquées mais je m'attendais à plus de projets pratiques et de mise en situation."}],
+    8: [{author:'Elisa',avatar:'https://i.pravatar.cc/40?img=48',rating:3.5,date:'il y a 6 semaines',text:"Benoît sait captiver son audience, même si parfois les références sont très pointues pour un débutant."},{author:'Raphaël',avatar:'https://i.pravatar.cc/40?img=24',rating:3.8,date:'il y a 2 mois',text:"Passionnant ! J'ai particulièrement apprécié la séance consacrée aux stoïciens."}],
+    9: [{author:'Lucie',avatar:'https://i.pravatar.cc/40?img=49',rating:4.8,date:'il y a 3 semaines',text:"Alexandre a répondu à toutes mes questions et m'a orientée vers les bonnes aides à la création."},{author:'Nina',avatar:'https://i.pravatar.cc/40?img=33',rating:5.0,date:'il y a 2 mois',text:"Le meilleur investissement avant de lancer mon projet. Clair, précis, opérationnel. Je recommande vivement !"}],
+  };
+
   /* ── SCREEN 10 : détail annonce ── */
   let s10FromScreen = 'screen8';
   let s10CurrentId  = null;
@@ -2312,25 +2333,46 @@
     document.getElementById('s10-bio').textContent = det.authorBio || '';
 
     const reviews = det.reviews || [];
+    const extra   = s10ExtraReviews[id] || [];
     const total   = det.reviewsTotal || reviews.length;
     document.getElementById('s10-reviews-label').textContent = `Évaluations et avis (${total})`;
-    document.getElementById('s10-reviews').innerHTML = reviews.map(r => `
-      <div class="s10-review-card">
-        <div class="s10-review-top">
-          <img class="s10-review-avatar" src="${r.avatar}" alt="${r.author}" onerror="this.style.display='none'">
-          <div class="s10-review-meta">
-            <div class="s10-review-author">${r.author}</div>
-            <div class="s10-review-date">${r.date}</div>
-          </div>
-        </div>
-        <div class="s10-review-rating">★ ${r.rating.toFixed(1)}/5</div>
-        <p class="s10-review-text">${r.text} <a onclick="event.stopPropagation()">Afficher plus</a></p>
-      </div>`).join('');
-    document.getElementById('s10-show-all').textContent = `Afficher les ${total} commentaires`;
+    document.getElementById('s10-reviews').innerHTML = reviews.map(s10ReviewCardHTML).join('');
+    const showAllBtn = document.getElementById('s10-show-all');
+    showAllBtn.textContent = `Afficher les ${total} commentaires`;
+    showAllBtn.style.display = extra.length ? '' : 'none';
+    showAllBtn.onclick = () => s10ShowAllReviews(id);
     document.getElementById('s10-price').textContent = `${item.credits} crédits par session`;
 
     navigate(s10FromScreen, 'screen10');
     document.querySelector('#screen10 .s10-scroll').scrollTop = 0;
+  }
+
+  function s10ReviewCardHTML(r) {
+    const long = r.text.length > 100;
+    return `<div class="s10-review-card">
+      <div class="s10-review-top">
+        <img class="s10-review-avatar" src="${r.avatar}" alt="${r.author}" onerror="this.style.display='none'">
+        <div class="s10-review-meta">
+          <div class="s10-review-author">${r.author}</div>
+          <div class="s10-review-date">${r.date}</div>
+        </div>
+      </div>
+      <div class="s10-review-rating">★ ${r.rating.toFixed(1)}/5</div>
+      <p class="s10-review-text${long ? ' truncated' : ''}">${r.text}${long ? ' <a onclick="event.stopPropagation();s10ExpandReview(this)">Afficher plus</a>' : ''}</p>
+    </div>`;
+  }
+
+  function s10ShowAllReviews(id) {
+    const det   = listingDetails[id] || {};
+    const all   = (det.reviews || []).concat(s10ExtraReviews[id] || []);
+    document.getElementById('s10-reviews').innerHTML = all.map(s10ReviewCardHTML).join('');
+    document.getElementById('s10-show-all').style.display = 'none';
+  }
+
+  function s10ExpandReview(link) {
+    const p = link.closest('p');
+    p.classList.remove('truncated');
+    link.remove();
   }
 
   function closeListing() {
