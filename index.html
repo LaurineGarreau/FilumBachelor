@@ -929,6 +929,114 @@
     .s9-divider { height: 1px; background: #f0f2f8; }
     .s9-empty { text-align: center; color: #aaa; padding: 28px 0; font-size: 14px; }
 
+    /* ── SCREEN 10 – Détail annonce ── */
+    #screen10 { background: #fff; }
+
+    .s10-scroll { flex:1; overflow-y:auto; -webkit-overflow-scrolling:touch; }
+    .s10-scroll::-webkit-scrollbar { display:none; }
+
+    .s10-hero {
+      position: relative; height: 260px; flex-shrink: 0;
+      background: #ccc; overflow: hidden;
+    }
+    .s10-hero img {
+      position: absolute; inset: 0;
+      width: 100%; height: 100%; object-fit: cover; display: block;
+    }
+    .s10-hero-overlay {
+      position: absolute; inset: 0;
+      background: linear-gradient(180deg, rgba(0,0,0,0.32) 0%, transparent 55%);
+      z-index: 1;
+    }
+    .s10-hero-top {
+      position: absolute; top: 0; left: 0; right: 0;
+      display: flex; justify-content: space-between; align-items: center;
+      padding: 14px 20px 0; z-index: 2;
+    }
+    .s10-hero-top .time { color: #fff; font-size: 15px; font-weight: 600; }
+    .s10-hero-top .icons { display: flex; align-items: center; gap: 6px; }
+    .s10-hero-top .icons svg { fill: #fff; }
+
+    .s10-back-btn, .s10-heart-btn {
+      position: absolute; z-index: 2;
+      width: 34px; height: 34px; border-radius: 50%; border: none; cursor: pointer;
+      display: flex; align-items: center; justify-content: center;
+    }
+    .s10-back-btn  { top: 50px; left: 16px;  background: rgba(0,0,0,0.38); }
+    .s10-heart-btn { top: 50px; right: 16px; background: rgba(0,0,0,0.38); }
+    .s10-heart-btn.active { background: rgba(255,255,255,0.92); }
+
+    .s10-sheet {
+      background: #fff; border-radius: 24px 24px 0 0;
+      margin-top: -24px; position: relative; padding: 22px 20px 8px;
+    }
+    .s10-title  { font-size: 22px; font-weight: 800; color: #111; margin-bottom: 6px; line-height: 1.2; }
+    .s10-meta   { font-size: 13px; color: #888; margin-bottom: 18px; }
+    .s10-meta .sep { color: #ccc; margin: 0 5px; }
+
+    .s10-learn-title { font-size: 17px; font-weight: 800; color: #111; margin-bottom: 8px; }
+    .s10-desc { font-size: 14px; color: #555; line-height: 1.6; margin-bottom: 16px; }
+
+    .s10-tag-row { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 20px; }
+    .s10-tag {
+      padding: 7px 14px; border-radius: 50px;
+      border: 1.5px solid #dde0ee; background: #f5f6fb;
+      font-size: 13px; color: #6685f1; font-weight: 500;
+    }
+
+    .s10-divider { height: 1px; background: #f0f2f8; margin: 0 0 18px; }
+
+    .s10-instructor { display: flex; align-items: flex-start; gap: 14px; margin-bottom: 16px; }
+    .s10-avatar {
+      width: 52px; height: 52px; border-radius: 50%;
+      object-fit: cover; flex-shrink: 0; background: #dde0ee;
+    }
+    .s10-instr-right { flex: 1; }
+    .s10-instr-name-row { display: flex; align-items: center; gap: 5px; margin-bottom: 2px; }
+    .s10-author-name { font-size: 16px; font-weight: 700; color: #111; }
+    .s10-verified {
+      width: 16px; height: 16px; background: #6685f1; border-radius: 50%;
+      display: inline-flex; align-items: center; justify-content: center; flex-shrink: 0;
+    }
+    .s10-since       { font-size: 13px; color: #888; margin-bottom: 4px; }
+    .s10-instr-rating { font-size: 13px; margin-bottom: 8px; }
+    .s10-bio  { font-size: 13px; color: #555; line-height: 1.55; }
+
+    .s10-section-title { font-size: 17px; font-weight: 800; color: #111; margin: 4px 0 12px; }
+    .s10-reviews-row {
+      display: flex; gap: 10px; overflow-x: auto;
+      -webkit-overflow-scrolling: touch; padding-bottom: 4px; margin-bottom: 16px;
+    }
+    .s10-reviews-row::-webkit-scrollbar { display: none; }
+    .s10-review-card {
+      min-width: 220px; background: #f7f8fb;
+      border-radius: 14px; padding: 12px 14px; flex-shrink: 0;
+    }
+    .s10-review-top { display: flex; align-items: center; gap: 6px; margin-bottom: 4px; }
+    .s10-review-avatar { width: 28px; height: 28px; border-radius: 50%; object-fit: cover; background: #dde0ee; }
+    .s10-review-meta { flex: 1; }
+    .s10-review-author { font-size: 12px; font-weight: 600; color: #111; }
+    .s10-review-date   { font-size: 11px; color: #aaa; }
+    .s10-review-rating { font-size: 12px; color: #f5a623; margin-bottom: 6px; }
+    .s10-review-text   { font-size: 12px; color: #555; line-height: 1.5; }
+    .s10-review-text a { color: #555; text-decoration: underline; cursor: pointer; }
+
+    .s10-show-all-btn {
+      width: 100%; padding: 14px; background: transparent;
+      border: 1.5px solid #dde0ee; border-radius: 14px;
+      font-size: 14px; font-weight: 500; color: #555;
+      cursor: pointer; margin-bottom: 16px;
+    }
+    .s10-bottom {
+      flex-shrink: 0; display: flex; align-items: center; justify-content: space-between;
+      padding: 12px 20px 12px; background: #fff; border-top: 1px solid #f0f2f8;
+    }
+    .s10-price { font-size: 14px; color: #555; font-weight: 500; text-decoration: underline; text-underline-offset: 2px; }
+    .s10-book-btn {
+      background: #6685f1; color: #fff; border: none; border-radius: 14px;
+      padding: 14px 20px; font-size: 15px; font-weight: 600; cursor: pointer;
+    }
+
     @media (max-width: 480px) {
       body {
         background: #f2f4fb;
@@ -1815,6 +1923,89 @@
 
   </div>
 
+  <!-- ══════════════ SCREEN 10 – DÉTAIL ANNONCE ══════════════ -->
+  <div class="screen hidden" id="screen10">
+
+    <div class="s10-scroll">
+
+      <!-- Hero image -->
+      <div class="s10-hero" id="s10-hero-bg">
+        <img id="s10-img" src="" alt="">
+        <div class="s10-hero-overlay"></div>
+
+        <!-- Status bar overlay -->
+        <div class="s10-hero-top">
+          <span class="time">9:41</span>
+          <div class="icons">
+            <svg width="17" height="12" viewBox="0 0 17 12"><rect x="0" y="7" width="3" height="5" rx="0.5"/><rect x="4" y="5" width="3" height="7" rx="0.5"/><rect x="8" y="3" width="3" height="9" rx="0.5"/><rect x="12" y="0" width="3" height="12" rx="0.5"/></svg>
+            <svg width="16" height="12" viewBox="0 0 16 12"><path d="M8 9.5a1.5 1.5 0 1 1 0 3 1.5 1.5 0 0 1 0-3z"/><path d="M8 6.2a5.1 5.1 0 0 1 3.6 1.5l1.4-1.4A7.1 7.1 0 0 0 8 4a7.1 7.1 0 0 0-5 2.3l1.4 1.4A5.1 5.1 0 0 1 8 6.2z"/><path d="M8 2.9a8.5 8.5 0 0 1 6 2.5L15.4 4A10.5 10.5 0 0 0 8 0.9a10.5 10.5 0 0 0-7.4 3.1L2 5.4A8.5 8.5 0 0 1 8 2.9z"/></svg>
+            <svg width="25" height="12" viewBox="0 0 25 12"><rect x="0" y="1" width="21" height="10" rx="2.5" stroke="white" stroke-width="1" fill="none"/><rect x="22" y="3.5" width="2" height="5" rx="1" fill="white" opacity="0.4"/><rect x="1.5" y="2.5" width="17" height="7" rx="1.5" fill="white"/></svg>
+          </div>
+        </div>
+
+        <!-- Back button -->
+        <button class="s10-back-btn" onclick="closeListing()">
+          <svg width="9" height="16" viewBox="0 0 9 16" fill="none">
+            <path d="M8 1L1 8l7 7" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+        </button>
+
+        <!-- Heart button -->
+        <button class="s10-heart-btn" id="s10-heart" onclick="toggleS10Heart()"></button>
+      </div>
+
+      <!-- White content sheet -->
+      <div class="s10-sheet">
+        <h1 class="s10-title" id="s10-title"></h1>
+        <p class="s10-meta" id="s10-meta"></p>
+
+        <h2 class="s10-learn-title">Ce que vous allez apprendre</h2>
+        <p class="s10-desc" id="s10-desc"></p>
+
+        <div class="s10-tag-row" id="s10-tags"></div>
+
+        <div class="s10-divider"></div>
+
+        <!-- Instructeur -->
+        <div class="s10-instructor">
+          <img class="s10-avatar" id="s10-avatar" src="" alt="">
+          <div class="s10-instr-right">
+            <div class="s10-instr-name-row">
+              <span class="s10-author-name" id="s10-author-name"></span>
+              <span class="s10-verified">
+                <svg width="8" height="7" viewBox="0 0 8 7" fill="none">
+                  <path d="M1 3.5L3 5.5L7 1.5" stroke="white" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                </svg>
+              </span>
+            </div>
+            <p class="s10-since" id="s10-since"></p>
+            <p class="s10-instr-rating" id="s10-instr-rating"></p>
+            <p class="s10-bio" id="s10-bio"></p>
+          </div>
+        </div>
+
+        <div class="s10-divider"></div>
+
+        <!-- Avis -->
+        <p class="s10-section-title" id="s10-reviews-label"></p>
+        <div class="s10-reviews-row" id="s10-reviews"></div>
+        <button class="s10-show-all-btn" id="s10-show-all"></button>
+      </div>
+
+    </div>
+
+    <!-- Barre bas fixe -->
+    <div class="s10-bottom">
+      <span class="s10-price" id="s10-price"></span>
+      <button class="s10-book-btn">Réserver une session</button>
+    </div>
+
+    <div class="home-indicator">
+      <div class="home-bar dark"></div>
+    </div>
+
+  </div>
+
 </div>
 
 <script>
@@ -1909,6 +2100,19 @@
     } catch(e) {}
   }
 
+  /* ── DÉTAILS ANNONCES (données supplémentaires pour screen10) ── */
+  const listingDetails = {
+    1: { duration:'60 min', tags:['Recettes régionales','Techniques italiennes'], authorBio:"Je suis une cuisinière passionnée qui a vécu en Italie pendant 5 ans et appris les techniques traditionnelles auprès de chefs locaux.", authorSince:'9 mois sur Filum', authorAvatar:'https://i.pravatar.cc/80?img=47', reviewsTotal:6, reviews:[{author:'Paul',avatar:'https://i.pravatar.cc/40?img=12',rating:4.3,date:'il y a 2 semaines',text:"Je ne pensais pas que réussir un vrai risotto était aussi technique. Marie est passionnée et nous transmet ses petits secrets."},{author:'Léa',avatar:'https://i.pravatar.cc/40?img=32',rating:4.8,date:'il y a 1 mois',text:"Excellente expérience ! Les pâtes fraîches maison, c'est une révélation."}] },
+    2: { duration:'45 min', tags:['Conversation','Grammaire'], authorBio:"Natif de Madrid, j'enseigne l'espagnol depuis 3 ans avec une méthode axée sur la conversation naturelle et le vocabulaire du quotidien.", authorSince:'6 mois sur Filum', authorAvatar:'https://i.pravatar.cc/80?img=65', reviewsTotal:9, reviews:[{author:'Emma',avatar:'https://i.pravatar.cc/40?img=44',rating:5.0,date:'il y a 3 jours',text:"Carlos est très pédagogue et patient. J'ai progressé en quelques séances seulement !"},{author:'Lucas',avatar:'https://i.pravatar.cc/40?img=8',rating:4.7,date:'il y a 2 semaines',text:"Méthode très efficace et bonne ambiance. Je recommande vivement."}] },
+    3: { duration:'60 min', tags:['Débutant','Accords de base'], authorBio:"Guitariste autodidacte depuis 10 ans, je transmets ma passion avec bienveillance et humour. Toutes les musiques sont les bienvenues.", authorSince:'4 mois sur Filum', authorAvatar:'https://i.pravatar.cc/80?img=53', reviewsTotal:4, reviews:[{author:'Marie',avatar:'https://i.pravatar.cc/40?img=21',rating:4.2,date:'il y a 1 semaine',text:"Super cours, Thomas adapte son enseignement à votre niveau."},{author:'Chloé',avatar:'https://i.pravatar.cc/40?img=56',rating:4.5,date:'il y a 3 semaines',text:"Ambiance détendue et cours très clairs. Mon seul regret : ne pas avoir commencé plus tôt !"}] },
+    4: { duration:'90 min', tags:['Pratique','Économies'], authorBio:"Plombier de métier depuis 20 ans, je partage mes connaissances pour vous aider à devenir autonome dans les petits travaux du quotidien.", authorSince:'3 mois sur Filum', authorAvatar:'https://i.pravatar.cc/80?img=61', reviewsTotal:3, reviews:[{author:'Pierre',avatar:'https://i.pravatar.cc/40?img=6',rating:3.8,date:'il y a 2 semaines',text:"Très utile ! J'ai réparé ma fuite sous l'évier tout seul grâce à Jean-Paul."},{author:'Nathalie',avatar:'https://i.pravatar.cc/40?img=40',rating:3.5,date:'il y a 1 mois',text:"Bon cours, un peu rapide parfois, mais Jean-Paul répond toujours aux questions."}] },
+    5: { duration:'75 min', tags:['Aquarelle','Techniques mixtes'], authorBio:"Illustratrice et enseignante passionnée, je vous guide dans la découverte de l'aquarelle avec des exercices progressifs et accessibles à tous.", authorSince:'11 mois sur Filum', authorAvatar:'https://i.pravatar.cc/80?img=35', reviewsTotal:8, reviews:[{author:'Sophie',avatar:'https://i.pravatar.cc/40?img=26',rating:4.9,date:'il y a 1 semaine',text:"Julie est une excellente pédagogue. J'ai réalisé ma première aquarelle dès la deuxième séance !"},{author:'Marc',avatar:'https://i.pravatar.cc/40?img=15',rating:4.7,date:'il y a 3 semaines',text:"Cours très bien structurés et Julie est de bon conseil."}] },
+    6: { duration:'50 min', tags:['Écriture','Organisation'], authorBio:"Journaliste de formation, j'aide chacun à structurer sa pensée et améliorer son expression écrite, que ce soit pour le travail ou le plaisir.", authorSince:'8 mois sur Filum', authorAvatar:'https://i.pravatar.cc/80?img=49', reviewsTotal:5, reviews:[{author:'Antoine',avatar:'https://i.pravatar.cc/40?img=3',rating:3.1,date:'il y a 4 jours',text:"Cours honnête mais manque un peu de structure. Lucie est sympa et disponible."},{author:'Inès',avatar:'https://i.pravatar.cc/40?img=58',rating:2.7,date:'il y a 2 mois',text:"Contenu intéressant mais j'ai eu du mal à progresser rapidement."}] },
+    7: { duration:'60 min', tags:['Python','HTML/CSS'], authorBio:"Développeur fullstack depuis 5 ans, je vous aide à comprendre les fondamentaux du code de façon simple et progressive, sans jargon inutile.", authorSince:'2 mois sur Filum', authorAvatar:'https://i.pravatar.cc/80?img=68', reviewsTotal:3, reviews:[{author:'Zoé',avatar:'https://i.pravatar.cc/40?img=29',rating:3.2,date:'il y a 5 jours',text:"Bon cours d'initiation. Hugo explique bien mais va parfois un peu vite."},{author:'Romain',avatar:'https://i.pravatar.cc/40?img=17',rating:2.6,date:'il y a 3 semaines',text:"Intéressant mais j'aurais aimé plus de pratique et moins de théorie."}] },
+    8: { duration:'90 min', tags:['Pensée critique','Histoire des idées'], authorBio:"Professeur de philosophie en lycée, je propose des séances accessibles et vivantes pour explorer les grandes idées qui ont façonné notre monde.", authorSince:'5 mois sur Filum', authorAvatar:'https://i.pravatar.cc/80?img=60', reviewsTotal:4, reviews:[{author:'Clara',avatar:'https://i.pravatar.cc/40?img=36',rating:4.0,date:'il y a 1 semaine',text:"Benoît rend la philo accessible et stimulante. J'ai adoré débattre sur Sartre !"},{author:'Thomas',avatar:'https://i.pravatar.cc/40?img=9',rating:3.4,date:'il y a 1 mois',text:"Très intéressant mais parfois un peu trop académique pour moi."}] },
+    9: { duration:'60 min', tags:['Entrepreneuriat','Statuts juridiques'], authorBio:"Entrepreneur depuis 8 ans et accompagnateur de projets, je démystifie les aspects administratifs de la création d'entreprise pour vous aider à vous lancer sereinement.", authorSince:'12 mois sur Filum', authorAvatar:'https://i.pravatar.cc/80?img=67', reviewsTotal:7, reviews:[{author:'Sarah',avatar:'https://i.pravatar.cc/40?img=45',rating:4.9,date:'il y a 2 jours',text:"Alexandre m'a enfin aidée à comprendre les différences entre auto-entrepreneur et SASU. Clair et précis !"},{author:'David',avatar:'https://i.pravatar.cc/40?img=11',rating:4.7,date:'il y a 2 semaines',text:"Cours très complet. Je me sens beaucoup plus confiant pour lancer mon projet."}] },
+  };
+
   /* ── DONNÉES ANNONCES ── */
   const listings = [
     { id:1, title:'Cuisine italienne maison', author:'Marie L.', credits:45, meta:'Vidéo', rating:4.8, cats:['cuisine'], section:'recent', desc:"Apprenez les fondamentaux de la cuisine italienne ! Nous couvrirons la fabrication de pâtes fraîches.", img:'https://loremflickr.com/320/200/italian,pasta,cooking?lock=1', grad:'#d4a850', fav:false },
@@ -1937,10 +2141,10 @@
 
   function cardHTML(item) {
     const fav = s8Favs.has(item.id);
-    return `<div class="s8-card" data-id="${item.id}">
+    return `<div class="s8-card" data-id="${item.id}" onclick="openListing(${item.id},'screen8')" style="cursor:pointer">
       <div class="s8-card-img" style="background:${item.grad}">
         ${imgTag(item)}
-        <button class="s8-heart${fav?' active':''}" onclick="toggleHeart(this,${item.id})">${heartSVG(fav)}</button>
+        <button class="s8-heart${fav?' active':''}" onclick="event.stopPropagation();toggleHeart(this,${item.id})">${heartSVG(fav)}</button>
       </div>
       <div class="s8-card-body">
         <p class="s8-card-title">${item.title}</p>
@@ -1950,13 +2154,13 @@
     </div>`;
   }
 
-  function listItemHTML(item) {
+  function listItemHTML(item, from='screen9') {
     const fav = s8Favs.has(item.id);
     const shortDesc = item.desc.length > 75 ? item.desc.substring(0,75) + '...' : item.desc;
-    return `<div class="s9-list-item" data-id="${item.id}">
+    return `<div class="s9-list-item" data-id="${item.id}" onclick="openListing(${item.id},'${from}')" style="cursor:pointer">
       <div class="s9-list-img" style="background:${item.grad}">
         ${imgTag(item)}
-        <button class="s8-heart${fav?' active':''}" onclick="toggleHeart(this,${item.id})">${heartSVG(fav)}</button>
+        <button class="s8-heart${fav?' active':''}" onclick="event.stopPropagation();toggleHeart(this,${item.id})">${heartSVG(fav)}</button>
       </div>
       <div class="s9-list-body">
         <p class="s9-list-title">${item.title}</p>
@@ -2016,7 +2220,7 @@
       : listings.filter(l => l.section === s9CurrentSection && l.cats.includes(cat));
     const list = document.getElementById('s9-list');
     const count = document.getElementById('s9-count');
-    if (list) list.innerHTML = items.length ? items.map(listItemHTML).join('') : '<p class="s9-empty">Aucune annonce dans cette catégorie</p>';
+    if (list) list.innerHTML = items.length ? items.map(i => listItemHTML(i,'screen9')).join('') : '<p class="s9-empty">Aucune annonce dans cette catégorie</p>';
     if (count) count.textContent = `${items.length} annonce${items.length !== 1 ? 's' : ''}`;
   }
 
@@ -2037,7 +2241,7 @@
     normal.style.display = 'none';
     res.style.display = '';
     res.innerHTML = found.length
-      ? `<p style="font-size:13px;color:#888;margin:8px 0 12px;">${found.length} résultat${found.length>1?'s':''}</p>${found.map(listItemHTML).join('')}`
+      ? `<p style="font-size:13px;color:#888;margin:8px 0 12px;">${found.length} résultat${found.length>1?'s':''}</p>${found.map(i => listItemHTML(i,'screen8')).join('')}`
       : `<p class="s9-empty">Aucun résultat pour « ${q} »</p>`;
   }
 
@@ -2049,7 +2253,7 @@
       ? listings.filter(l => s8Favs.has(l.id))
       : listings.filter(l => l.section === section);
     document.getElementById('s9-list').innerHTML = items.length
-      ? items.map(listItemHTML).join('')
+      ? items.map(i => listItemHTML(i,'screen9')).join('')
       : '<p class="s9-empty">Aucune annonce pour le moment</p>';
     document.getElementById('s9-count').textContent = `${items.length} annonce${items.length !== 1 ? 's' : ''}`;
     navigate('screen8', 'screen9');
@@ -2058,6 +2262,88 @@
 
   function initScreen8() {
     navigate('screen7', 'screen8');
+    renderS8Grid();
+  }
+
+  /* ── SCREEN 10 : détail annonce ── */
+  let s10FromScreen = 'screen8';
+  let s10CurrentId  = null;
+
+  function s10HeartClass(fav) { return 's10-heart-btn' + (fav ? ' active' : ''); }
+
+  function s10HeartSVG(fav) {
+    return fav
+      ? `<svg width="14" height="13" viewBox="0 0 13 12" fill="none"><path d="M6.5 10.5C6.5 10.5 1 7 1 3.5A2.5 2.5 0 0 1 6.5 3 2.5 2.5 0 0 1 12 3.5C12 7 6.5 10.5 6.5 10.5Z" stroke="#e84040" stroke-width="1.3" fill="#e84040"/></svg>`
+      : `<svg width="14" height="13" viewBox="0 0 13 12" fill="none"><path d="M6.5 10.5C6.5 10.5 1 7 1 3.5A2.5 2.5 0 0 1 6.5 3 2.5 2.5 0 0 1 12 3.5C12 7 6.5 10.5 6.5 10.5Z" stroke="white" stroke-width="1.3"/></svg>`;
+  }
+
+  function openListing(id, fromScreen) {
+    s10FromScreen = fromScreen || 'screen8';
+    s10CurrentId  = id;
+    const item = listings.find(l => l.id === id);
+    if (!item) return;
+    const det = listingDetails[id] || {};
+    const fav = s8Favs.has(id);
+
+    const imgEl = document.getElementById('s10-img');
+    imgEl.src = item.img; imgEl.alt = item.title;
+    document.getElementById('s10-hero-bg').style.background = item.grad;
+
+    const heartBtn = document.getElementById('s10-heart');
+    heartBtn.className = s10HeartClass(fav);
+    heartBtn.innerHTML = s10HeartSVG(fav);
+
+    document.getElementById('s10-title').textContent = item.title;
+    const cat = item.cats[0] ? (item.cats[0].charAt(0).toUpperCase() + item.cats[0].slice(1)) : '';
+    const dur = det.duration || '60 min';
+    document.getElementById('s10-meta').innerHTML =
+      `${cat}<span class="sep">•</span>${item.credits} crédits<span class="sep">•</span>${item.meta}<span class="sep">•</span>${dur}`;
+
+    document.getElementById('s10-desc').textContent = item.desc;
+
+    const tags = det.tags || [];
+    document.getElementById('s10-tags').innerHTML = tags.map(t => `<span class="s10-tag">${t}</span>`).join('');
+
+    document.getElementById('s10-avatar').src = det.authorAvatar || `https://i.pravatar.cc/80?img=${id * 7 % 70}`;
+    document.getElementById('s10-author-name').textContent = item.author;
+    document.getElementById('s10-since').textContent = det.authorSince || '3 mois sur Filum';
+    document.getElementById('s10-instr-rating').innerHTML =
+      `<span style="color:#f5a623;">★ ${item.rating}/5</span> <span style="color:#888;font-size:12px;">(${det.reviewsTotal || 0} avis)</span>`;
+    document.getElementById('s10-bio').textContent = det.authorBio || '';
+
+    const reviews = det.reviews || [];
+    const total   = det.reviewsTotal || reviews.length;
+    document.getElementById('s10-reviews-label').textContent = `Évaluations et avis (${total})`;
+    document.getElementById('s10-reviews').innerHTML = reviews.map(r => `
+      <div class="s10-review-card">
+        <div class="s10-review-top">
+          <img class="s10-review-avatar" src="${r.avatar}" alt="${r.author}" onerror="this.style.display='none'">
+          <div class="s10-review-meta">
+            <div class="s10-review-author">${r.author}</div>
+            <div class="s10-review-date">${r.date}</div>
+          </div>
+        </div>
+        <div class="s10-review-rating">★ ${r.rating.toFixed(1)}/5</div>
+        <p class="s10-review-text">${r.text} <a onclick="event.stopPropagation()">Afficher plus</a></p>
+      </div>`).join('');
+    document.getElementById('s10-show-all').textContent = `Afficher les ${total} commentaires`;
+    document.getElementById('s10-price').textContent = `${item.credits} crédits par session`;
+
+    navigate(s10FromScreen, 'screen10');
+    document.querySelector('#screen10 .s10-scroll').scrollTop = 0;
+  }
+
+  function closeListing() {
+    navigate('screen10', s10FromScreen);
+  }
+
+  function toggleS10Heart() {
+    if (!s10CurrentId) return;
+    const wasFav = s8Favs.has(s10CurrentId);
+    if (wasFav) s8Favs.delete(s10CurrentId); else s8Favs.add(s10CurrentId);
+    const btn = document.getElementById('s10-heart');
+    btn.className = s10HeartClass(!wasFav);
+    btn.innerHTML = s10HeartSVG(!wasFav);
     renderS8Grid();
   }
 
