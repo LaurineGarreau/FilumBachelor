@@ -801,7 +801,7 @@
     }
 
     /* ── SCREEN 8 ── */
-    #screen8 { background: #fff; }
+    #screen8 { background: #f2f4fb; }
 
     .s8-status {
       display: flex; justify-content: space-between; align-items: center;
@@ -832,7 +832,7 @@
     .s8-subtext { font-size: 14px; color: #888; margin-bottom: 14px; }
 
     .s8-searchbar {
-      display: flex; align-items: center; background: #f2f4fb;
+      display: flex; align-items: center; background: #fff;
       border-radius: 14px; padding: 11px 14px; gap: 8px; margin-bottom: 18px;
     }
     .s8-search-ph {
@@ -880,7 +880,7 @@
     .s8-heart {
       position: absolute; top: 8px; right: 8px;
       width: 26px; height: 26px; border-radius: 50%;
-      background: rgba(150,150,150,0.28); border: none; cursor: pointer;
+      background: rgba(0,0,0,0.45); border: none; cursor: pointer;
       display: flex; align-items: center; justify-content: center; padding: 0;
       transition: background 0.15s;
     }
@@ -906,7 +906,7 @@
     }
 
     /* ── SCREEN 9 ── */
-    #screen9 { background: #fff; }
+    #screen9 { background: #f2f4fb; }
     .s9-header {
       display: flex; align-items: center; justify-content: space-between;
       padding: 10px 16px 12px; flex-shrink: 0; border-bottom: 1px solid #f0f2f8;
@@ -1281,6 +1281,55 @@
     .s16-signup-row { text-align:center; font-size:14px; color:#888; }
     .s16-signup-link { color:#6685f1; font-weight:600; cursor:pointer; }
 
+    /* ── SCREEN 17 – Réserver une session ── */
+    #screen17 { background:#f2f4fb; }
+    .s17-header { display:flex; align-items:center; gap:12px; padding:10px 20px 14px; flex-shrink:0; background:#fff; border-bottom:1px solid #f0f2f8; }
+    .s17-back-btn { width:38px; height:38px; border-radius:50%; background:#f2f4fb; border:1.5px solid #e0e2f0; display:flex; align-items:center; justify-content:center; cursor:pointer; flex-shrink:0; }
+    .s17-title { font-size:20px; font-weight:800; color:#111; }
+    .s17-scroll { flex:1; overflow-y:auto; -webkit-overflow-scrolling:touch; padding:16px 16px 24px; }
+    .s17-scroll::-webkit-scrollbar { display:none; }
+    /* Carte session */
+    .s17-session-card { background:#fff; border-radius:16px; padding:14px 16px; display:flex; align-items:center; gap:14px; margin-bottom:20px; box-shadow:0 2px 10px rgba(0,0,0,0.06); }
+    .s17-session-avatar { width:56px; height:56px; border-radius:50%; object-fit:cover; flex-shrink:0; background:#dde0ee; }
+    .s17-session-info { flex:1; }
+    .s17-session-title { font-size:17px; font-weight:800; color:#111; margin-bottom:4px; }
+    .s17-session-meta  { font-size:13px; color:#888; display:flex; align-items:center; gap:5px; }
+    .s17-session-verified { width:14px; height:14px; background:#6685f1; border-radius:50%; display:inline-flex; align-items:center; justify-content:center; flex-shrink:0; }
+    /* Section titre */
+    .s17-section-title { font-size:20px; font-weight:800; color:#111; margin-bottom:4px; }
+    .s17-section-sub   { font-size:13px; color:#888; margin-bottom:14px; }
+    /* Grille créneaux */
+    .s17-slots-grid { display:grid; grid-template-columns:1fr 1fr; gap:10px; margin-bottom:24px; }
+    .s17-slot { background:#fff; border:1.5px solid #e8eaf5; border-radius:14px; padding:14px; cursor:pointer; transition:border-color 0.15s; }
+    .s17-slot.selected { border-color:#6685f1; background:#f0f2ff; }
+    .s17-slot.unavail  { opacity:0.55; cursor:default; }
+    .s17-slot-top { display:flex; align-items:center; justify-content:space-between; margin-bottom:4px; }
+    .s17-slot-date { font-size:13px; font-weight:700; color:#111; }
+    .s17-slot.selected .s17-slot-date { color:#6685f1; }
+    .s17-slot-check { width:20px; height:20px; border-radius:50%; background:#6685f1; display:flex; align-items:center; justify-content:center; }
+    .s17-slot-hours { font-size:14px; font-weight:600; color:#333; margin-bottom:6px; }
+    .s17-slot.unavail .s17-slot-hours { color:#aaa; }
+    .s17-slot-status { font-size:11px; font-weight:700; letter-spacing:0.4px; }
+    .s17-slot-status.avail  { color:#2db87a; }
+    .s17-slot-status.unavail { color:#bbb; }
+    .s17-dot { width:7px; height:7px; border-radius:50%; background:#2db87a; display:inline-block; margin-right:3px; }
+    /* Message */
+    .s17-msg-title { font-size:20px; font-weight:800; color:#111; margin-bottom:12px; }
+    .s17-msg-title span { font-weight:400; color:#aaa; font-size:17px; }
+    .s17-textarea { width:100%; padding:14px 16px; border:1.5px solid #e8eaf5; border-radius:14px; font-size:14px; color:#333; font-family:inherit; outline:none; background:#fff; box-sizing:border-box; resize:none; height:90px; margin-bottom:20px; }
+    .s17-textarea:focus { border-color:#6685f1; }
+    /* Récap */
+    .s17-summary { background:#edf2fe; border-radius:16px; padding:16px; margin-bottom:16px; }
+    .s17-summary-row { display:flex; justify-content:space-between; align-items:baseline; margin-bottom:8px; }
+    .s17-summary-row:last-child { margin-bottom:0; }
+    .s17-sum-label { font-size:14px; font-weight:600; color:#555; }
+    .s17-sum-val   { font-size:14px; color:#111; font-weight:500; }
+    .s17-sum-credits { font-size:18px; font-weight:800; color:#111; }
+    .s17-sum-rest  { font-size:12px; color:#6685f1; text-align:center; margin-top:8px; }
+    /* Boutons */
+    .s17-send-btn   { width:100%; padding:17px; background:#6685f1; color:#fff; border:none; border-radius:16px; font-size:17px; font-weight:700; cursor:pointer; margin-bottom:8px; }
+    .s17-cancel-btn { width:100%; padding:13px; background:transparent; border:none; font-size:15px; color:#888; cursor:pointer; }
+
     /* ── SCREEN 14 – Publier un savoir ── */
     #screen14 { background:#fff; }
     .s14-header { display:flex; align-items:center; justify-content:space-between; padding:12px 20px 14px; flex-shrink:0; border-bottom:1px solid #f0f2f8; }
@@ -1542,6 +1591,20 @@
         <span class="tag" onclick="toggleTag(this)">Violon</span>
         <span class="tag" onclick="toggleTag(this)">Djembé</span>
       </div>
+
+      <!-- Ajouter un sujet personnalisé -->
+      <p class="tag-section-title">AUTRE</p>
+      <div style="display:flex;gap:8px;margin-bottom:24px;">
+        <input id="s3-custom-input" type="text" placeholder="Ajouter un sujet…"
+          style="flex:1;padding:9px 14px;border:1.5px solid #dde0ee;border-radius:50px;font-size:14px;font-family:inherit;outline:none;background:#fff;color:#222;"
+          onkeydown="if(event.key==='Enter')s3AddCustomTag()"
+          onfocus="this.style.borderColor='#6685f1'" onblur="this.style.borderColor='#dde0ee'">
+        <button onclick="s3AddCustomTag()"
+          style="padding:9px 16px;background:#6685f1;color:#fff;border:none;border-radius:50px;font-size:14px;font-weight:600;cursor:pointer;white-space:nowrap;">
+          + Ajouter
+        </button>
+      </div>
+      <div id="s3-custom-tags" class="tag-row" style="margin-bottom:16px;flex-wrap:wrap;"></div>
     </div>
 
     <!-- Fixed bottom -->
@@ -1935,12 +1998,7 @@
     <div class="s8-scroll">
 
       <!-- Decorative background curves -->
-      <svg class="s8-bg-svg" viewBox="0 0 375 900" fill="none" xmlns="http://www.w3.org/2000/svg">
-        <path d="M400 80 C340 160 180 190 140 310 C100 430 190 470 140 600" stroke="#dde2f5" stroke-width="1.5"/>
-        <path d="M375 340 C310 410 220 415 185 520 C150 625 230 670 190 800" stroke="#dde2f5" stroke-width="1.5"/>
-      </svg>
-
-      <!-- Logo -->
+<!-- Logo -->
       <div class="s8-header">
         <div class="s8-logo">
           <img src="logo.png" alt="" style="width:26px;height:26px;object-fit:contain;">
@@ -1970,13 +2028,16 @@
       <p class="s8-section-label">Catégories</p>
       <div class="s8-cats" id="s8-cats">
         <span class="s8-cat active" data-filter="all" onclick="filterCat(this)">Voir tout</span>
-        <span class="s8-cat" data-filter="recits" onclick="filterCat(this)">Récits de vie</span>
-        <span class="s8-cat" data-filter="philosophie" onclick="filterCat(this)">Philosophie</span>
-        <span class="s8-cat" data-filter="patisserie" onclick="filterCat(this)">Pâtisserie</span>
-        <span class="s8-cat" data-filter="arts" onclick="filterCat(this)">Arts</span>
-        <span class="s8-cat" data-filter="langues" onclick="filterCat(this)">Langues</span>
-        <span class="s8-cat" data-filter="musique" onclick="filterCat(this)">Musique</span>
         <span class="s8-cat" data-filter="cuisine" onclick="filterCat(this)">Cuisine</span>
+        <span class="s8-cat" data-filter="arts" onclick="filterCat(this)">Arts</span>
+        <span class="s8-cat" data-filter="musique" onclick="filterCat(this)">Musique</span>
+        <span class="s8-cat" data-filter="langues" onclick="filterCat(this)">Langues</span>
+        <span class="s8-cat" data-filter="patisserie" onclick="filterCat(this)">Pâtisserie</span>
+        <span class="s8-cat" data-filter="bricolage" onclick="filterCat(this)">Bricolage</span>
+        <span class="s8-cat" data-filter="numerique" onclick="filterCat(this)">Numérique</span>
+        <span class="s8-cat" data-filter="business" onclick="filterCat(this)">Business</span>
+        <span class="s8-cat" data-filter="recits" onclick="filterCat(this)">Bien-être</span>
+        <span class="s8-cat" data-filter="philosophie" onclick="filterCat(this)">Philosophie</span>
       </div>
 
       <!-- Résultats de recherche (cachés par défaut) -->
@@ -1984,6 +2045,14 @@
 
       <!-- Contenu normal -->
       <div id="s8-normal">
+
+        <!-- Section personnalisée -->
+        <div id="s8-sec-pour" style="display:none;">
+          <div class="s8-section-head">
+            <p class="s8-section-title">✨ Pour vous</p>
+          </div>
+          <div class="s8-cards" id="s8-grid-pour"></div>
+        </div>
 
         <div id="s8-sec-recent">
           <div class="s8-section-head">
@@ -2112,11 +2181,16 @@
       <div style="padding: 0 16px;">
         <div class="s8-cats" id="s9-cats">
           <span class="s8-cat active" data-filter="all" onclick="filterCatS9(this)">Voir tout</span>
-          <span class="s8-cat" data-filter="recits" onclick="filterCatS9(this)">Récits de vie</span>
-          <span class="s8-cat" data-filter="philosophie" onclick="filterCatS9(this)">Philosophie</span>
-          <span class="s8-cat" data-filter="patisserie" onclick="filterCatS9(this)">Pâtisserie</span>
           <span class="s8-cat" data-filter="cuisine" onclick="filterCatS9(this)">Cuisine</span>
+          <span class="s8-cat" data-filter="arts" onclick="filterCatS9(this)">Arts</span>
+          <span class="s8-cat" data-filter="musique" onclick="filterCatS9(this)">Musique</span>
           <span class="s8-cat" data-filter="langues" onclick="filterCatS9(this)">Langues</span>
+          <span class="s8-cat" data-filter="patisserie" onclick="filterCatS9(this)">Pâtisserie</span>
+          <span class="s8-cat" data-filter="bricolage" onclick="filterCatS9(this)">Bricolage</span>
+          <span class="s8-cat" data-filter="numerique" onclick="filterCatS9(this)">Numérique</span>
+          <span class="s8-cat" data-filter="business" onclick="filterCatS9(this)">Business</span>
+          <span class="s8-cat" data-filter="recits" onclick="filterCatS9(this)">Bien-être</span>
+          <span class="s8-cat" data-filter="philosophie" onclick="filterCatS9(this)">Philosophie</span>
         </div>
         <div class="s9-count-row">
           <span id="s9-count" class="s9-count">5 annonces</span>
@@ -2258,7 +2332,7 @@
     <!-- Barre bas fixe -->
     <div class="s10-bottom">
       <span class="s10-price" id="s10-price"></span>
-      <button class="s10-book-btn">Réserver une session</button>
+      <button class="s10-book-btn" onclick="openBooking()">Réserver une session</button>
     </div>
 
     <div class="home-indicator">
@@ -2573,6 +2647,76 @@
 
   </div>
 
+  <!-- ══════════════ SCREEN 17 – RÉSERVER UNE SESSION ══════════════ -->
+  <div class="screen hidden" id="screen17">
+
+    <div class="s8-status" style="flex-shrink:0;background:#fff;">
+      <span class="time">9:41</span>
+      <div class="icons">
+        <svg width="17" height="12" viewBox="0 0 17 12"><rect x="0" y="7" width="3" height="5" rx="0.5"/><rect x="4" y="5" width="3" height="7" rx="0.5"/><rect x="8" y="3" width="3" height="9" rx="0.5"/><rect x="12" y="0" width="3" height="12" rx="0.5"/></svg>
+        <svg width="16" height="12" viewBox="0 0 16 12"><path d="M8 9.5a1.5 1.5 0 1 1 0 3 1.5 1.5 0 0 1 0-3z"/><path d="M8 6.2a5.1 5.1 0 0 1 3.6 1.5l1.4-1.4A7.1 7.1 0 0 0 8 4a7.1 7.1 0 0 0-5 2.3l1.4 1.4A5.1 5.1 0 0 1 8 6.2z"/><path d="M8 2.9a8.5 8.5 0 0 1 6 2.5L15.4 4A10.5 10.5 0 0 0 8 0.9a10.5 10.5 0 0 0-7.4 3.1L2 5.4A8.5 8.5 0 0 1 8 2.9z"/></svg>
+        <svg width="25" height="12" viewBox="0 0 25 12"><rect x="0" y="1" width="21" height="10" rx="2.5" stroke="black" stroke-width="1" fill="none"/><rect x="22" y="3.5" width="2" height="5" rx="1" fill="black" opacity="0.4"/><rect x="1.5" y="2.5" width="17" height="7" rx="1.5" fill="black"/></svg>
+      </div>
+    </div>
+
+    <div class="s17-header">
+      <button class="s17-back-btn" onclick="navigate('screen17','screen10')">
+        <svg width="9" height="16" viewBox="0 0 9 16" fill="none"><path d="M8 1L1 8l7 7" stroke="#333" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      </button>
+      <span class="s17-title">Réserver une session</span>
+    </div>
+
+    <div class="s17-scroll">
+
+      <!-- Carte session -->
+      <div class="s17-session-card">
+        <img class="s17-session-avatar" id="s17-avatar" src="" alt="">
+        <div class="s17-session-info">
+          <div class="s17-session-title" id="s17-course-title"></div>
+          <div class="s17-session-meta">
+            <span id="s17-author-name"></span>
+            <span class="s17-session-verified"><svg width="8" height="7" viewBox="0 0 8 7" fill="none"><path d="M1 3.5L3 5.5L7 1.5" stroke="white" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+            <span>•</span><span id="s17-mode"></span>
+            <span>•</span><span id="s17-duration"></span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Créneaux -->
+      <p class="s17-section-title">Choisir un créneau</p>
+      <p class="s17-section-sub" id="s17-slots-sub"></p>
+      <div class="s17-slots-grid" id="s17-slots-grid"></div>
+
+      <!-- Message -->
+      <p class="s17-msg-title">Message <span>(optionnel)</span></p>
+      <textarea class="s17-textarea" id="s17-msg" placeholder="" id="s17-textarea"></textarea>
+
+      <!-- Récapitulatif -->
+      <div class="s17-summary">
+        <div class="s17-summary-row">
+          <span class="s17-sum-label">Session</span>
+          <span class="s17-sum-val" id="s17-sum-course"></span>
+        </div>
+        <div class="s17-summary-row">
+          <span class="s17-sum-label">Créneau</span>
+          <span class="s17-sum-val" id="s17-sum-slot"></span>
+        </div>
+        <div class="s17-summary-row">
+          <span class="s17-sum-label">Crédits débités</span>
+          <span class="s17-sum-credits" id="s17-sum-credits"></span>
+        </div>
+        <p class="s17-sum-rest" id="s17-sum-rest"></p>
+      </div>
+
+      <button class="s17-send-btn" onclick="s17SendRequest()">Envoyer la demande</button>
+      <button class="s17-cancel-btn" onclick="navigate('screen17','screen10')">Annuler</button>
+
+    </div>
+
+    <div class="home-indicator"><div class="home-bar dark"></div></div>
+
+  </div>
+
   <!-- ══════════════ SCREEN 16 – CONNEXION ══════════════ -->
   <div class="screen hidden" id="screen16">
 
@@ -2838,6 +2982,9 @@
     const selected = [...document.querySelectorAll('#screen3 .tag.selected')]
       .map(el => el.textContent.replace('✓ ', '').trim());
 
+    // Stocker les intérêts pour personnaliser l'accueil
+    userInterests = [...new Set(selected.map(t => tagToCat[t]).filter(Boolean))];
+
     const topics = selected.length > 0 ? selected : ['Cuisine', 'Photo argentique', 'Guitare', 'Italien'];
 
     const container = document.getElementById('s4-cards');
@@ -2864,11 +3011,30 @@
     btn.classList.add('active');
   }
 
-  function toggleTag(el) {
-    el.classList.toggle('selected');
+  function s3AddCustomTag() {
+    const input = document.getElementById('s3-custom-input');
+    const val = input.value.trim();
+    if (!val) return;
+    const container = document.getElementById('s3-custom-tags');
+    const span = document.createElement('span');
+    span.className = 'tag selected';
+    span.textContent = '✓ ' + val;
+    span.onclick = () => { span.remove(); updateS3Count(); };
+    container.appendChild(span);
+    input.value = '';
+    input.focus();
+    updateS3Count();
+  }
+
+  function updateS3Count() {
     const count = document.querySelectorAll('#screen3 .tag.selected').length;
     document.getElementById('s3-count').textContent =
       count + ' catégorie' + (count > 1 ? 's' : '') + ' sélectionné' + (count > 1 ? 'es' : 'e');
+  }
+
+  function toggleTag(el) {
+    el.classList.toggle('selected');
+    updateS3Count();
   }
 
   /* ── SCREEN 5 : carte interactive ── */
@@ -2929,8 +3095,72 @@
     { id:6, title:'Rédaction/prise de notes', author:'Lucie F', credits:45, meta:'les deux', rating:2.9, cats:['recits'], section:'fav', desc:"Améliorez votre écriture et votre organisation personnelle grâce à des méthodes éprouvées.", img:'https://loremflickr.com/320/200/writing,notebook,pen?lock=6', grad:'#b8a840', fav:true },
     { id:7, title:'Cours de code', author:'Hugo W', credits:38, meta:'Vidéo', rating:2.9, cats:['numerique'], section:'recent', desc:'Je vous aide à briser la barrière technique en apprenant les bases de la programmation (Python, HTML/CSS ou JavaScript).', img:'https://loremflickr.com/320/200/coding,programming,computer?lock=7', grad:'#3a4070', fav:false },
     { id:8, title:'Philo pour tous !', author:'Benoît', credits:28, meta:'8.2 km', rating:3.7, cats:['philosophie'], section:'recent', desc:'Développez votre pensée critique en explorant les grands courants philosophiques.', img:'https://loremflickr.com/320/200/philosophy,books,library?lock=8', grad:'#907060', fav:false },
-    { id:9, title:'Cap entreprise', author:'Alexandre', credits:45, meta:'Vidéo', rating:4.8, cats:['business'], section:'recent', desc:"Lancer son projet est passionnant, mais l'administratif peut vite devenir un frein. Je vous aide à y voir clair parmi les statuts.", img:'https://loremflickr.com/320/200/startup,entrepreneur,office?lock=9', grad:'#888060', fav:false },
+    { id:9,  title:'Cap entreprise',            author:'Alexandre',  credits:45, meta:'Vidéo',    rating:4.8, cats:['business'],    section:'recent',  desc:"Lancer son projet est passionnant, mais l'administratif peut vite devenir un frein.", img:'https://loremflickr.com/320/200/startup,entrepreneur,office?lock=9', grad:'#888060', fav:false },
+    { id:10, title:'Piano jazz débutant',         author:'Chloé M.',   credits:40, meta:'Vidéo',    rating:4.6, cats:['musique'],    section:'recent',  desc:'Découvrez le jazz au piano avec des accords simples et des standards incontournables.', img:'https://loremflickr.com/320/200/piano,jazz,music?lock=10', grad:'#2a3060', fav:false },
+    { id:11, title:'Couture zéro déchet',         author:'Amandine P.',credits:38, meta:'1.8 km',   rating:4.5, cats:['arts'],       section:'nearby',  desc:'Apprenez à transformer vos vieux vêtements en nouvelles pièces tendance.', img:'https://loremflickr.com/320/200/sewing,fabric,textile?lock=11', grad:'#c06080', fav:false },
+    { id:12, title:'Méditation pleine conscience', author:'Yasmine B.', credits:30, meta:'Vidéo',    rating:4.9, cats:['recits'],     section:'recent',  desc:'Initiez-vous à la méditation pour réduire le stress et améliorer votre concentration.', img:'https://loremflickr.com/320/200/meditation,yoga,zen?lock=12', grad:'#6090a0', fav:false },
+    { id:13, title:'Pâtisserie française',         author:'Sophie D.',  credits:50, meta:'2.1 km',   rating:4.7, cats:['patisserie'], section:'nearby',  desc:'Macarons, éclairs, mille-feuilles… je vous enseigne les secrets de la pâtisserie classique.', img:'https://loremflickr.com/320/200/pastry,cake,french?lock=13', grad:'#d4907a', fav:false },
+    { id:14, title:'Anglais business',             author:'Kevin L.',   credits:42, meta:'Vidéo',    rating:4.4, cats:['langues'],    section:'recent',  desc:'Préparez vos réunions, emails et présentations professionnelles en anglais.', img:'https://loremflickr.com/320/200/english,business,meeting?lock=14', grad:'#3060a0', fav:false },
+    { id:15, title:'Dessin portraits',             author:'Nora V.',    credits:35, meta:'Vidéo',    rating:4.6, cats:['arts'],       section:'recent',  desc:'Apprenez les proportions du visage humain et les techniques de portrait au crayon.', img:'https://loremflickr.com/320/200/drawing,portrait,pencil?lock=15', grad:'#806050', fav:false },
+    { id:16, title:'Jardinage urbain',             author:'Pierre A.',  credits:28, meta:'0.8 km',   rating:4.3, cats:['bricolage'],  section:'nearby',  desc:'Cultivez vos légumes et herbes aromatiques sur un balcon ou une petite terrasse.', img:'https://loremflickr.com/320/200/garden,urban,plant?lock=16', grad:'#508040', fav:false },
+    { id:17, title:'Salsa débutant',               author:'Luisa R.',   credits:36, meta:'1.5 km',   rating:4.8, cats:['musique'],   section:'nearby',  desc:'Initiez-vous à la salsa cubaine dans une ambiance festive et bienveillante.', img:'https://loremflickr.com/320/200/salsa,dance,latin?lock=17', grad:'#c04040', fav:false },
+    { id:18, title:'Fermentation maison',          author:'Marc T.',    credits:32, meta:'Vidéo',    rating:4.2, cats:['cuisine'],    section:'recent',  desc:'Kombucha, kimchi, kéfir… découvrez les bases de la fermentation pour une alimentation vivante.', img:'https://loremflickr.com/320/200/fermentation,jar,food?lock=18', grad:'#80a060', fav:false },
+    { id:19, title:'Excel avancé',                 author:'Julie D.',   credits:44, meta:'Vidéo',    rating:4.5, cats:['numerique'],  section:'recent',  desc:'Maîtrisez les tableaux croisés, les macros et les formules avancées pour gagner en productivité.', img:'https://loremflickr.com/320/200/spreadsheet,data,office?lock=19', grad:'#207040', fav:false },
+    { id:20, title:'Calligraphie moderne',         author:'Emma K.',    credits:33, meta:'2.0 km',   rating:4.7, cats:['arts'],       section:'nearby',  desc:'Découvrez la calligraphie moderne, brush lettering et hand lettering pour tous niveaux.', img:'https://loremflickr.com/320/200/calligraphy,lettering,ink?lock=20', grad:'#404060', fav:false },
+    { id:21, title:'Boulangerie artisanale',       author:'Franck B.',  credits:48, meta:'3.2 km',   rating:4.9, cats:['patisserie'], section:'nearby',  desc:'Pain au levain, baguette, brioche… apprenez les gestes du boulanger.', img:'https://loremflickr.com/320/200/bread,bakery,flour?lock=21', grad:'#c09050', fav:false },
+    { id:22, title:'Photographie de rue',          author:'Léa C.',     credits:40, meta:'Vidéo',    rating:4.4, cats:['arts'],       section:'recent',  desc:'Capturez la vie urbaine avec authenticité : composition, lumière et discrétion.', img:'https://loremflickr.com/320/200/street,photography,urban?lock=22', grad:'#505060', fav:false },
+    { id:23, title:'Italien conversation',         author:'Rosa M.',    credits:36, meta:'1.1 km',   rating:4.6, cats:['langues'],    section:'nearby',  desc:'Parlez italien avec confiance grâce à des mises en situation du quotidien.', img:'https://loremflickr.com/320/200/italian,language,italy?lock=23', grad:'#c04830', fav:false },
+    { id:24, title:'Électricité maison',           author:'Didier N.',  credits:38, meta:'0.7 km',   rating:3.9, cats:['bricolage'],  section:'nearby',  desc:'Comprendre et réaliser de petits travaux électriques en toute sécurité.', img:'https://loremflickr.com/320/200/electricity,tools,house?lock=24', grad:'#f0a020', fav:false },
+    { id:25, title:'Initiation au yoga',           author:'Clara F.',   credits:30, meta:'Vidéo',    rating:4.8, cats:['recits'],     section:'recent',  desc:'Un cours doux pour débutants : respiration, postures de base et relaxation.', img:'https://loremflickr.com/320/200/yoga,meditation,exercise?lock=25', grad:'#709080', fav:false },
+    { id:26, title:'Réseaux sociaux pro',          author:'Nina S.',    credits:42, meta:'Vidéo',    rating:4.3, cats:['business'],   section:'recent',  desc:'Construisez votre personal branding sur LinkedIn et Instagram pour booster votre carrière.', img:'https://loremflickr.com/320/200/social,media,marketing?lock=26', grad:'#4050a0', fav:false },
+    { id:27, title:'Ukulélé pour tous',            author:'Sam K.',     credits:30, meta:'1.9 km',   rating:4.7, cats:['musique'],   section:'nearby',  desc:'Instrument joyeux et accessible, apprenez les accords et chansons incontournables.', img:'https://loremflickr.com/320/200/ukulele,hawaii,music?lock=27', grad:'#a07040', fav:false },
+    { id:28, title:'Cuisine végane créative',      author:'Zoé P.',     credits:38, meta:'Vidéo',    rating:4.5, cats:['cuisine'],    section:'recent',  desc:'Des recettes 100% végétales savoureuses et colorées pour cuisiner autrement.', img:'https://loremflickr.com/320/200/vegan,vegetables,healthy?lock=28', grad:'#608040', fav:false },
+    { id:29, title:'Storytelling & écriture',      author:'Bastien M.', credits:40, meta:'Vidéo',    rating:4.2, cats:['recits'],     section:'recent',  desc:'Apprenez à construire des histoires captivantes pour vos projets perso ou pro.', img:'https://loremflickr.com/320/200/writing,story,book?lock=29', grad:'#705050', fav:false },
+    { id:30, title:'Mandarin débutant',            author:'Lin W.',     credits:45, meta:'Vidéo',    rating:4.6, cats:['langues'],    section:'recent',  desc:'Premiers pas en mandarin : tons, caractères de base et phrases du quotidien.', img:'https://loremflickr.com/320/200/chinese,mandarin,language?lock=30', grad:'#a02020', fav:false },
+    { id:31, title:'Sculpture sur bois',           author:'René D.',    credits:42, meta:'4.0 km',   rating:4.4, cats:['arts'],       section:'nearby',  desc:'Découvrez la sculpture sur bois avec des outils simples et des projets progressifs.', img:'https://loremflickr.com/320/200/wood,sculpture,carving?lock=31', grad:'#906040', fav:false },
+    { id:32, title:'Gestion du budget perso',      author:'Laura G.',   credits:28, meta:'Vidéo',    rating:4.3, cats:['business'],   section:'recent',  desc:'Maîtrisez votre budget, réduisez vos dépenses et commencez à épargner facilement.', img:'https://loremflickr.com/320/200/money,budget,finance?lock=32', grad:'#306050', fav:false },
+    { id:33, title:'Poterie & céramique',          author:'Iris L.',    credits:50, meta:'2.8 km',   rating:4.9, cats:['arts'],       section:'nearby',  desc:'Façonnez argile et grès sur le tour ou à la main dans une atmosphère créative.', img:'https://loremflickr.com/320/200/pottery,ceramic,clay?lock=33', grad:'#a06040', fav:false },
+    { id:34, title:'Pâtisserie japonaise',          author:'Keiko S.',   credits:46, meta:'Vidéo',    rating:4.8, cats:['patisserie'], section:'recent',  desc:'Mochi, dorayaki, matcha roll cake… plongez dans la pâtisserie nippone.', img:'https://loremflickr.com/320/200/japanese,dessert,mochi?lock=34', grad:'#c07090', fav:false },
+    { id:35, title:'Batterie rock',                 author:'Nico B.',    credits:44, meta:'2.5 km',   rating:4.5, cats:['musique'],    section:'nearby',  desc:'Initiez-vous à la batterie rock : rythmes de base, fills et coordination.', img:'https://loremflickr.com/320/200/drums,rock,music?lock=35', grad:'#303040', fav:false },
+    { id:36, title:'Cuisine asiatique',             author:'Lin Z.',     credits:40, meta:'Vidéo',    rating:4.7, cats:['cuisine'],    section:'recent',  desc:'Nouilles sautées, dim sum, curry thaï… les bases de la cuisine asiatique.', img:'https://loremflickr.com/320/200/asian,food,noodles?lock=36', grad:'#a04020', fav:false },
+    { id:37, title:'Allemand A1',                   author:'Klaus M.',   credits:36, meta:'Vidéo',    rating:4.3, cats:['langues'],    section:'recent',  desc:'Prononciation, vocabulaire essentiel et premières phrases en allemand.', img:'https://loremflickr.com/320/200/german,language,europe?lock=37', grad:'#202020', fav:false },
+    { id:38, title:'Illustration numérique',        author:'Paul R.',    credits:48, meta:'Vidéo',    rating:4.6, cats:['arts','numerique'], section:'recent', desc:'Apprenez Procreate ou Photoshop pour créer vos illustrations numériques.', img:'https://loremflickr.com/320/200/digital,illustration,art?lock=38', grad:'#5040a0', fav:false },
+    { id:39, title:'Macarons & entremets',          author:'Claire V.',  credits:52, meta:'1.4 km',   rating:4.9, cats:['patisserie'], section:'nearby',  desc:'Techniques professionnelles pour réussir macarons et entremets modernes.', img:'https://loremflickr.com/320/200/macaron,patisserie,sweet?lock=39', grad:'#d080a0', fav:false },
+    { id:40, title:'Économie solidaire',            author:'Tom F.',     credits:25, meta:'Vidéo',    rating:4.1, cats:['philosophie','business'], section:'recent', desc:'Comprendre l\'ESS, les coopératives et le commerce équitable.', img:'https://loremflickr.com/320/200/economy,solidarity,community?lock=40', grad:'#308060', fav:false },
+    { id:41, title:'Violon classique',              author:'Éléonore D.',credits:48, meta:'3.0 km',   rating:4.7, cats:['musique'],    section:'nearby',  desc:'Posture, tenue de l\'archet et premières pièces pour violonistes débutants.', img:'https://loremflickr.com/320/200/violin,classical,music?lock=41', grad:'#804030', fav:false },
+    { id:42, title:'Couture & mode',               author:'Iris M.',    credits:42, meta:'2.2 km',   rating:4.6, cats:['arts'],       section:'nearby',  desc:'Patrons, tissu et machine à coudre : réalisez vos premières pièces de mode.', img:'https://loremflickr.com/320/200/fashion,sewing,clothes?lock=42', grad:'#b04060', fav:false },
+    { id:43, title:'Portugais brésilien',           author:'Ana C.',     credits:34, meta:'Vidéo',    rating:4.5, cats:['langues'],    section:'recent',  desc:'Samba, capoeira, carnaval… apprenez le portugais brésilien avec passion.', img:'https://loremflickr.com/320/200/brazil,portuguese,carnival?lock=43', grad:'#10802a', fav:false },
+    { id:44, title:'Permaculture & potager',        author:'Gilles R.',  credits:30, meta:'1.0 km',   rating:4.4, cats:['bricolage'],  section:'nearby',  desc:'Créez un potager productif en suivant les principes de la permaculture.', img:'https://loremflickr.com/320/200/permaculture,garden,vegetable?lock=44', grad:'#407020', fav:false },
+    { id:45, title:'Mixologie & cocktails',         author:'Jules B.',   credits:38, meta:'2.0 km',   rating:4.6, cats:['cuisine'],    section:'nearby',  desc:'Shaker, jigger et recettes classiques : devenez votre propre barman.', img:'https://loremflickr.com/320/200/cocktail,bar,drinks?lock=45', grad:'#c03060', fav:false },
+    { id:46, title:'Développement web',             author:'Sarah K.',   credits:50, meta:'Vidéo',    rating:4.7, cats:['numerique'],  section:'recent',  desc:'HTML, CSS, JavaScript et React : construisez vos premiers sites web de A à Z.', img:'https://loremflickr.com/320/200/webdev,code,html?lock=46', grad:'#1050a0', fav:false },
+    { id:47, title:'Chant lyrique',                 author:'Valeria M.', credits:46, meta:'Vidéo',    rating:4.8, cats:['musique'],    section:'recent',  desc:'Technique vocale, respiration et répertoire classique pour voix débutantes.', img:'https://loremflickr.com/320/200/opera,singing,voice?lock=47', grad:'#902060', fav:false },
+    { id:48, title:'Histoire de l\'art',            author:'Camille D.', credits:28, meta:'Vidéo',    rating:4.5, cats:['arts','philosophie'], section:'recent', desc:'De la Renaissance au street art, explorez les grands mouvements artistiques.', img:'https://loremflickr.com/320/200/art,history,museum?lock=48', grad:'#806040', fav:false },
+    { id:49, title:'Pilates débutant',              author:'Léa R.',     credits:32, meta:'Vidéo',    rating:4.8, cats:['recits'],     section:'recent',  desc:'Renforcement musculaire en douceur, posture et flexibilité au sol.', img:'https://loremflickr.com/320/200/pilates,exercise,fitness?lock=49', grad:'#70a0b0', fav:false },
+    { id:50, title:'Marketing digital',             author:'Romain P.',  credits:44, meta:'Vidéo',    rating:4.4, cats:['business','numerique'], section:'recent', desc:'SEO, publicités Facebook, emailing : maîtrisez le marketing en ligne.', img:'https://loremflickr.com/320/200/marketing,digital,analytics?lock=50', grad:'#4080c0', fav:false },
+    { id:51, title:'Cuisine méditérranéenne',       author:'Nadia B.',   credits:42, meta:'1.6 km',   rating:4.6, cats:['cuisine'],    section:'nearby',  desc:'Houmous, taboulé, tajine… voyage culinaire autour de la Méditerranée.', img:'https://loremflickr.com/320/200/mediterranean,food,cooking?lock=51', grad:'#d0a040', fav:false },
+    { id:52, title:'Graphisme & logo',              author:'Mathieu C.', credits:46, meta:'Vidéo',    rating:4.5, cats:['arts','numerique'], section:'recent', desc:'Créez des logos professionnels sur Illustrator ou Canva.', img:'https://loremflickr.com/320/200/graphic,design,logo?lock=52', grad:'#8020c0', fav:false },
+    { id:53, title:'Sophrologie',                   author:'Isabelle T.',credits:30, meta:'Vidéo',    rating:4.7, cats:['recits'],     section:'recent',  desc:'Techniques de relaxation dynamique pour gérer le stress et l\'anxiété.', img:'https://loremflickr.com/320/200/relaxation,breathing,wellness?lock=53', grad:'#80c0a0', fav:false },
+    { id:54, title:'Serrurerie & menuiserie',       author:'Robert M.',  credits:35, meta:'0.9 km',   rating:3.8, cats:['bricolage'],  section:'nearby',  desc:'Posez une serrure, montez un meuble, réparez une porte : devenez autonome.', img:'https://loremflickr.com/320/200/woodwork,tools,carpentry?lock=54', grad:'#806030', fav:false },
+    { id:55, title:'Tricot & crochet',              author:'Margot L.',  credits:28, meta:'2.3 km',   rating:4.6, cats:['arts'],       section:'nearby',  desc:'Aiguilles, pelotes et points de base : réalisez votre premier ouvrage.', img:'https://loremflickr.com/320/200/knitting,crochet,wool?lock=55', grad:'#c080c0', fav:false },
+    { id:56, title:'Cuisine indienne',              author:'Priya S.',   credits:40, meta:'Vidéo',    rating:4.9, cats:['cuisine'],    section:'recent',  desc:'Curry, dal, naan : maîtrisez les épices et techniques de la cuisine indienne.', img:'https://loremflickr.com/320/200/indian,food,curry?lock=56', grad:'#d06020', fav:false },
+    { id:57, title:'Langue des signes (LSF)',       author:'Maxime A.',  credits:38, meta:'Vidéo',    rating:4.8, cats:['langues'],    section:'recent',  desc:'Apprenez les bases de la langue des signes française pour communiquer avec tous.', img:'https://loremflickr.com/320/200/sign,language,hands?lock=57', grad:'#6080a0', fav:false },
+    { id:58, title:'Photographie argentique',       author:'Sofiane P.', credits:55, meta:'1.3 km',   rating:4.5, cats:['arts'],       section:'nearby',  desc:'Pellicule, développement et tirage : redécouvrez la magie de l\'argentique.', img:'https://loremflickr.com/320/200/film,camera,darkroom?lock=58', grad:'#404040', fav:false },
+    { id:59, title:'Gestion du stress',             author:'Hélène F.',  credits:32, meta:'Vidéo',    rating:4.6, cats:['recits'],     section:'recent',  desc:'Outils pratiques pour identifier et dépasser les situations stressantes.', img:'https://loremflickr.com/320/200/stress,mindfulness,calm?lock=59', grad:'#60a090', fav:false },
+    { id:60, title:'Initiation à l\'IA',            author:'Adrien P.',  credits:48, meta:'Vidéo',    rating:4.5, cats:['numerique'],  section:'recent',  desc:'ChatGPT, Midjourney, automatisation : comprendre et utiliser l\'intelligence artificielle.', img:'https://loremflickr.com/320/200/artificial,intelligence,robot?lock=60', grad:'#2040a0', fav:false },
+    { id:61, title:'Improvisation théâtrale',       author:'Alice M.',   credits:34, meta:'3.5 km',   rating:4.7, cats:['recits','arts'], section:'nearby', desc:'Jeux d\'improvisation, écoute et créativité dans un cadre bienveillant.', img:'https://loremflickr.com/320/200/theater,acting,stage?lock=61', grad:'#a02090', fav:false },
+    { id:62, title:'Croissants & viennoiseries',    author:'Henri L.',   credits:50, meta:'2.8 km',   rating:4.9, cats:['patisserie'], section:'nearby',  desc:'Feuilletage, beurrage et façonnage : les secrets du croissant parfait.', img:'https://loremflickr.com/320/200/croissant,pastry,bakery?lock=62', grad:'#d4a030', fav:false },
+    { id:63, title:'Podcast & prise de parole',     author:'Vincent R.', credits:36, meta:'Vidéo',    rating:4.4, cats:['recits','business'], section:'recent', desc:'Créez votre podcast ou améliorez votre aisance à l\'oral.', img:'https://loremflickr.com/320/200/podcast,microphone,recording?lock=63', grad:'#602090', fav:false },
+    { id:64, title:'Aquaponie à la maison',         author:'Sylvie B.',  credits:35, meta:'1.7 km',   rating:4.3, cats:['bricolage','cuisine'], section:'nearby', desc:'Cultivez poissons et légumes ensemble dans un écosystème autonome.', img:'https://loremflickr.com/320/200/aquaponics,fish,plant?lock=64', grad:'#204060', fav:false },
   ];
+
+  /* Intérêts utilisateur issus de l'onboarding */
+  let userInterests = [];
+  const tagToCat = {
+    'Photo argentique':'arts','Aquarelle':'arts','Dessin':'arts','Sculpture':'arts','Couture':'arts','Calligraphie':'arts',
+    'Cuisine':'cuisine','Pâtisserie':'patisserie','Jardinage':'bricolage','Bricolage':'bricolage','Fermentation':'cuisine',
+    'Anglais':'langues','Espagnol':'langues','Italien':'langues','Allemand':'langues','Portugais':'langues','Mandarin':'langues','LSF':'langues',
+    'Guitare':'musique','Piano':'musique','Chant':'musique','Batterie':'musique','Violon':'musique','Djembé':'musique',
+  };
 
   let s8ActiveCat = 'all';
   const s8Favs = new Set(listings.filter(l => l.fav).map(l => l.id));
@@ -2993,9 +3223,20 @@
     const gR = document.getElementById('s8-grid-recent');
     const gN = document.getElementById('s8-grid-nearby');
     const gF = document.getElementById('s8-grid-fav');
-    if (gR) gR.innerHTML = recent.slice(0,2).map(cardHTML).join('');
-    if (gN) gN.innerHTML = nearby.slice(0,2).map(cardHTML).join('');
-    if (gF) gF.innerHTML = favItems.slice(0,2).map(cardHTML).join('');
+    const gP = document.getElementById('s8-grid-pour');
+    if (gR) gR.innerHTML = recent.slice(0,4).map(cardHTML).join('');
+    if (gN) gN.innerHTML = nearby.slice(0,4).map(cardHTML).join('');
+    if (gF) gF.innerHTML = favItems.slice(0,4).map(cardHTML).join('');
+
+    // Section "Pour vous" basée sur les intérêts de l'onboarding
+    const secP = document.getElementById('s8-sec-pour');
+    if (gP && secP && userInterests.length > 0 && s8ActiveCat === 'all') {
+      const pourVous = listings.filter(l => l.cats.some(c => userInterests.includes(c)));
+      gP.innerHTML = pourVous.slice(0,6).map(cardHTML).join('');
+      secP.style.display = pourVous.length ? '' : 'none';
+    } else if (secP) {
+      secP.style.display = 'none';
+    }
 
     const secR = document.getElementById('s8-sec-recent');
     const secN = document.getElementById('s8-sec-nearby');
@@ -3244,6 +3485,70 @@
     if (el) el.classList.add('active');
     const pane = document.getElementById('s15-pane-' + name);
     if (pane) pane.classList.add('active');
+  }
+
+  /* ── SCREEN 17 – Réserver une session ── */
+  const s17Slots = [
+    { date:'Mer. 20 mars', hours:'18h00 – 19h00', avail:true  },
+    { date:'Mer. 20 mars', hours:'19h00 – 20h00', avail:true  },
+    { date:'Sam. 23 mars', hours:'14h00 – 15h00', avail:false },
+    { date:'Dim. 24 mars', hours:'15h00 – 16h00', avail:true  },
+  ];
+  let s17SelectedSlot = 0;
+
+  function openBooking() {
+    const item = listings.find(l => l.id === s10CurrentId);
+    const det  = listingDetails[s10CurrentId] || {};
+    if (!item) return;
+    document.getElementById('s17-avatar').src = det.authorAvatar || `https://i.pravatar.cc/80?img=${s10CurrentId*7%70}`;
+    document.getElementById('s17-course-title').textContent = item.title;
+    document.getElementById('s17-author-name').textContent  = item.author;
+    document.getElementById('s17-mode').textContent     = item.meta;
+    document.getElementById('s17-duration').textContent = det.duration || '1h';
+    document.getElementById('s17-slots-sub').textContent = `Disponibilités proposées par ${item.author}`;
+    document.getElementById('s17-textarea').placeholder  = `Présentez-vous ou posez une question à ${item.author.split(' ')[0]}.`;
+    document.getElementById('s17-sum-course').textContent  = item.title;
+    document.getElementById('s17-sum-credits').textContent = `−${item.credits} cr.`;
+    document.getElementById('s17-sum-rest').textContent    = `Il vous restera ${Math.max(0, 45 - item.credits)} cr. après réservation`;
+    s17SelectedSlot = 0;
+    s17RenderSlots(item);
+    navigate('screen10', 'screen17');
+    document.querySelector('#screen17 .s17-scroll').scrollTop = 0;
+  }
+
+  function s17RenderSlots(item) {
+    const grid = document.getElementById('s17-slots-grid');
+    if (!grid) return;
+    grid.innerHTML = s17Slots.map((sl, i) => {
+      if (!sl.avail) return `
+        <div class="s17-slot unavail">
+          <div class="s17-slot-top"><span class="s17-slot-date">${sl.date}</span></div>
+          <div class="s17-slot-hours">${sl.hours}</div>
+          <span class="s17-slot-status unavail">INDISPONIBLE</span>
+        </div>`;
+      const sel = i === s17SelectedSlot;
+      return `<div class="s17-slot${sel ? ' selected' : ''}" onclick="s17SelectSlot(${i})">
+        <div class="s17-slot-top">
+          <span class="s17-slot-date">${sl.date}</span>
+          ${sel ? `<span class="s17-slot-check"><svg width="10" height="9" viewBox="0 0 10 9" fill="none"><path d="M1.5 4.5L4 7L8.5 2" stroke="white" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg></span>` : ''}
+        </div>
+        <div class="s17-slot-hours">${sl.hours}</div>
+        ${!sel ? `<span class="s17-slot-status avail"><span class="s17-dot"></span>Disponible</span>` : ''}
+      </div>`;
+    }).join('');
+    const sl = s17Slots[s17SelectedSlot] || s17Slots[0];
+    document.getElementById('s17-sum-slot').textContent = `${sl.date} · ${sl.hours.split(' – ')[0]}`;
+  }
+
+  function s17SelectSlot(i) {
+    if (!s17Slots[i].avail) return;
+    s17SelectedSlot = i;
+    const item = listings.find(l => l.id === s10CurrentId);
+    s17RenderSlots(item);
+  }
+
+  function s17SendRequest() {
+    openMessages();
   }
 
   /* ── SCREEN 14 – Publier ── */
