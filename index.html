@@ -878,7 +878,7 @@
       border: 1.5px solid #dde0ee; background: #fff; font-size: 13px;
       font-weight: 500; color: #555; cursor: pointer; user-select: none;
     }
-    .s8-cat.active { border-color: #6685f1; color: #6685f1; }
+    .s8-cat.active { border-color: #6685f1; color: #fff; background: #6685f1; }
 
     .s8-section-head {
       display: flex; justify-content: space-between; align-items: center; margin-bottom: 10px;
@@ -914,15 +914,15 @@
       padding: 8px 0 4px; border-top: 1px solid #e8eaf5; background: #fff;
     }
     .s8-nav-item {
-      display: flex; flex-direction: column; align-items: center; gap: 3px;
-      background: none; border: none; cursor: pointer; padding: 2px 6px; min-width: 52px;
+      display: flex; flex-direction: column; align-items: center; justify-content: flex-end; gap: 3px;
+      background: none; border: none; cursor: pointer; padding: 2px 6px; min-width: 52px; min-height: 52px;
     }
     .s8-nav-item span { font-size: 10px; color: #aaa; font-weight: 500; }
     .s8-nav-item.active span { color: #6685f1; }
     .s8-plus-circle {
       width: 38px; height: 38px; border-radius: 50%; background: #6685f1;
       display: flex; align-items: center; justify-content: center;
-      margin-bottom: -2px; box-shadow: 0 4px 12px rgba(102,133,241,0.35);
+      box-shadow: 0 4px 12px rgba(102,133,241,0.35);
     }
 
     /* ── SCREEN 9 ── */
@@ -1202,6 +1202,23 @@
     .s13-share-btn { width:100%; padding:16px; background:transparent; border:1.5px solid #6685f1; border-radius:14px; font-size:15px; font-weight:600; color:#6685f1; cursor:pointer; display:flex; align-items:center; justify-content:center; gap:8px; margin-bottom:8px; }
     .s13-cancel-btn { width:100%; padding:14px; background:transparent; border:none; font-size:15px; color:#888; cursor:pointer; margin-bottom:16px; }
 
+    /* ── PANNEAU FILTRES ── */
+    .filter-overlay { position:absolute; inset:0; background:rgba(0,0,0,0.45); z-index:200; display:flex; align-items:flex-end; }
+    .filter-sheet { background:#fff; border-radius:0; padding:20px 20px 28px; width:100%; max-height:80%; overflow-y:auto; }
+    .filter-sheet::-webkit-scrollbar { display:none; }
+    .filter-header { display:flex; align-items:center; justify-content:space-between; margin-bottom:20px; }
+    .filter-title { font-size:18px; font-weight:800; color:#111; }
+    .filter-close { background:none; border:none; font-size:22px; color:#aaa; cursor:pointer; }
+    .filter-section-title { font-size:13px; font-weight:700; color:#888; letter-spacing:0.5px; margin-bottom:10px; margin-top:20px; }
+    .filter-chips { display:flex; flex-wrap:wrap; gap:8px; margin-bottom:4px; }
+    .filter-chip { padding:8px 14px; border-radius:50px; border:1.5px solid #dde0ee; background:#fff; font-size:13px; font-weight:500; color:#555; cursor:pointer; user-select:none; transition:all 0.15s; }
+    .filter-chip.active { border-color:#6685f1; color:#6685f1; background:#f0f2ff; }
+    .filter-divider { height:1px; background:#f0f2f8; margin:16px 0 0; }
+    .filter-btns { display:flex; gap:10px; margin-top:20px; }
+    .filter-btn-reset { flex:1; padding:14px; border:1.5px solid #dde0ee; border-radius:14px; background:#fff; font-size:15px; color:#888; cursor:pointer; }
+    .filter-btn-apply { flex:2; padding:14px; border:none; border-radius:14px; background:#6685f1; font-size:15px; font-weight:700; color:#fff; cursor:pointer; }
+    .filter-badge { display:inline-flex; align-items:center; justify-content:center; width:18px; height:18px; background:#e84040; border-radius:50%; font-size:10px; font-weight:700; color:#fff; margin-left:4px; vertical-align:middle; }
+
     /* ── SCREEN 15 – Profil ── */
     #screen15 { background:#fff; }
     .s15-scroll { flex:1; overflow-y:auto; -webkit-overflow-scrolling:touch; }
@@ -1370,7 +1387,7 @@
     .s19-slider:before { content:''; position:absolute; width:22px; height:22px; background:#fff; border-radius:50%; left:3px; top:3px; transition:transform 0.2s; box-shadow:0 1px 4px rgba(0,0,0,0.2); }
     .s19-toggle input:checked + .s19-slider { background:#6685f1; }
     .s19-toggle input:checked + .s19-slider:before { transform:translateX(20px); }
-    .s19-bonus { display:flex; align-items:center; gap:12px; background:#fff8e8; border-radius:14px; padding:14px 16px; margin-bottom:24px; }
+    .s19-bonus { display:flex; align-items:center; gap:12px; border-radius:14px; padding:14px 16px; margin-bottom:24px; transition:background 0.3s; }
     .s19-bonus-icon { width:40px; height:40px; background:#f5a623; border-radius:12px; display:flex; align-items:center; justify-content:center; font-size:20px; flex-shrink:0; }
     .s19-bonus-title { font-size:14px; font-weight:700; color:#111; margin-bottom:2px; }
     .s19-bonus-sub   { font-size:12px; color:#888; }
@@ -2226,7 +2243,7 @@
           <path d="M10.5 10.5L14 14" stroke="#aaa" stroke-width="1.5" stroke-linecap="round"/>
         </svg>
         <input id="s8-search-input" class="s8-search-ph" type="text" placeholder="Rechercher une activité" oninput="searchListings(this.value)" autocomplete="off">
-        <button class="s8-filter-btn">
+        <button class="s8-filter-btn" onclick="openFilters()" id="s8-filter-toggle">
           <svg width="18" height="14" viewBox="0 0 18 14" fill="none">
             <path d="M1 1h16M4 7h10M7 13h4" stroke="#555" stroke-width="1.5" stroke-linecap="round"/>
           </svg>
@@ -2252,8 +2269,76 @@
       <!-- Résultats de recherche (cachés par défaut) -->
       <div id="s8-search-results" style="display:none;"></div>
 
+      <!-- Panneau filtres -->
+      <div class="filter-overlay" id="filter-overlay" style="display:none;" onclick="closeFilters()">
+        <div class="filter-sheet" onclick="event.stopPropagation()">
+          <div class="filter-header">
+            <span class="filter-title">Filtrer les annonces</span>
+            <button class="filter-close" onclick="closeFilters()">✕</button>
+          </div>
+
+          <p class="filter-section-title">CATÉGORIE</p>
+          <div class="filter-chips" id="f-cats">
+            <span class="filter-chip active" data-f="all">Toutes</span>
+            <span class="filter-chip" data-f="cuisine">Cuisine</span>
+            <span class="filter-chip" data-f="arts">Arts</span>
+            <span class="filter-chip" data-f="musique">Musique</span>
+            <span class="filter-chip" data-f="langues">Langues</span>
+            <span class="filter-chip" data-f="patisserie">Pâtisserie</span>
+            <span class="filter-chip" data-f="bricolage">Bricolage</span>
+            <span class="filter-chip" data-f="numerique">Numérique</span>
+            <span class="filter-chip" data-f="business">Business</span>
+            <span class="filter-chip" data-f="recits">Bien-être</span>
+            <span class="filter-chip" data-f="philosophie">Philosophie</span>
+          </div>
+
+          <div class="filter-divider"></div>
+          <p class="filter-section-title">FORMAT</p>
+          <div class="filter-chips" id="f-formats">
+            <span class="filter-chip active" data-f="all">Tous</span>
+            <span class="filter-chip" data-f="Vidéo">Vidéo</span>
+            <span class="filter-chip" data-f="Présentiel">Présentiel</span>
+            <span class="filter-chip" data-f="les deux">Les deux</span>
+          </div>
+
+          <div class="filter-divider"></div>
+          <p class="filter-section-title">NIVEAU</p>
+          <div class="filter-chips" id="f-levels">
+            <span class="filter-chip active" data-f="all">Tous</span>
+            <span class="filter-chip" data-f="debutant">Débutant</span>
+            <span class="filter-chip" data-f="intermediaire">Intermédiaire</span>
+            <span class="filter-chip" data-f="avance">Avancé</span>
+          </div>
+
+          <div class="filter-divider"></div>
+          <p class="filter-section-title">NOTE MINIMUM</p>
+          <div class="filter-chips" id="f-ratings">
+            <span class="filter-chip active" data-f="0">Toutes</span>
+            <span class="filter-chip" data-f="3">★ 3+</span>
+            <span class="filter-chip" data-f="4">★ 4+</span>
+            <span class="filter-chip" data-f="4.5">★ 4.5+</span>
+          </div>
+
+          <div class="filter-btns">
+            <button class="filter-btn-reset" onclick="resetFilters()">Réinitialiser</button>
+            <button class="filter-btn-apply" onclick="applyFilters()">Voir les résultats</button>
+          </div>
+        </div>
+      </div>
+
       <!-- Contenu normal -->
       <div id="s8-normal">
+
+        <!-- Section résultats filtrés (catégorie active) -->
+        <div id="s8-sec-filter" style="display:none;">
+          <div class="s8-section-head">
+            <p class="s8-section-title" id="s8-filter-label">Résultats</p>
+            <button class="s8-arrow" onclick="goToListScreen('filter','Résultats')">
+              <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M3 7h8M8 4l3 3-3 3" stroke="#6685f1" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            </button>
+          </div>
+          <div class="s8-cards" id="s8-grid-filter"></div>
+        </div>
 
         <!-- Section personnalisée -->
         <div id="s8-sec-pour" style="display:none;">
@@ -2962,11 +3047,11 @@
       <span class="s19-title">Laisser un avis</span>
     </div>
     <div class="s19-scroll">
-      <p class="s19-session-label">Photographe argentique - 08/02/2025</p>
+      <p class="s19-session-label" id="s19-session-label">—</p>
       <div class="s19-person-row">
-        <img class="s19-avatar" src="https://i.pravatar.cc/80?img=60" alt="">
-        <span class="s19-person-name">Mathieu <span class="s19-verified"><svg width="8" height="7" viewBox="0 0 8 7" fill="none"><path d="M1 3.5L3 5.5L7 1.5" stroke="white" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></span></span>
-        <span class="s18-role-badge learns">J'apprends</span>
+        <img class="s19-avatar" id="s19-avatar" src="" alt="">
+        <span class="s19-person-name" id="s19-person-name">—</span>
+        <span class="s18-role-badge" id="s19-role-badge">—</span>
       </div>
       <p class="s19-question">Comment s'est passée la session ?</p>
       <div class="s19-stars" id="s19-stars">
@@ -2976,7 +3061,7 @@
         <span class="s19-star" onclick="s19Rate(4)">★</span>
         <span class="s19-star" onclick="s19Rate(5)">★</span>
       </div>
-      <textarea class="s19-textarea" id="s19-text" maxlength="500" placeholder="Décrivez ce qui s'est passé et comment la session pourrait être améliorée…" oninput="s19Count(this)"></textarea>
+      <textarea class="s19-textarea" id="s19-text" maxlength="500" placeholder="Décrivez ce qui s'est passé et comment la session pourrait être améliorée…" oninput="s19Count(this);s19UpdateBonus()"></textarea>
       <p class="s19-char-count" id="s19-count">000/500</p>
       <div class="s19-anon-row">
         <div>
@@ -2985,9 +3070,10 @@
         </div>
         <label class="s19-toggle"><input type="checkbox" checked><span class="s19-slider"></span></label>
       </div>
-      <div class="s19-bonus">
-        <div class="s19-bonus-icon">⭐</div>
-        <div><p class="s19-bonus-title">+ 5 Crédit bonus</p><p class="s19-bonus-sub">Pour avoir laissé un avis complet avec commentaire</p></div>
+      <!-- Bloc crédits bonus dynamique -->
+      <div class="s19-bonus" id="s19-bonus-block" style="background:#fff3cd;">
+        <div class="s19-bonus-icon" id="s19-bonus-icon" style="background:#f5a623;">⚠️</div>
+        <div><p class="s19-bonus-title" id="s19-bonus-title">Commentaire requis pour les crédits</p><p class="s19-bonus-sub" id="s19-bonus-sub">Notez uniquement en étoiles n'apporte pas de bonus. Ajoutez un commentaire pour gagner +5 crédits.</p></div>
       </div>
       <button class="s19-publish-btn" onclick="publishReview()">Publier l'avis</button>
       <button class="s19-skip-btn" onclick="navigate('screen19','screen18')">Laisser un avis plus tard</button>
@@ -3339,7 +3425,7 @@
     }
     setTimeout(() => {
       navigate('screen0', 'screen1');
-      setTimeout(() => goToScreen2(), 1500);
+      setTimeout(() => goToScreen2(), 1000);
     }, 200);
   }
 
@@ -3607,46 +3693,159 @@
   }
 
   function renderS8Grid() {
-    let items = s8ActiveCat === 'all' ? listings : listings.filter(l => l.cats.includes(s8ActiveCat));
-    const recent = items.filter(l => l.section === 'recent');
-    const nearby = items.filter(l => l.section === 'nearby');
-    // Favoris triés du plus récent au plus ancien
-    const favItems = [...s8Favs].reverse().map(id => listings.find(l => l.id === id)).filter(Boolean);
+    const isFiltered = s8ActiveCat !== 'all';
+    const filtered   = isFiltered ? listings.filter(l => l.cats.includes(s8ActiveCat)) : listings;
+
+    // ── Résultats filtrés ──
+    const secFlt = document.getElementById('s8-sec-filter');
+    const gFlt   = document.getElementById('s8-grid-filter');
+    const lblFlt = document.getElementById('s8-filter-label');
+    if (isFiltered) {
+      const catName = document.querySelector('#s8-cats .s8-cat.active')?.textContent || s8ActiveCat;
+      if (lblFlt) lblFlt.textContent = catName + ` (${filtered.length})`;
+      if (gFlt)   gFlt.innerHTML = filtered.slice(0,4).map(cardHTML).join('');
+      if (secFlt) secFlt.style.display = filtered.length ? '' : 'none';
+    } else if (secFlt) {
+      secFlt.style.display = 'none';
+    }
+
+    // ── Sections normales (visibles uniquement en mode "Voir tout") ──
+    const recent    = listings.filter(l => l.section === 'recent');
+    const nearby    = listings.filter(l => l.section === 'nearby');
+    const favItems  = [...s8Favs].reverse().map(id => listings.find(l => l.id === id)).filter(Boolean);
 
     const gR = document.getElementById('s8-grid-recent');
     const gN = document.getElementById('s8-grid-nearby');
     const gF = document.getElementById('s8-grid-fav');
     const gP = document.getElementById('s8-grid-pour');
-    if (gR) gR.innerHTML = recent.slice(0,4).map(cardHTML).join('');
-    if (gN) gN.innerHTML = nearby.slice(0,4).map(cardHTML).join('');
+    if (gR) gR.innerHTML = recent.slice(0,2).map(cardHTML).join('');
+    if (gN) gN.innerHTML = nearby.slice(0,2).map(cardHTML).join('');
     if (gF) gF.innerHTML = favItems.slice(0,2).map(cardHTML).join('');
 
-    // Section "Pour vous" basée sur les intérêts de l'onboarding
     const secP = document.getElementById('s8-sec-pour');
-    if (gP && secP && userInterests.length > 0 && s8ActiveCat === 'all') {
+    if (gP && secP && userInterests.length > 0 && !isFiltered) {
       const pourVous = listings.filter(l => l.cats.some(c => userInterests.includes(c)));
       gP.innerHTML = pourVous.slice(0,6).map(cardHTML).join('');
       secP.style.display = pourVous.length ? '' : 'none';
-    } else if (secP) {
-      secP.style.display = 'none';
-    }
+    } else if (secP) { secP.style.display = 'none'; }
 
     const secR = document.getElementById('s8-sec-recent');
     const secN = document.getElementById('s8-sec-nearby');
     const secF = document.getElementById('s8-sec-fav');
-    if (secR) secR.style.display = recent.length ? '' : 'none';
-    if (secN) secN.style.display = (nearby.length && s8ActiveCat === 'all') ? '' : 'none';
-    if (secF) secF.style.display = (favItems.length && s8ActiveCat === 'all') ? '' : 'none';
+    if (secR) secR.style.display = !isFiltered && recent.length ? '' : 'none';
+    if (secN) secN.style.display = !isFiltered && nearby.length ? '' : 'none';
+    if (secF) secF.style.display = !isFiltered && favItems.length ? '' : 'none';
+  }
+
+  /* ── PANNEAU FILTRES ── */
+  let activeFilters = { cat:'all', format:'all', level:'all', rating:0 };
+
+  function openFilters() {
+    document.getElementById('filter-overlay').style.display = 'flex';
+  }
+  function closeFilters() {
+    document.getElementById('filter-overlay').style.display = 'none';
+  }
+
+  function fSelectChip(groupId, el) {
+    document.querySelectorAll('#' + groupId + ' .filter-chip').forEach(c => c.classList.remove('active'));
+    el.classList.add('active');
+  }
+
+  document.addEventListener('DOMContentLoaded', () => {
+    document.querySelectorAll('#f-cats .filter-chip').forEach(c =>
+      c.addEventListener('click', () => { fSelectChip('f-cats', c); activeFilters.cat = c.dataset.f; }));
+    document.querySelectorAll('#f-formats .filter-chip').forEach(c =>
+      c.addEventListener('click', () => { fSelectChip('f-formats', c); activeFilters.format = c.dataset.f; }));
+    document.querySelectorAll('#f-levels .filter-chip').forEach(c =>
+      c.addEventListener('click', () => { fSelectChip('f-levels', c); activeFilters.level = c.dataset.f; }));
+    document.querySelectorAll('#f-ratings .filter-chip').forEach(c =>
+      c.addEventListener('click', () => { fSelectChip('f-ratings', c); activeFilters.rating = parseFloat(c.dataset.f); }));
+  });
+
+  function resetFilters() {
+    activeFilters = { cat:'all', format:'all', level:'all', rating:0 };
+    ['f-cats','f-formats','f-levels','f-ratings'].forEach(id => {
+      const chips = document.querySelectorAll('#' + id + ' .filter-chip');
+      chips.forEach(c => c.classList.remove('active'));
+      if (chips[0]) chips[0].classList.add('active');
+    });
+    updateFilterBadge(0);
+  }
+
+  function applyFilters() {
+    let results = listings;
+    if (activeFilters.cat !== 'all')    results = results.filter(l => l.cats.includes(activeFilters.cat));
+    if (activeFilters.format !== 'all') results = results.filter(l => l.meta.toLowerCase().includes(activeFilters.format.toLowerCase()));
+    if (activeFilters.rating > 0)       results = results.filter(l => l.rating >= activeFilters.rating);
+
+    const count = [activeFilters.cat, activeFilters.format, activeFilters.level, String(activeFilters.rating)]
+      .filter(v => v !== 'all' && v !== '0').length;
+    updateFilterBadge(count);
+
+    // Afficher résultats
+    const secFlt = document.getElementById('s8-sec-filter');
+    const gFlt   = document.getElementById('s8-grid-filter');
+    const lblFlt = document.getElementById('s8-filter-label');
+    if (lblFlt) lblFlt.textContent = `Résultats filtrés (${results.length})`;
+    if (gFlt)   gFlt.innerHTML = results.map(cardHTML).join('');
+    if (secFlt) secFlt.style.display = '';
+    ['s8-sec-recent','s8-sec-nearby','s8-sec-fav','s8-sec-pour'].forEach(id => {
+      const el = document.getElementById(id);
+      if (el) el.style.display = 'none';
+    });
+    document.getElementById('s8-normal').style.display = '';
+    closeFilters();
+    document.querySelector('#screen8 .s8-scroll').scrollTop = 0;
+  }
+
+  function updateFilterBadge(count) {
+    const btn = document.getElementById('s8-filter-toggle');
+    if (!btn) return;
+    const existing = btn.querySelector('.filter-badge');
+    if (existing) existing.remove();
+    if (count > 0) {
+      const badge = document.createElement('span');
+      badge.className = 'filter-badge';
+      badge.textContent = count;
+      btn.appendChild(badge);
+    }
   }
 
   function filterCat(el) {
     document.querySelectorAll('#s8-cats .s8-cat').forEach(c => c.classList.remove('active'));
     el.classList.add('active');
     s8ActiveCat = el.dataset.filter;
-    document.getElementById('s8-search-input').value = '';
-    document.getElementById('s8-search-results').style.display = 'none';
-    document.getElementById('s8-normal').style.display = '';
-    renderS8Grid();
+
+    const searchInput = document.getElementById('s8-search-input');
+    if (searchInput) searchInput.value = '';
+    const searchRes = document.getElementById('s8-search-results');
+    if (searchRes) searchRes.style.display = 'none';
+    const normal = document.getElementById('s8-normal');
+    if (normal) normal.style.display = '';
+
+    const isFiltered = s8ActiveCat !== 'all';
+    const secFlt = document.getElementById('s8-sec-filter');
+    const gFlt   = document.getElementById('s8-grid-filter');
+    const lblFlt = document.getElementById('s8-filter-label');
+    const secR   = document.getElementById('s8-sec-recent');
+    const secN   = document.getElementById('s8-sec-nearby');
+    const secF   = document.getElementById('s8-sec-fav');
+    const secP   = document.getElementById('s8-sec-pour');
+
+    if (isFiltered) {
+      const filtered = listings.filter(l => l.cats.includes(s8ActiveCat));
+      if (lblFlt) lblFlt.textContent = el.textContent.trim() + ' (' + filtered.length + ')';
+      if (gFlt)   gFlt.innerHTML = filtered.map(cardHTML).join('');
+      if (secFlt) secFlt.style.display = filtered.length ? '' : 'none';
+      if (secR)   secR.style.display   = 'none';
+      if (secN)   secN.style.display   = 'none';
+      if (secF)   secF.style.display   = 'none';
+      if (secP)   secP.style.display   = 'none';
+    } else {
+      if (secFlt) secFlt.style.display = 'none';
+      renderS8Grid();
+    }
   }
 
   let s9CurrentSection = 'recent';
@@ -4047,6 +4246,13 @@
     helene: { name:'Hélène V.', avatar:'https://i.pravatar.cc/80?img=36', role:'teaches', course:'Photographe argentique' },
   };
 
+  function s12OpenReview() {
+    // Ouvrir l'avis pour la conv courante (screen12)
+    const conv = convData.find(c => c.name === document.getElementById('s12-name').textContent);
+    if (conv) openReviewFor(conv);
+    navigate('screen12', 'screen19');
+  }
+
   function s18OpenChat(personKey) {
     const info = s18ChatMap[personKey];
     if (!info) return;
@@ -4069,7 +4275,15 @@
     navigate('screen18', 'screen12');
   }
 
-  function openReview() { navigate('screen18', 'screen19'); }
+  function openReview() {
+    // Session Mathieu (écran 18 passés - hardcodé)
+    const mathieuConv = {
+      course:'Photographie', sessionDay:'08', sessionMonth:'fév 2025',
+      avatar:'https://i.pravatar.cc/80?img=60', name:'Mathieu', role:'learns'
+    };
+    openReviewFor(mathieuConv);
+    navigate('screen18', 'screen19');
+  }
 
   function publishReview() {
     const rating = s19CurrentRating || 3;
@@ -4087,12 +4301,59 @@
     navigate('screen19', 'screen20');
   }
   let s19CurrentRating = 0;
+  let s19CurrentConv = null;
+
+  function openReviewFor(conv) {
+    s19CurrentConv = conv;
+    s19CurrentRating = 0;
+    // Reset étoiles
+    document.querySelectorAll('#s19-stars .s19-star').forEach(s => s.classList.remove('active'));
+    // Remplir les infos
+    const vSVG = `<span class="s19-verified"><svg width="8" height="7" viewBox="0 0 8 7" fill="none"><path d="M1 3.5L3 5.5L7 1.5" stroke="white" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></span>`;
+    const label = document.getElementById('s19-session-label');
+    const avatarEl = document.getElementById('s19-avatar');
+    const nameEl   = document.getElementById('s19-person-name');
+    const roleEl   = document.getElementById('s19-role-badge');
+    if (label)   label.textContent = `${conv.course} - ${conv.sessionDay} ${conv.sessionMonth}`;
+    if (avatarEl) avatarEl.src = conv.avatar;
+    if (nameEl) { nameEl.innerHTML = conv.name + ' ' + vSVG; }
+    if (roleEl) {
+      roleEl.textContent = conv.role === 'learns' ? "J'apprends" : "J'enseigne";
+      roleEl.className   = 's18-role-badge ' + conv.role;
+    }
+    const ta = document.getElementById('s19-text');
+    if (ta) { ta.value = ''; }
+    document.getElementById('s19-count').textContent = '000/500';
+    s19UpdateBonus();
+  }
+
   function s19Rate(n) {
     s19CurrentRating = n;
     document.querySelectorAll('#s19-stars .s19-star').forEach((s, i) => s.classList.toggle('active', i < n));
   }
+
   function s19Count(ta) {
     document.getElementById('s19-count').textContent = String(ta.value.length).padStart(3,'0') + '/500';
+  }
+
+  function s19UpdateBonus() {
+    const ta    = document.getElementById('s19-text');
+    const block = document.getElementById('s19-bonus-block');
+    const icon  = document.getElementById('s19-bonus-icon');
+    const title = document.getElementById('s19-bonus-title');
+    const sub   = document.getElementById('s19-bonus-sub');
+    if (!ta || !block) return;
+    if (ta.value.trim().length > 0) {
+      block.style.background = '#fff8e8';
+      if (icon)  { icon.style.background='#f5a623'; icon.textContent='⭐'; }
+      if (title) title.textContent = '+5 crédits bonus débloqués !';
+      if (sub)   sub.textContent   = 'Merci pour votre commentaire, les crédits seront ajoutés après publication.';
+    } else {
+      block.style.background = '#fff3cd';
+      if (icon)  { icon.style.background='#f5a623'; icon.textContent='⚠️'; }
+      if (title) title.textContent = 'Commentaire requis pour les crédits';
+      if (sub)   sub.textContent   = 'Notez uniquement en étoiles n\'apporte pas de bonus. Ajoutez un commentaire pour gagner +5 crédits.';
+    }
   }
 
   /* ── SCREEN 14 – Publier ── */
@@ -4393,12 +4654,12 @@
       </div>`;
 
     if (conv.state === 'ended')
-      return richCard(`<div style="display:flex;align-items:center;gap:10px;">
-        <div class="s12-sc-status gray" style="flex:1">
+      return richCard(`<div style="display:flex;align-items:stretch;gap:10px;">
+        <div class="s12-sc-status gray" style="flex:1;justify-content:center;">
           <svg width="14" height="14" viewBox="0 0 14 14"><path d="M7 1l1.6 4.2H13l-3.7 2.7 1.4 4.3L7 9.6l-3.7 2.6 1.4-4.3L1 5.2h4.4L7 1z" fill="#f5a623"/></svg>
-          Session terminée · +${conv.credits || 45} crédits
+          +${conv.credits || 45} crédits
         </div>
-        <button class="s12-status-btn">Laisser un avis</button>
+        <button class="s12-status-btn" style="flex:1;" onclick="s12OpenReview()">Laisser un avis</button>
       </div>`);
 
     return '';
