@@ -73,7 +73,7 @@
       margin-bottom: 28px;
       box-shadow: 0 8px 30px rgba(0,0,0,0.12);
     }
-    .app-icon img { width: 100px; height: 100px; object-fit: contain; display: block; margin: auto; }
+    .app-icon img { width: 100px; height: 100px; object-fit: contain; display: block; margin: auto; margin-left: calc(50% - 53px); margin-top: 6px; }
 
     .app-name { color: #fff; font-size: 36px; font-weight: 700; letter-spacing: -0.5px; margin-bottom: 8px; }
     .app-subtitle { color: rgba(255,255,255,0.65); font-size: 16px; }
@@ -88,6 +88,26 @@
     .home-bar { width: 134px; height: 5px; border-radius: 3px; }
     .home-bar.light { background: rgba(255,255,255,0.5); }
     .home-bar.dark  { background: rgba(0,0,0,0.2); }
+
+    /* ── SCREEN 0 – Home écran téléphone ── */
+    #screen0 {
+      background: linear-gradient(160deg, #b2cce8 0%, #ccddf5 18%, #e2ecf8 38%, #f0eaf8 58%, #f5e4ec 78%, #f2eaf5 100%);
+    }
+    .s0-status { display:flex; justify-content:space-between; align-items:center; padding:14px 24px 0; height:44px; flex-shrink:0; }
+    .s0-status .time { font-size:15px; font-weight:600; color:#111; }
+    .s0-search-bar { background:rgba(255,255,255,0.9); border-radius:28px; padding:10px 18px; display:flex; align-items:center; gap:10px; margin:16px 16px 0; box-shadow:0 2px 12px rgba(0,0,0,0.1); flex-shrink:0; }
+    .s0-g-logo { font-size:18px; font-weight:800; background:linear-gradient(135deg,#4285f4,#ea4335,#fbbc04,#34a853); -webkit-background-clip:text; -webkit-text-fill-color:transparent; background-clip:text; flex-shrink:0; }
+    .s0-search-text { flex:1; font-size:14px; color:#aaa; }
+    .s0-mic { width:28px; height:28px; display:flex; align-items:center; justify-content:center; flex-shrink:0; }
+    .s0-spacer { flex:1; }
+    .s0-app-grid { display:grid; grid-template-columns:repeat(4,1fr); gap:40px 8px; padding:0 20px 8px; flex-shrink:0; }
+    .s0-app { display:flex; flex-direction:column; align-items:center; gap:6px; cursor:pointer; user-select:none; }
+    .s0-app-icon { width:62px; height:62px; border-radius:15px; display:flex; align-items:center; justify-content:center; overflow:hidden; box-shadow:0 2px 8px rgba(0,0,0,0.12); }
+    .s0-app-label { font-size:11px; color:#222; text-align:center; font-weight:400; text-shadow:0 0 6px rgba(255,255,255,0.8); }
+    .s0-bottom-search { background:rgba(255,255,255,0.75); border-radius:22px; padding:9px 18px; display:flex; align-items:center; gap:8px; margin:14px 60px 0; box-shadow:0 1px 6px rgba(0,0,0,0.08); flex-shrink:0; }
+    .s0-bottom-search-text { font-size:13px; color:#666; }
+    .s0-dock { background:rgba(255,255,255,0.52); backdrop-filter:blur(12px); border-radius:28px; margin:12px 16px 0; padding:14px 20px; display:flex; justify-content:space-around; align-items:center; flex-shrink:0; }
+    .s0-dock-icon { width:60px; height:60px; border-radius:15px; display:flex; align-items:center; justify-content:center; overflow:hidden; box-shadow:0 2px 8px rgba(0,0,0,0.1); cursor:pointer; }
 
     /* ── SCREEN 2 ── */
     #screen2 { background: #f2f4fb; }
@@ -996,7 +1016,7 @@
     }
     .s10-tag-row::-webkit-scrollbar { display: none; }
     .s10-tag {
-      padding: 7px 14px; border-radius: 50px;
+      padding: 7px 14px; border-radius: 50px; flex-shrink: 0;
       border: 1.5px solid #dde0ee; background: #f5f6fb;
       font-size: 13px; color: #6685f1; font-weight: 500;
     }
@@ -1009,7 +1029,7 @@
       object-fit: cover; flex-shrink: 0; background: #dde0ee;
     }
     .s10-instr-right { flex: 1; min-width: 0; }
-    .s10-instr-name-row { display: flex; align-items: center; gap: 5px; margin-bottom: 2px; }
+    .s10-instr-name-row { display: flex; align-items: center; gap: 5px; margin-bottom: 2px; width: 100%; }
     .s10-author-name { font-size: 16px; font-weight: 700; color: #111; }
     .s10-verified {
       width: 16px; height: 16px; background: #6685f1; border-radius: 50%;
@@ -1227,10 +1247,9 @@
     .s15-bar-fill { height:100%; background:#6685f1; border-radius:3px; }
     .s15-bar-count { font-size:12px; color:#888; width:14px; flex-shrink:0; }
     .s15-reviews-title { font-size:18px; font-weight:800; color:#111; margin-bottom:12px; }
-    .s15-reviews-row { display:flex; gap:10px; overflow-x:auto; -webkit-overflow-scrolling:touch; padding-bottom:4px; margin-bottom:14px; }
-    .s15-reviews-row::-webkit-scrollbar { display:none; }
-    .s15-review-card { min-width:220px; background:#f7f8fb; border-radius:14px; padding:12px 14px; flex-shrink:0; }
-    .s15-show-all { width:100%; padding:14px; background:transparent; border:1.5px solid #dde0ee; border-radius:14px; font-size:14px; color:#888; cursor:pointer; }
+    .s15-reviews-row { display:flex; flex-direction:column; gap:10px; margin-bottom:14px; }
+    .s15-review-card { width:100%; background:#f7f8fb; border-radius:14px; padding:14px 16px; box-sizing:border-box; }
+    .s15-show-all { width:100%; padding:14px; background:transparent; border:1.5px solid #dde0ee; border-radius:14px; font-size:14px; font-weight:600; color:#6685f1; cursor:pointer; }
     /* Crédits */
     .s15-solde-label { font-size:14px; color:#888; text-align:center; margin-bottom:8px; }
     .s15-solde-num   { font-size:52px; font-weight:800; color:#111; text-align:center; line-height:1; }
@@ -1390,8 +1409,95 @@
 <body>
 <div class="phone">
 
+  <!-- ══════════════ SCREEN 0 – HOME TÉLÉPHONE ══════════════ -->
+  <div class="screen" id="screen0">
+
+    <div class="s0-status">
+      <span class="time">9:41</span>
+      <div class="icons" style="display:flex;align-items:center;gap:6px;">
+        <svg width="17" height="12" viewBox="0 0 17 12"><rect x="0" y="7" width="3" height="5" rx="0.5"/><rect x="4" y="5" width="3" height="7" rx="0.5"/><rect x="8" y="3" width="3" height="9" rx="0.5"/><rect x="12" y="0" width="3" height="12" rx="0.5"/></svg>
+        <svg width="16" height="12" viewBox="0 0 16 12"><path d="M8 9.5a1.5 1.5 0 1 1 0 3 1.5 1.5 0 0 1 0-3z"/><path d="M8 6.2a5.1 5.1 0 0 1 3.6 1.5l1.4-1.4A7.1 7.1 0 0 0 8 4a7.1 7.1 0 0 0-5 2.3l1.4 1.4A5.1 5.1 0 0 1 8 6.2z"/><path d="M8 2.9a8.5 8.5 0 0 1 6 2.5L15.4 4A10.5 10.5 0 0 0 8 0.9a10.5 10.5 0 0 0-7.4 3.1L2 5.4A8.5 8.5 0 0 1 8 2.9z"/></svg>
+        <svg width="25" height="12" viewBox="0 0 25 12"><rect x="0" y="1" width="21" height="10" rx="2.5" stroke="#111" stroke-width="1" fill="none"/><rect x="22" y="3.5" width="2" height="5" rx="1" fill="#111" opacity="0.4"/><rect x="1.5" y="2.5" width="17" height="7" rx="1.5" fill="#111"/></svg>
+      </div>
+    </div>
+
+    <!-- Barre Google -->
+    <div style="margin:32px 16px 0; flex-shrink:0;">
+      <img src="Searchgoogle.png" alt="Google Search" style="width:100%;height:auto;display:block;">
+    </div>
+
+    <div class="s0-spacer"></div>
+
+    <!-- Grille d'apps -->
+    <div class="s0-app-grid" style="row-gap:36px;padding-bottom:24px;">
+      <!-- Ligne 1 -->
+      <div class="s0-app">
+        <div class="s0-app-icon" style="background:#f0f0f0;">
+          <svg width="32" height="32" viewBox="0 0 32 32" fill="none"><circle cx="10" cy="10" r="5" fill="#e04040"/><circle cx="22" cy="10" r="5" fill="#4080e0"/><circle cx="10" cy="22" r="5" fill="#f0a020"/><circle cx="22" cy="22" r="5" fill="#40a040"/></svg>
+        </div>
+        <span class="s0-app-label">Outils</span>
+      </div>
+      <div class="s0-app">
+        <div class="s0-app-icon" style="background:#fff;">
+          <svg width="36" height="36" viewBox="0 0 36 36"><circle cx="18" cy="12" r="6" fill="#e04040"/><circle cx="10" cy="22" r="6" fill="#40b040"/><circle cx="26" cy="22" r="6" fill="#4080e0"/><circle cx="18" cy="18" r="5" fill="#f0a020"/></svg>
+        </div>
+        <span class="s0-app-label">Galerie</span>
+      </div>
+      <div class="s0-app">
+        <div class="s0-app-icon" style="background:#fff;border:1px solid #e0e0e0;">
+          <svg width="34" height="34" viewBox="0 0 34 34" fill="none"><circle cx="17" cy="17" r="14" stroke="#999" stroke-width="1.5"/><line x1="17" y1="7" x2="17" y2="17" stroke="#111" stroke-width="2" stroke-linecap="round"/><line x1="17" y1="17" x2="23" y2="20" stroke="#e04040" stroke-width="1.8" stroke-linecap="round"/></svg>
+        </div>
+        <span class="s0-app-label">Horloge</span>
+      </div>
+      <div class="s0-app">
+        <div class="s0-app-icon" style="background:#2060d0;">
+          <svg width="32" height="32" viewBox="0 0 32 32" fill="none"><circle cx="16" cy="16" r="10" stroke="white" stroke-width="2"/><path d="M16 8v8l4 4" stroke="white" stroke-width="2" stroke-linecap="round"/><path d="M8 5l2 3M24 5l-2 3" stroke="white" stroke-width="1.8" stroke-linecap="round"/></svg>
+        </div>
+        <span class="s0-app-label">Alarme</span>
+      </div>
+
+      <!-- Ligne 2 -->
+      <div class="s0-app">
+        <div class="s0-app-icon" style="background:linear-gradient(135deg,#f5a623,#e04040);">
+          <svg width="34" height="34" viewBox="0 0 34 34" fill="none"><path d="M17 4 L22 14 L32 15.5 L24.5 23 L26.5 33 L17 28 L7.5 33 L9.5 23 L2 15.5 L12 14 Z" fill="white" opacity="0.9"/></svg>
+        </div>
+        <span class="s0-app-label">My HONOR</span>
+      </div>
+
+      <!-- FILUM -->
+      <div class="s0-app" onclick="launchFilum()">
+        <div class="s0-app-icon" style="background:#6685f1;">
+          <img src="logo.png" alt="Filum" style="width:44px;height:44px;object-fit:contain;filter:brightness(0) invert(1);margin-left:-3px;margin-top:-4px;">
+        </div>
+        <span class="s0-app-label">Filum</span>
+      </div>
+
+      <div class="s0-app">
+        <div class="s0-app-icon" style="background:#34a853;">
+          <svg width="30" height="30" viewBox="0 0 30 30" fill="none"><circle cx="15" cy="10" r="5" stroke="white" stroke-width="2"/><path d="M6 26c0-5 4-9 9-9s9 4 9 9" stroke="white" stroke-width="2" stroke-linecap="round"/></svg>
+        </div>
+        <span class="s0-app-label">Contacts</span>
+      </div>
+      <div class="s0-app">
+        <div class="s0-app-icon" style="background:#2060d0;">
+          <svg width="30" height="30" viewBox="0 0 30 30" fill="none"><circle cx="15" cy="15" r="11" stroke="white" stroke-width="2"/><circle cx="15" cy="15" r="5" fill="white"/></svg>
+        </div>
+        <span class="s0-app-label">Enregistreur</span>
+      </div>
+    </div>
+
+
+    <!-- Dock -->
+    <div style="margin:8px 12px 0; flex-shrink:0;">
+      <img src="barreapp.png" alt="Barre d'apps" style="width:100%;height:auto;display:block;">
+    </div>
+
+    <div class="home-indicator"><div class="home-bar dark"></div></div>
+
+  </div>
+
   <!-- ══════════════ SCREEN 1 ══════════════ -->
-  <div class="screen" id="screen1" onclick="goToScreen2()">
+  <div class="screen hidden" id="screen1">
 
     <div class="s1-status">
       <span class="time">9:41</span>
@@ -1425,11 +1531,6 @@
 
     <div class="s1-footer">
       <span class="tagline">Le savoir circule</span>
-      <div class="dots">
-        <div class="dot active"></div>
-        <div class="dot"></div>
-        <div class="dot"></div>
-      </div>
     </div>
 
     <div class="home-indicator">
@@ -2311,10 +2412,10 @@
                   <path d="M1 3.5L3 5.5L7 1.5" stroke="white" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
                 </svg>
               </span>
+              <button class="s10-view-profile" style="margin-left:auto">Voir profil</button>
             </div>
             <p class="s10-since" id="s10-since"></p>
           </div>
-          <button class="s10-view-profile">Voir<br>profil</button>
         </div>
         <p class="s10-instr-rating" id="s10-instr-rating"></p>
         <p class="s10-bio" id="s10-bio"></p>
@@ -2688,8 +2789,11 @@
       <div class="s17-slots-grid" id="s17-slots-grid"></div>
 
       <!-- Message -->
-      <p class="s17-msg-title">Message <span>(optionnel)</span></p>
-      <textarea class="s17-textarea" id="s17-msg" placeholder="" id="s17-textarea"></textarea>
+      <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:12px;">
+        <p class="s17-msg-title" style="margin-bottom:0;">Message <span>(optionnel)</span></p>
+        <button onclick="document.getElementById('s17-textarea').value=''" style="background:none;border:none;font-size:13px;color:#aaa;cursor:pointer;text-decoration:underline;padding:0;">Effacer</button>
+      </div>
+      <textarea class="s17-textarea" id="s17-textarea" placeholder="Vous pouvez laisser ce champ vide"></textarea>
 
       <!-- Récapitulatif -->
       <div class="s17-summary">
@@ -2951,6 +3055,19 @@
 </div>
 
 <script>
+  function launchFilum() {
+    const icon = document.querySelector('.s0-app[onclick] .s0-app-icon');
+    if (icon) {
+      icon.style.transition = 'transform 0.15s';
+      icon.style.transform = 'scale(0.88)';
+      setTimeout(() => { icon.style.transform = 'scale(1)'; }, 150);
+    }
+    setTimeout(() => {
+      navigate('screen0', 'screen1');
+      setTimeout(() => goToScreen2(), 1500);
+    }, 200);
+  }
+
   // Fullscreen au premier tap (Android Chrome)
   document.addEventListener('click', function tryFS() {
     const el = document.documentElement;
@@ -3218,7 +3335,8 @@
     let items = s8ActiveCat === 'all' ? listings : listings.filter(l => l.cats.includes(s8ActiveCat));
     const recent = items.filter(l => l.section === 'recent');
     const nearby = items.filter(l => l.section === 'nearby');
-    const favItems = listings.filter(l => s8Favs.has(l.id));
+    // Favoris triés du plus récent au plus ancien
+    const favItems = [...s8Favs].reverse().map(id => listings.find(l => l.id === id)).filter(Boolean);
 
     const gR = document.getElementById('s8-grid-recent');
     const gN = document.getElementById('s8-grid-nearby');
@@ -3226,7 +3344,7 @@
     const gP = document.getElementById('s8-grid-pour');
     if (gR) gR.innerHTML = recent.slice(0,4).map(cardHTML).join('');
     if (gN) gN.innerHTML = nearby.slice(0,4).map(cardHTML).join('');
-    if (gF) gF.innerHTML = favItems.slice(0,4).map(cardHTML).join('');
+    if (gF) gF.innerHTML = favItems.slice(0,2).map(cardHTML).join('');
 
     // Section "Pour vous" basée sur les intérêts de l'onboarding
     const secP = document.getElementById('s8-sec-pour');
@@ -3297,7 +3415,7 @@
     document.getElementById('s9-title').textContent = title;
     document.querySelectorAll('#s9-cats .s8-cat').forEach((c,i) => c.classList.toggle('active', i===0));
     const items = section === 'fav'
-      ? listings.filter(l => s8Favs.has(l.id))
+      ? [...s8Favs].reverse().map(id => listings.find(l => l.id === id)).filter(Boolean)
       : listings.filter(l => l.section === section);
     document.getElementById('s9-list').innerHTML = items.length
       ? items.map(i => listItemHTML(i,'screen9')).join('')
@@ -3497,16 +3615,18 @@
   let s17SelectedSlot = 0;
 
   function openBooking() {
-    const item = listings.find(l => l.id === s10CurrentId);
-    const det  = listingDetails[s10CurrentId] || {};
-    if (!item) return;
-    document.getElementById('s17-avatar').src = det.authorAvatar || `https://i.pravatar.cc/80?img=${s10CurrentId*7%70}`;
+    const item = listings.find(l => l.id === s10CurrentId) || listings[0];
+    const det  = listingDetails[item.id] || {};
+    document.getElementById('s17-avatar').src = det.authorAvatar || `https://i.pravatar.cc/80?img=${item.id*7%70}`;
     document.getElementById('s17-course-title').textContent = item.title;
     document.getElementById('s17-author-name').textContent  = item.author;
     document.getElementById('s17-mode').textContent     = item.meta;
     document.getElementById('s17-duration').textContent = det.duration || '1h';
     document.getElementById('s17-slots-sub').textContent = `Disponibilités proposées par ${item.author}`;
-    document.getElementById('s17-textarea').placeholder  = `Présentez-vous ou posez une question à ${item.author.split(' ')[0]}.`;
+    const firstName = item.author.split(' ')[0];
+    const sl0 = s17Slots.find(s => s.avail);
+    const preMsg = `Bonjour ${firstName} ! Je suis intéressé(e) par votre annonce "${item.title}". Seriez-vous disponible le ${sl0 ? sl0.date + ' de ' + sl0.hours : 'bientôt'} ? Au plaisir d'apprendre avec vous !`;
+    document.getElementById('s17-textarea').value = preMsg;
     document.getElementById('s17-sum-course').textContent  = item.title;
     document.getElementById('s17-sum-credits').textContent = `−${item.credits} cr.`;
     document.getElementById('s17-sum-rest').textContent    = `Il vous restera ${Math.max(0, 45 - item.credits)} cr. après réservation`;
@@ -3548,6 +3668,38 @@
   }
 
   function s17SendRequest() {
+    const item = listings.find(l => l.id === s10CurrentId) || listings[0];
+    const det  = listingDetails[item.id] || {};
+    const sl   = s17Slots[s17SelectedSlot] || s17Slots[0];
+    const msgVal = document.getElementById('s17-textarea').value.trim();
+    const msg = msgVal || `Demande de réservation — ${item.title} · ${sl.date} · ${sl.hours.split(' ')[0]}`;
+
+    // Supprimer toute conv existante avec ce même auteur ou cette annonce
+    for (let i = convData.length - 1; i >= 0; i--) {
+      if (convData[i].name === item.author || convData[i].course === item.title) {
+        convData.splice(i, 1);
+      }
+    }
+
+    // Créer une nouvelle conversation avec uniquement ce message
+    convData.unshift({
+      id: 'new_' + item.id + '_' + Date.now(),
+      name: item.author,
+      avatar: det.authorAvatar || `https://i.pravatar.cc/80?img=${item.id*7%70}`,
+      verified: true,
+      role: 'learns',
+      rating: item.rating,
+      course: item.title,
+      sessionDay:   sl.date.split(' ')[1],
+      sessionMonth: sl.date.split(' ')[2],
+      sessionTime:  sl.hours.split(' ')[0],
+      credits: item.credits,
+      mode: item.meta,
+      duration: det.duration || '1h',
+      unread: false,
+      state: 'pending',
+      msgs: [{ me: true, text: msg, time: 'À l\'instant' }],
+    });
     openMessages();
   }
 
