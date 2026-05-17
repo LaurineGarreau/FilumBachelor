@@ -1425,6 +1425,37 @@
     .cancel-btn-keep    { width:100%; padding:15px; background:transparent; border:1.5px solid #dde0ee; border-radius:14px; font-size:15px; font-weight:500; color:#555; cursor:pointer; }
     .cancel-btn-close   { width:100%; padding:15px; background:#6685f1; color:#fff; border:none; border-radius:14px; font-size:15px; font-weight:700; cursor:pointer; }
 
+    /* ── TOAST NOTIFICATION ── */
+    .toast-notif {
+      position: absolute; top: 54px; left: 12px; right: 12px; z-index: 999;
+      background: #111; color: #fff; border-radius: 14px; padding: 14px 16px;
+      display: flex; align-items: center; gap: 12px;
+      box-shadow: 0 8px 24px rgba(0,0,0,0.25);
+      transform: translateY(-80px); opacity: 0;
+      transition: transform 0.35s cubic-bezier(.22,.68,0,1.2), opacity 0.3s;
+    }
+    .toast-notif.show { transform: translateY(0); opacity: 1; }
+    .toast-icon { width: 36px; height: 36px; border-radius: 10px; background: #2db87a; display: flex; align-items: center; justify-content: center; flex-shrink: 0; }
+    .toast-text { flex: 1; }
+    .toast-title { font-size: 13px; font-weight: 700; color: #fff; margin-bottom: 2px; }
+    .toast-sub   { font-size: 12px; color: rgba(255,255,255,0.7); }
+
+    /* ── SCREEN 21 – Confirmation réservation ── */
+    #screen21 { background:#f2f4fb; }
+    .s21-content { flex:1; display:flex; flex-direction:column; align-items:center; justify-content:center; padding:0 28px; }
+    .s21-check { width:88px; height:88px; border-radius:50%; background:rgba(45,184,122,0.14); display:flex; align-items:center; justify-content:center; margin-bottom:24px; }
+    .s21-title { font-size:26px; font-weight:800; color:#111; text-align:center; margin-bottom:12px; }
+    .s21-desc  { font-size:15px; color:#666; text-align:center; line-height:1.6; margin-bottom:36px; }
+    .s21-resume { width:100%; }
+    .s21-resume-title { font-size:15px; font-weight:700; color:#111; text-align:center; margin-bottom:16px; }
+    .s21-resume-row { display:flex; justify-content:space-between; align-items:baseline; padding:10px 0; border-bottom:1px solid #e8eaf5; }
+    .s21-resume-row:last-child { border-bottom:none; }
+    .s21-resume-label { font-size:14px; color:#888; }
+    .s21-resume-value { font-size:14px; font-weight:600; color:#111; }
+    .s21-bottom { flex-shrink:0; padding:16px 20px 20px; }
+    .s21-main-btn { width:100%; padding:17px; background:#6685f1; color:#fff; border:none; border-radius:16px; font-size:17px; font-weight:700; cursor:pointer; margin-bottom:10px; }
+    .s21-back-btn { width:100%; padding:12px; background:transparent; border:none; font-size:15px; color:#888; cursor:pointer; }
+
     /* ── SCREEN 17 – Réserver une session ── */
     #screen17 { background:#f2f4fb; }
     .s17-header { display:flex; align-items:center; gap:12px; padding:10px 20px 14px; flex-shrink:0; background:#fff; border-bottom:1px solid #f0f2f8; }
@@ -1533,6 +1564,18 @@
 </head>
 <body>
 <div class="phone">
+
+  <!-- Toast notification global -->
+  <div class="toast-notif" id="global-toast">
+    <div class="toast-icon" id="toast-icon">
+      <svg width="18" height="18" viewBox="0 0 18 18" fill="none"><path d="M3 9l5 5 7-8" stroke="white" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+    </div>
+    <div class="toast-text">
+      <p class="toast-title" id="toast-title">Session confirmée !</p>
+      <p class="toast-sub"  id="toast-sub">Votre demande a été acceptée.</p>
+    </div>
+  </div>
+
 
   <!-- ══════════════ SCREEN 0 – HOME TÉLÉPHONE ══════════════ -->
   <div class="screen" id="screen0">
@@ -2744,7 +2787,7 @@
 
     <div class="s12-header">
       <button class="s12-back" onclick="backToMessages()">‹</button>
-      <img class="s12-avatar" id="s12-avatar" src="" alt="">
+      <img class="s12-avatar" id="s12-avatar" src="" alt="" onclick="openChatPersonProfile()" style="cursor:pointer;">
       <div class="s12-header-info">
         <div class="s12-header-name" id="s12-name"></div>
         <div style="display:flex;align-items:center;gap:8px;margin-top:2px;">
@@ -3131,6 +3174,53 @@
       <button class="s20-profile-btn" id="s20-profile-btn" onclick="openProfile()">Voir le profil</button>
     </div>
     <div class="home-indicator"><div class="home-bar dark"></div></div>
+  </div>
+
+  <!-- ══════════════ SCREEN 21 – CONFIRMATION RÉSERVATION ══════════════ -->
+  <div class="screen hidden" id="screen21">
+
+    <div class="s8-status" style="flex-shrink:0;background:#f2f4fb;">
+      <span class="time">9:41</span>
+      <div class="icons">
+        <svg width="17" height="12" viewBox="0 0 17 12"><rect x="0" y="7" width="3" height="5" rx="0.5"/><rect x="4" y="5" width="3" height="7" rx="0.5"/><rect x="8" y="3" width="3" height="9" rx="0.5"/><rect x="12" y="0" width="3" height="12" rx="0.5"/></svg>
+        <svg width="16" height="12" viewBox="0 0 16 12"><path d="M8 9.5a1.5 1.5 0 1 1 0 3 1.5 1.5 0 0 1 0-3z"/><path d="M8 6.2a5.1 5.1 0 0 1 3.6 1.5l1.4-1.4A7.1 7.1 0 0 0 8 4a7.1 7.1 0 0 0-5 2.3l1.4 1.4A5.1 5.1 0 0 1 8 6.2z"/><path d="M8 2.9a8.5 8.5 0 0 1 6 2.5L15.4 4A10.5 10.5 0 0 0 8 0.9a10.5 10.5 0 0 0-7.4 3.1L2 5.4A8.5 8.5 0 0 1 8 2.9z"/></svg>
+        <svg width="25" height="12" viewBox="0 0 25 12"><rect x="0" y="1" width="21" height="10" rx="2.5" stroke="black" stroke-width="1" fill="none"/><rect x="22" y="3.5" width="2" height="5" rx="1" fill="black" opacity="0.4"/><rect x="1.5" y="2.5" width="17" height="7" rx="1.5" fill="black"/></svg>
+      </div>
+    </div>
+
+    <div class="s21-content">
+      <div class="s21-check">
+        <svg width="44" height="44" viewBox="0 0 44 44" fill="none">
+          <path d="M10 22l9 9L34 14" stroke="#2db87a" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+      </div>
+      <h2 class="s21-title">Demande envoyée !</h2>
+      <p class="s21-desc" id="s21-desc">— a 24h pour confirmer ta session. Tu recevras une notification dès sa réponse.</p>
+
+      <div class="s21-resume">
+        <p class="s21-resume-title">Résumé</p>
+        <div class="s21-resume-row">
+          <span class="s21-resume-label">Session</span>
+          <span class="s21-resume-value" id="s21-course">—</span>
+        </div>
+        <div class="s21-resume-row">
+          <span class="s21-resume-label">Créneau</span>
+          <span class="s21-resume-value" id="s21-slot">—</span>
+        </div>
+        <div class="s21-resume-row">
+          <span class="s21-resume-label">Crédits débités</span>
+          <span class="s21-resume-value" id="s21-credits">—</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="s21-bottom">
+      <button class="s21-main-btn" onclick="openSessions()">Voir ma session</button>
+      <button class="s21-back-btn" onclick="navigate('screen21','screen8');renderS8Grid()">Retour à l'accueil</button>
+    </div>
+
+    <div class="home-indicator"><div class="home-bar dark"></div></div>
+
   </div>
 
   <!-- ══════════════ SCREEN 17 – RÉSERVER UNE SESSION ══════════════ -->
@@ -4092,65 +4182,75 @@
 
   function openConvProfile(conv) {
     if (!conv) { openProfile(); return; }
-    const avatarEl   = document.querySelector('#screen15 .s15-avatar');
-    const usernameEl = document.querySelector('#screen15 .s15-username');
-    const nameEl     = document.querySelector('#screen15 .s15-name');
-    const locationEl = document.querySelector('#screen15 .s15-location');
-    const bioEl      = document.querySelector('#screen15 .s15-bio');
-    if (avatarEl)   avatarEl.src = conv.avatar || 'https://i.pravatar.cc/160?img=42';
-    if (usernameEl) usernameEl.textContent = '@' + conv.name.toLowerCase().replace(/[\s.]/g,'') + '.filum';
-    if (nameEl)     nameEl.textContent = conv.name;
-    if (locationEl) locationEl.textContent = 'France  •  Depuis 2024';
-    if (bioEl)      bioEl.textContent = 'Membre Filum passionné(e) par le partage de savoirs et l\'apprentissage.';
-
-    // Mode profil externe
-    const tabCredits = document.querySelector('#screen15 .s15-tab:nth-child(3)');
-    if (tabCredits) tabCredits.style.display = 'none';
-    const actionRow = document.querySelector('#screen15 .s15-action-row');
-    if (actionRow) actionRow.innerHTML = `
-      <button class="s15-action-btn" onclick="openMessages()" style="background:#6685f1;color:#fff;border-color:#6685f1;">Message</button>
-      <button class="s15-action-btn" style="background:#fff;color:#6685f1;">Partager le profil</button>`;
-
-    navigate('screen20', 'screen15');
-    s15Tab('annonces', document.querySelector('#s15-tabs .s15-tab'));
-    renderProfileAnnounces();
-    document.querySelector('#screen15 .s15-scroll').scrollTop = 0;
+    s15ShowExternalProfile({
+      avatar:   conv.avatar || 'https://i.pravatar.cc/160?img=42',
+      username: '@' + conv.name.toLowerCase().replace(/[\s.]/g,'') + '.filum',
+      name:     conv.name,
+      location: 'France  •  Depuis 2024',
+      bio:      'Membre Filum passionné(e) par le partage de savoirs et l\'apprentissage.',
+    });
   }
 
   function openInstructorProfile() {
     const item = listings.find(l => l.id === s10CurrentId);
     const det  = item ? (listingDetails[item.id] || {}) : {};
+    s15ShowExternalProfile({
+      avatar:   det.authorAvatar || `https://i.pravatar.cc/160?img=${item ? item.id*7%70 : 42}`,
+      username: '@' + (item ? item.author.toLowerCase().replace(/[\s.]/g,'') : 'utilisateur') + '.filum',
+      name:     item ? item.author : '—',
+      location: det.authorSince || 'Membre Filum',
+      bio:      det.authorBio || 'Passionné(e) de partage et d\'apprentissage.',
+      from:     'screen10',
+    });
+  }
 
-    // Données de l'instructeur
+  function s15ShowExternalProfile({ avatar, username, name, location, bio, from }) {
+    // Remplir les données
     const avatarEl   = document.querySelector('#screen15 .s15-avatar');
     const usernameEl = document.querySelector('#screen15 .s15-username');
     const nameEl     = document.querySelector('#screen15 .s15-name');
     const locationEl = document.querySelector('#screen15 .s15-location');
     const bioEl      = document.querySelector('#screen15 .s15-bio');
-    if (item && avatarEl)   avatarEl.src = det.authorAvatar || `https://i.pravatar.cc/160?img=${item.id*7%70}`;
-    if (item && usernameEl) usernameEl.textContent = '@' + item.author.toLowerCase().replace(/[\s.\s]/g,'') + '.filum';
-    if (item && nameEl)     nameEl.textContent = item.author;
-    if (item && locationEl) locationEl.textContent = 'Nantes  •  Depuis 2024';
-    if (item && bioEl)      bioEl.textContent = det.authorBio || 'Passionné(e) de partage et d\'apprentissage.';
+    if (avatarEl)   avatarEl.src = avatar;
+    if (usernameEl) usernameEl.textContent = username;
+    if (nameEl)     nameEl.textContent = name;
+    if (locationEl) locationEl.textContent = location;
+    if (bioEl)      bioEl.textContent = bio;
 
-    // Mode "profil externe" : cacher crédits, changer bouton
+    // Mode externe : masquer crédits, bouton Message
     const tabCredits = document.querySelector('#screen15 .s15-tab:nth-child(3)');
     if (tabCredits) tabCredits.style.display = 'none';
-    document.getElementById('s15-pane-credits')?.classList.remove('active');
-
+    const creditsPane = document.getElementById('s15-pane-credits');
+    if (creditsPane) creditsPane.classList.remove('active');
     const actionRow = document.querySelector('#screen15 .s15-action-row');
     if (actionRow) actionRow.innerHTML = `
       <button class="s15-action-btn" onclick="openMessages()" style="background:#6685f1;color:#fff;border-color:#6685f1;">Message</button>
-      <button class="s15-action-btn" style="background:#fff;color:#6685f1;">Partager le profil</button>`;
+      <button class="s15-action-btn" style="color:#6685f1;">Partager le profil</button>`;
 
-    openProfile();
+    // Afficher screen15 sans réinitialiser
+    document.querySelectorAll('.screen').forEach(s => s.classList.add('hidden'));
+    document.getElementById('screen15').classList.remove('hidden');
+    s15Tab('annonces', document.querySelector('#s15-tabs .s15-tab'));
+    renderProfileAnnounces();
+    document.querySelector('#screen15 .s15-scroll').scrollTop = 0;
   }
 
   function openProfile() {
     document.querySelectorAll('.screen').forEach(s => s.classList.add('hidden'));
     document.getElementById('screen15').classList.remove('hidden');
 
-    // Restaurer l'état "mon profil" par défaut
+    // Restaurer MON profil
+    const avatarEl   = document.querySelector('#screen15 .s15-avatar');
+    const usernameEl = document.querySelector('#screen15 .s15-username');
+    const nameEl     = document.querySelector('#screen15 .s15-name');
+    const locationEl = document.querySelector('#screen15 .s15-location');
+    const bioEl      = document.querySelector('#screen15 .s15-bio');
+    if (avatarEl)   avatarEl.src = 'https://i.pravatar.cc/160?img=68';
+    if (usernameEl) usernameEl.textContent = '@sofiane.lath';
+    if (nameEl)     nameEl.textContent = 'Sofiane P.';
+    if (locationEl) locationEl.textContent = 'Nantes  •  Depuis mars 2024';
+    if (bioEl)      bioEl.textContent = 'Passionnée d\'art et de photo argentique. J\'aime transmettre ce que j\'ai appris au fil des années.';
+
     const tabCredits = document.querySelector('#screen15 .s15-tab:nth-child(3)');
     if (tabCredits) tabCredits.style.display = '';
     const actionRow = document.querySelector('#screen15 .s15-action-row');
@@ -4286,7 +4386,48 @@
       state: 'pending',
       msgs: [{ me: true, text: msg, time: 'À l\'instant' }],
     });
-    openMessages();
+
+    // Peupler screen 21
+    const firstName = item.author.split(' ')[0];
+    const descEl    = document.getElementById('s21-desc');
+    const courseEl  = document.getElementById('s21-course');
+    const slotEl    = document.getElementById('s21-slot');
+    const credEl    = document.getElementById('s21-credits');
+    if (descEl)   descEl.textContent   = `${firstName} a 24h pour confirmer ta session. Tu recevras une notification dès sa réponse.`;
+    if (courseEl) courseEl.textContent = item.title;
+    if (slotEl)   slotEl.textContent   = `${sl.date} · ${sl.hours.split(' – ')[0]}`;
+    if (credEl)   credEl.textContent   = `-${item.credits} cr.`;
+
+    navigate('screen17', 'screen21');
+
+    // Après 3 sec : confirmer automatiquement
+    const convRef = convData[0]; // la conv vient d'être créée en tête
+    setTimeout(() => {
+      if (!convRef) return;
+      // Changer le statut
+      convRef.state = convRef.mode === 'Vidéo' ? 'confirmed-visio' : 'confirmed-presentiel';
+
+      // Mettre à jour l'écran 21
+      const descEl = document.getElementById('s21-desc');
+      if (descEl) descEl.textContent = `${convRef.name.split(' ')[0]} a confirmé ta session. À très vite !`;
+
+      // Toast notification
+      showToast(
+        `${convRef.name.split(' ')[0]} a accepté ta session !`,
+        `${convRef.course} · ${convRef.sessionDay} ${convRef.sessionMonth}`
+      );
+    }, 8000);
+  }
+
+  function showToast(title, sub) {
+    const toast    = document.getElementById('global-toast');
+    const titleEl  = document.getElementById('toast-title');
+    const subEl    = document.getElementById('toast-sub');
+    if (!toast) return;
+    if (titleEl) titleEl.textContent = title;
+    if (subEl)   subEl.textContent   = sub;
+    toast.classList.add('show');
+    setTimeout(() => toast.classList.remove('show'), 4000);
   }
 
   /* ── SCREENS 18-19-20 – Sessions / Avis ── */
@@ -4623,8 +4764,8 @@
         {me:false, text:"Super ! Je vous envoie le lien Zoom 30 min avant 😊", time:'09:28'},
       ]},
     { id:'julie', name:'Julie D.', avatar:'https://i.pravatar.cc/80?img=35', verified:true, role:'learns', rating:4.7,
-      course:'Comprendre Excel', sessionDay:'26', sessionMonth:'mars', sessionTime:'10h00', credits:38, mode:'Présentiel', duration:'1h30',
-      unread:true, state:'pending', sessionDate:'Mer. 26 mars · 10h',
+      course:'Comprendre Excel', sessionDay:'26', sessionMonth:'mars', sessionTime:'10h00', credits:38, mode:'Vidéo', duration:'1h30',
+      unread:true, state:'day-j-visio', sessionDate:'Mer. 26 mars · 10h',
       msgs:[
         {me:true,  text:"Bonjour Julie ! J'aimerais apprendre les tableaux croisés dynamiques.", time:'14:30'},
         {me:false, text:"Pas de problème, j'ai exactement ce qu'il te faut. On se voit mercredi ?", time:'14:45'},
@@ -4650,6 +4791,19 @@
   let qrTimerInterval = null;
 
   /* ── Navigation messages ── */
+  function openChatPersonProfile() {
+    const name   = document.getElementById('s12-name')?.textContent;
+    const avatar = document.getElementById('s12-avatar')?.src;
+    const conv   = convData.find(c => c.name === name);
+    s15ShowExternalProfile({
+      avatar:   avatar || 'https://i.pravatar.cc/160?img=42',
+      username: '@' + (name || '').toLowerCase().replace(/[\s.]/g,'') + '.filum',
+      name:     name || '—',
+      location: conv ? `${conv.sessionDay} ${conv.sessionMonth}  •  Membre Filum` : 'Membre Filum',
+      bio:      'Membre Filum passionné(e) par le partage de savoirs et l\'apprentissage.',
+    });
+  }
+
   function backToMessages() {
     navigate('screen12', 'screen11');
     const activeChip = document.querySelector('#screen11 .s11-filter-chip.active');
