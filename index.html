@@ -2743,7 +2743,7 @@
     </div>
 
     <div class="s12-header">
-      <button class="s12-back" onclick="navigate('screen12','screen11');renderConvList(document.querySelector('#screen11 .s11-filter-chip.active')?.dataset.filter||'all')">‹</button>
+      <button class="s12-back" onclick="backToMessages()">‹</button>
       <img class="s12-avatar" id="s12-avatar" src="" alt="">
       <div class="s12-header-info">
         <div class="s12-header-name" id="s12-name"></div>
@@ -4650,6 +4650,13 @@
   let qrTimerInterval = null;
 
   /* ── Navigation messages ── */
+  function backToMessages() {
+    navigate('screen12', 'screen11');
+    const activeChip = document.querySelector('#screen11 .s11-filter-chip.active');
+    const filter = activeChip ? activeChip.dataset.filter : 'all';
+    renderConvList(filter);
+  }
+
   function openMessages() {
     document.querySelectorAll('.screen').forEach(s => s.classList.add('hidden'));
     document.getElementById('screen11').classList.remove('hidden');
