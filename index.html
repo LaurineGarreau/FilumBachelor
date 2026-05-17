@@ -1178,7 +1178,7 @@
     .s12-send { width:42px; height:42px; border-radius:50%; background:#6685f1; border:none; cursor:pointer; display:flex; align-items:center; justify-content:center; flex-shrink:0; }
 
     /* ── SCREEN 13 – QR code ── */
-    #screen13 { background:#eef0fa; }
+    #screen13 { background:#f2f4fb; }
     .s13-header { display:flex; align-items:center; gap:14px; padding:8px 20px 14px; flex-shrink:0; }
     .s13-back-btn { width:38px; height:38px; border-radius:50%; background:#fff; border:1.5px solid #dde0ee; display:flex; align-items:center; justify-content:center; cursor:pointer; flex-shrink:0; }
     .s13-title { font-size:22px; font-weight:800; color:#111; }
@@ -1839,7 +1839,7 @@
         <span class="s3-count" id="s3-count">0 catégorie sélectionnée</span>
         <span class="s3-min">minimum 1</span>
       </div>
-      <button class="btn-primary" onclick="goToScreen4()">Continuer</button>
+      <button class="btn-primary" id="s3-continue-btn" onclick="goToScreen4()" style="opacity:0.45;pointer-events:none;">Continuer</button>
       <button class="btn-secondary" onclick="goToScreen2()">Retour</button>
     </div>
 
@@ -2758,20 +2758,7 @@
     </div>
 
     <div class="s13-scroll">
-      <!-- Décoration fond -->
-      <div class="s13-bg">
-        <svg viewBox="0 0 375 700" fill="none" xmlns="http://www.w3.org/2000/svg" style="width:100%;height:100%">
-          <path d="M-30 120 Q80 60 180 160 Q280 260 340 190" stroke="#6685f1" stroke-width="1" opacity="0.12" fill="none"/>
-          <path d="M320 50 Q370 130 280 180 Q200 230 260 300" stroke="#6685f1" stroke-width="1" opacity="0.1" fill="none"/>
-          <path d="M-20 400 Q60 350 140 420 Q220 490 300 440" stroke="#6685f1" stroke-width="1" opacity="0.1" fill="none"/>
-          <circle cx="345" cy="155" r="4" fill="#6685f1" opacity="0.18"/>
-          <circle cx="18" cy="290" r="3" fill="#6685f1" opacity="0.14"/>
-          <circle cx="355" cy="420" r="5" fill="#6685f1" opacity="0.1"/>
-          <circle cx="30" cy="520" r="3.5" fill="#6685f1" opacity="0.12"/>
-        </svg>
-      </div>
-
-      <!-- Carte session -->
+<!-- Carte session -->
       <div class="s13-session-card">
         <div class="s13-course-icon" id="s13-icon">📷</div>
         <div class="s13-course-info">
@@ -3508,6 +3495,11 @@
     const count = document.querySelectorAll('#screen3 .tag.selected').length;
     document.getElementById('s3-count').textContent =
       count + ' catégorie' + (count > 1 ? 's' : '') + ' sélectionné' + (count > 1 ? 'es' : 'e');
+    const btn = document.getElementById('s3-continue-btn');
+    if (btn) {
+      btn.style.opacity = count > 0 ? '1' : '0.45';
+      btn.style.pointerEvents = count > 0 ? 'auto' : 'none';
+    }
   }
 
   function toggleTag(el) {
@@ -4667,6 +4659,20 @@
 
   /* ── QR code ── */
   function openQRCode() {
+    // Remplir la carte session avec les données de l'annonce courante
+    const item = listings.find(l => l.id === s10CurrentId);
+    const det  = item ? (listingDetails[item.id] || {}) : {};
+    const iconEl = document.getElementById('s13-icon');
+    if (iconEl && item) {
+      iconEl.innerHTML = `<img src="${item.img}" alt="${item.title}" style="width:100%;height:100%;object-fit:cover;border-radius:10px;" onerror="this.parentElement.textContent='📷'">`;
+    }
+    if (item) {
+      const courseEl = document.getElementById('s13-course');
+      const metaEl   = document.getElementById('s13-meta');
+      if (courseEl) courseEl.textContent = item.title;
+      if (metaEl)   metaEl.textContent   = `Avec ${item.author} · ${item.meta} · ${det.duration || '1h'}`;
+    }
+
     document.getElementById('s13-qr').innerHTML = generateFakeQR();
     let secs = 9 * 60 + 48;
     if (qrTimerInterval) clearInterval(qrTimerInterval);
@@ -4717,7 +4723,7 @@
       <rect width="${total}" height="${total}" fill="white"/>
       ${rects}
       <rect x="${(mid-1)*cell}" y="${(mid-1)*cell}" width="${3*cell}" height="${3*cell}" fill="white"/>
-      <text x="${mid*cell+cell/2}" y="${mid*cell+cell/2}" text-anchor="middle" dominant-baseline="middle" fill="#6685f1" font-size="20" font-weight="900" font-style="italic" font-family="Arial,sans-serif">f</text>
+      <image href="logo.png" x="${(mid-1)*cell+1}" y="${(mid-1)*cell+1}" width="${3*cell-2}" height="${3*cell-2}" preserveAspectRatio="xMidYMid meet"/>
     </svg>`;
   }
 </script>
