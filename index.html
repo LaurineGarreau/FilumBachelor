@@ -1277,7 +1277,9 @@
     .s15-stat-num.green { color:#2db87a; }
     .s15-stat-num.red   { color:#e84040; }
     .s15-stat-lbl { font-size:12px; color:#888; margin-top:2px; }
-    .s15-recharge-btn { width:100%; padding:16px; background:#6685f1; color:#fff; border:none; border-radius:14px; font-size:16px; font-weight:700; cursor:pointer; margin-bottom:22px; }
+    .s15-credit-btns  { display:flex; gap:10px; margin-bottom:22px; }
+    .s15-recharge-btn { flex:1; padding:14px; background:#6685f1; color:#fff; border:none; border-radius:14px; font-size:14px; font-weight:700; cursor:pointer; }
+    .s15-spend-btn    { flex:1; padding:14px; background:#fff; color:#6685f1; border:1.5px solid #6685f1; border-radius:14px; font-size:14px; font-weight:700; cursor:pointer; }
     .s15-month { font-size:15px; font-weight:700; color:#111; margin:16px 0 10px; }
     .s15-txn { display:flex; align-items:center; gap:12px; padding:10px 0; border-bottom:1px solid #f5f5f8; }
     .s15-txn-icon { width:44px; height:44px; border-radius:12px; object-fit:cover; flex-shrink:0; overflow:hidden; background:#f2f4fb; display:flex; align-items:center; justify-content:center; font-size:20px; }
@@ -1790,7 +1792,6 @@
     <!-- Back / Skip -->
     <div class="s3-nav">
       <button class="s3-back" onclick="goToScreen2()">‹</button>
-      <button class="s3-skip">Passer</button>
     </div>
 
     <!-- Progress bar: 2/6 done -->
@@ -1957,7 +1958,6 @@
 
     <div class="s3-nav">
       <button class="s3-back" onclick="goToScreen3()">‹</button>
-      <button class="s3-skip">Passer</button>
     </div>
 
     <div class="s3-progress progress-bar">
@@ -1977,7 +1977,7 @@
     </div>
 
     <div class="s4-bottom">
-      <button class="btn-primary" onclick="goToScreen5()">Continuer</button>
+      <button class="btn-primary" id="s4-continue-btn" onclick="goToScreen5()" style="opacity:0.45;pointer-events:none;">Continuer</button>
       <button class="btn-secondary" onclick="goToScreen3()">Retour</button>
     </div>
 
@@ -2014,7 +2014,7 @@
 
     <div class="s3-nav">
       <button class="s3-back" onclick="navigate('screen5','screen4')">‹</button>
-      <button class="s3-skip">Passer</button>
+      <button class="s3-skip" onclick="navigate('screen5','screen6')">Passer</button>
     </div>
 
     <div class="s3-progress progress-bar">
@@ -2103,7 +2103,7 @@
 
     <div class="s3-nav">
       <button class="s3-back" onclick="navigate('screen6','screen5')">‹</button>
-      <button class="s3-skip">Passer</button>
+      <button class="s3-skip" onclick="initScreen8()">Passer</button>
     </div>
 
     <div class="s3-progress progress-bar">
@@ -2117,8 +2117,14 @@
     <p class="s3-step-label">Étape 5 sur 6</p>
 
     <div class="s6-scroll">
+      <!-- Bandeau "lecture seule" -->
+      <div style="display:flex;align-items:center;gap:8px;background:#edf2fe;border-radius:12px;padding:10px 14px;margin-bottom:18px;">
+        <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><circle cx="8" cy="8" r="6.5" stroke="#6685f1" stroke-width="1.5"/><path d="M8 7v5" stroke="#6685f1" stroke-width="1.5" stroke-linecap="round"/><circle cx="8" cy="5" r="0.8" fill="#6685f1"/></svg>
+        <span style="font-size:13px;color:#5570e0;font-weight:500;">Juste à lire — rien à compléter ici.</span>
+      </div>
+
       <h2 class="s6-title">Le système<br>de crédits</h2>
-      <p class="s6-subtitle">Une économie locale basée sur l'échange de savoirs.</p>
+      <p class="s6-subtitle">Une économie basée sur le partage de savoirs entre membres.</p>
 
       <div class="s6-illustration">
         <span class="coin-plus" style="top:16px;left:52px">+</span>
@@ -2145,8 +2151,8 @@
           </svg>
         </div>
         <div class="s6-card-body">
-          <p class="s6-card-title">Gagner des crédits</p>
-          <p class="s6-card-desc">Transmettez vos savoirs et gagnez des crédits par session donnée.</p>
+          <p class="s6-card-title">Gagner des crédits ✦ L'essentiel</p>
+          <p class="s6-card-desc">En enseignant, vous gagnez des crédits. C'est la principale façon d'en obtenir : partager votre savoir avec d'autres membres.</p>
         </div>
       </div>
 
@@ -2157,12 +2163,12 @@
           </svg>
         </div>
         <div class="s6-card-body">
-          <p class="s6-card-title">Utiliser des crédits</p>
-          <p class="s6-card-desc">Réservez des cours pour apprendre. Chaque savoir a son propre coût.</p>
+          <p class="s6-card-title">Dépenser des crédits</p>
+          <p class="s6-card-desc">Vous pouvez utiliser vos crédits pour réserver des cours et apprendre. Chaque session a son propre tarif, fixé par l'enseignant.</p>
         </div>
       </div>
 
-      <div class="s6-card" style="margin-bottom:16px">
+      <div class="s6-card" style="margin-bottom:12px">
         <div class="s6-card-icon yellow">
           <svg width="22" height="22" viewBox="0 0 22 22" fill="none">
             <path d="M11 4v14M4 11h14" stroke="#f5a623" stroke-width="2.2" stroke-linecap="round"/>
@@ -2170,9 +2176,10 @@
         </div>
         <div class="s6-card-body">
           <p class="s6-card-title">Acheter des crédits</p>
-          <p class="s6-card-desc">Si vous n'avez plus de crédits, vous pouvez en acheter à tout moment.</p>
+          <p class="s6-card-desc">Si vous manquez de crédits, vous pouvez en acheter. Mais l'idéal reste d'en gagner en enseignant.</p>
         </div>
       </div>
+
     </div>
 
     <div class="s6-bottom">
@@ -3457,7 +3464,10 @@
           <div class="s15-stat"><div class="s15-stat-num red">-90</div><div class="s15-stat-lbl">Dépenses</div></div>
           <div class="s15-stat"><div class="s15-stat-num">14</div><div class="s15-stat-lbl">Sessions</div></div>
         </div>
-        <button class="s15-recharge-btn">Recharger mes crédits</button>
+        <div class="s15-credit-btns">
+          <button class="s15-recharge-btn">Recharger mes crédits</button>
+          <button class="s15-spend-btn" onclick="navigate('screen15','screen8');renderS8Grid()">Dépenser mes crédits</button>
+        </div>
         <!-- Transactions -->
         <p class="s15-month">Mars 2025</p>
         <div class="s15-txn">
@@ -3596,12 +3606,24 @@
 
     navigate('screen3', 'screen4');
     document.querySelector('#screen4 .s4-scroll').scrollTop = 0;
+    updateS4Continue();
   }
 
   function selectRole(btn) {
     btn.closest('.role-btns').querySelectorAll('.role-btn')
       .forEach(b => b.classList.remove('active'));
     btn.classList.add('active');
+    updateS4Continue();
+  }
+
+  function updateS4Continue() {
+    const cards   = document.querySelectorAll('#s4-cards .topic-card');
+    const allDone = [...cards].every(card => card.querySelector('.role-btn.active'));
+    const contBtn = document.getElementById('s4-continue-btn');
+    if (contBtn) {
+      contBtn.style.opacity       = allDone ? '1' : '0.45';
+      contBtn.style.pointerEvents = allDone ? 'auto' : 'none';
+    }
   }
 
   function s3AddCustomTag() {
