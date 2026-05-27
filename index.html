@@ -2705,6 +2705,9 @@
 
         <!-- Avis -->
         <p class="s10-section-title" id="s10-reviews-label"></p>
+        <div id="s10-reviews-empty" style="display:none;text-align:center;padding:24px 0 16px;">
+          <p style="font-size:14px;color:#aaa;line-height:1.6">Ce membre n'a pas encore<br>d'évaluation</p>
+        </div>
         <div class="s10-reviews-row" id="s10-reviews"></div>
         <button class="s10-show-all-btn" id="s10-show-all"></button>
       </div>
@@ -3457,56 +3460,19 @@
       <!-- ─ Onglet Crédits ─ -->
       <div class="s15-pane" id="s15-pane-credits">
         <p class="s15-solde-label">Solde actuel</p>
-        <p class="s15-solde-num">45</p>
+        <p class="s15-solde-num" id="s15-solde-num">60</p>
         <p class="s15-solde-unit">crédits disponibles</p>
         <div class="s15-stats-row">
-          <div class="s15-stat"><div class="s15-stat-num green">+135</div><div class="s15-stat-lbl">Gagnés</div></div>
-          <div class="s15-stat"><div class="s15-stat-num red">-90</div><div class="s15-stat-lbl">Dépenses</div></div>
-          <div class="s15-stat"><div class="s15-stat-num">14</div><div class="s15-stat-lbl">Sessions</div></div>
+          <div class="s15-stat"><div class="s15-stat-num green" id="s15-stat-gagnes">+60</div><div class="s15-stat-lbl">Gagnés</div></div>
+          <div class="s15-stat"><div class="s15-stat-num red" id="s15-stat-depenses">-0</div><div class="s15-stat-lbl">Dépenses</div></div>
+          <div class="s15-stat"><div class="s15-stat-num" id="s15-stat-sessions">0</div><div class="s15-stat-lbl">Sessions</div></div>
         </div>
         <div class="s15-credit-btns">
           <button class="s15-recharge-btn">Recharger mes crédits</button>
           <button class="s15-spend-btn" onclick="navigate('screen15','screen8');renderS8Grid()">Dépenser mes crédits</button>
         </div>
-        <!-- Transactions -->
-        <p class="s15-month">Mars 2025</p>
-        <div class="s15-txn">
-          <div class="s15-txn-icon"><img src="https://loremflickr.com/80/80/film,camera?lock=20" alt="" onerror="this.style.display='none'"></div>
-          <div class="s15-txn-body"><div class="s15-txn-title">Photographe argentique</div><div class="s15-txn-meta"><span class="s15-txn-role e">J'enseigne</span>Avec Marie L &nbsp;•&nbsp; 18 mars</div></div>
-          <div class="s15-txn-amount pos">+45</div>
-        </div>
-        <div class="s15-txn">
-          <div class="s15-txn-icon">⭐</div>
-          <div class="s15-txn-body"><div class="s15-txn-title">Bonus avis 5 étoiles</div><div class="s15-txn-meta">Avec Marie L &nbsp;•&nbsp; 18 mars</div></div>
-          <div class="s15-txn-amount pos">+05</div>
-        </div>
-        <div class="s15-txn">
-          <div class="s15-txn-icon"><img src="https://loremflickr.com/80/80/guitar,music?lock=21" alt="" onerror="this.style.display='none'"></div>
-          <div class="s15-txn-body"><div class="s15-txn-title">Guitare pour débutants</div><div class="s15-txn-meta"><span class="s15-txn-role a">J'apprends</span>Avec Thomas R &nbsp;•&nbsp; 12 mars</div></div>
-          <div class="s15-txn-amount neg">-45</div>
-        </div>
-        <p class="s15-month">Février 2025</p>
-        <div class="s15-txn">
-          <div class="s15-txn-icon"><img src="https://loremflickr.com/80/80/watercolor,painting?lock=22" alt="" onerror="this.style.display='none'"></div>
-          <div class="s15-txn-body"><div class="s15-txn-title">Initiation à l'aquarelle</div><div class="s15-txn-meta"><span class="s15-txn-role e">J'enseigne</span>Avec Julie B &nbsp;•&nbsp; 28 fév</div></div>
-          <div class="s15-txn-amount pos">+30</div>
-        </div>
-        <div class="s15-txn">
-          <div class="s15-txn-icon"><img src="https://loremflickr.com/80/80/knitting,wool?lock=23" alt="" onerror="this.style.display='none'"></div>
-          <div class="s15-txn-body"><div class="s15-txn-title">Tricot débutant</div><div class="s15-txn-meta"><span class="s15-txn-role a">J'apprends</span>Avec Camille M &nbsp;•&nbsp; 14 fév</div></div>
-          <div class="s15-txn-amount neg">-30</div>
-        </div>
-        <div class="s15-txn">
-          <div class="s15-txn-icon"><img src="https://loremflickr.com/80/80/photography,film?lock=24" alt="" onerror="this.style.display='none'"></div>
-          <div class="s15-txn-body"><div class="s15-txn-title">Photographie argentique</div><div class="s15-txn-meta"><span class="s15-txn-role e">J'enseigne</span>Avec Pierre A &nbsp;•&nbsp; 5 fév</div></div>
-          <div class="s15-txn-amount pos">+45</div>
-        </div>
-        <p class="s15-month">Janvier 2025</p>
-        <div class="s15-txn">
-          <div class="s15-txn-icon">🎁</div>
-          <div class="s15-txn-body"><div class="s15-txn-title">Crédits de bienvenue</div><div class="s15-txn-meta">Inscription &nbsp;•&nbsp; janv. 2025</div></div>
-          <div class="s15-txn-amount pos">+60</div>
-        </div>
+        <!-- Transactions dynamiques -->
+        <div id="s15-txn-list"></div>
       </div>
 
     </div>
@@ -3775,6 +3741,13 @@
 
   /* Intérêts utilisateur issus de l'onboarding */
   let userInterests = [];
+  let userCredits      = 60;
+  let userEarned       = 60;
+  let userSpent        = 0;
+  let userSessions     = 0;
+  let userTransactions = [
+    { type:'welcome', title:'Crédits de bienvenue', meta:'Inscription · mai 2025', month:'Mai 2025', amount:60 }
+  ];
   const tagToCat = {
     // Démarches & vie pro
     "Déclaration d'impôts":'business','Préparer un entretien':'business','Créer son CV':'business',
@@ -3814,6 +3787,7 @@
 
   function cardHTML(item) {
     const fav = s8Favs.has(item.id);
+    const hasRating = ((listingDetails[item.id] || {}).reviews || []).length > 0;
     return `<div class="s8-card" data-id="${item.id}" onclick="openListing(${item.id},'screen8')" style="cursor:pointer">
       <div class="s8-card-img" style="background:${item.grad}">
         ${imgTag(item)}
@@ -3822,13 +3796,14 @@
       <div class="s8-card-body">
         <p class="s8-card-title">${item.title}</p>
         <p class="s8-card-meta">Avec ${item.author} · ${item.credits} crédits</p>
-        <p class="s8-card-meta">${item.meta} · ★ ${item.rating}</p>
+        <p class="s8-card-meta">${item.meta}${hasRating ? ` · ★ ${item.rating}` : ''}</p>
       </div>
     </div>`;
   }
 
   function listItemHTML(item, from='screen9') {
     const fav = s8Favs.has(item.id);
+    const hasRating = ((listingDetails[item.id] || {}).reviews || []).length > 0;
     const shortDesc = item.desc.length > 75 ? item.desc.substring(0,75) + '...' : item.desc;
     return `<div class="s9-list-item" data-id="${item.id}" onclick="openListing(${item.id},'${from}')" style="cursor:pointer">
       <div class="s9-list-img" style="background:${item.grad}">
@@ -3837,7 +3812,7 @@
       </div>
       <div class="s9-list-body">
         <p class="s9-list-title">${item.title}</p>
-        <p class="s9-list-meta">Avec ${item.author} · ${item.credits} crédits · ${item.meta} · ★ ${item.rating}</p>
+        <p class="s9-list-meta">Avec ${item.author} · ${item.credits} crédits · ${item.meta}${hasRating ? ` · ★ ${item.rating}` : ''}</p>
         <p class="s9-list-desc">${shortDesc} <a onclick="event.stopPropagation()">Afficher plus</a></p>
       </div>
     </div><div class="s9-divider"></div>`;
@@ -4118,18 +4093,27 @@
     document.getElementById('s10-avatar').src = det.authorAvatar || `https://i.pravatar.cc/80?img=${id * 7 % 70}`;
     document.getElementById('s10-author-name').textContent = item.author;
     document.getElementById('s10-since').textContent = det.authorSince || '3 mois sur Filum';
-    document.getElementById('s10-instr-rating').innerHTML =
-      `<span style="color:#f5a623;">★ ${item.rating}/5</span> <span style="color:#888;font-size:12px;">(${det.reviewsTotal || 0} avis)</span>`;
     document.getElementById('s10-bio').textContent = det.authorBio || '';
 
     const reviews = det.reviews || [];
     const extra   = s10ExtraReviews[id] || [];
     const total   = det.reviewsTotal || reviews.length;
+    const hasReviews = reviews.length > 0;
+
+    const ratingEl = document.getElementById('s10-instr-rating');
+    if (ratingEl) ratingEl.innerHTML = hasReviews
+      ? `<span style="color:#f5a623;">★ ${item.rating}/5</span> <span style="color:#888;font-size:12px;">(${total} avis)</span>`
+      : '';
+
     document.getElementById('s10-reviews-label').textContent = `Évaluations des membres`;
-    document.getElementById('s10-reviews').innerHTML = reviews.map(s10ReviewCardHTML).join('');
+    const emptyEl = document.getElementById('s10-reviews-empty');
+    const reviewsEl = document.getElementById('s10-reviews');
+    if (emptyEl)   emptyEl.style.display   = hasReviews ? 'none' : '';
+    if (reviewsEl) reviewsEl.style.display = hasReviews ? '' : 'none';
+    if (reviewsEl) reviewsEl.innerHTML = reviews.map(s10ReviewCardHTML).join('');
     const showAllBtn = document.getElementById('s10-show-all');
     showAllBtn.textContent = `Afficher les ${total} commentaires`;
-    showAllBtn.style.display = extra.length ? '' : 'none';
+    showAllBtn.style.display = (hasReviews && extra.length) ? '' : 'none';
     showAllBtn.onclick = () => s10ShowAllReviews(id);
     document.getElementById('s10-price').textContent = `${item.credits} crédits par session`;
 
@@ -4257,6 +4241,47 @@
     document.querySelector('#screen15 .s15-scroll').scrollTop = 0;
   }
 
+  function renderCreditsPane() {
+    const soldeEl = document.getElementById('s15-solde-num');
+    const gagnEl  = document.getElementById('s15-stat-gagnes');
+    const depEl   = document.getElementById('s15-stat-depenses');
+    const sessEl  = document.getElementById('s15-stat-sessions');
+    if (soldeEl) soldeEl.textContent = userCredits;
+    if (gagnEl)  gagnEl.textContent  = `+${userEarned}`;
+    if (depEl)   depEl.textContent   = `-${userSpent}`;
+    if (sessEl)  sessEl.textContent  = userSessions;
+
+    const list = document.getElementById('s15-txn-list');
+    if (!list) return;
+    if (userTransactions.length === 0) {
+      list.innerHTML = `<p style="text-align:center;color:#aaa;padding:32px 0;font-size:14px;">Aucune transaction</p>`;
+      return;
+    }
+    const monthNames = ['Janvier','Février','Mars','Avril','Mai','Juin','Juillet','Août','Septembre','Octobre','Novembre','Décembre'];
+    let html = '';
+    let lastMonth = null;
+    userTransactions.forEach(txn => {
+      const m = txn.month || `${monthNames[new Date().getMonth()]} ${new Date().getFullYear()}`;
+      if (m !== lastMonth) { html += `<p class="s15-month">${m}</p>`; lastMonth = m; }
+      const icon = txn.img
+        ? `<img src="${txn.img}" alt="" onerror="this.style.display='none'">`
+        : txn.type === 'welcome' ? '🎁' : txn.type === 'bonus' ? '⭐' : '📚';
+      const roleTag = txn.type === 'learns'
+        ? `<span class="s15-txn-role a">J'apprends</span>`
+        : txn.type === 'teaches'
+        ? `<span class="s15-txn-role e">J'enseigne</span>`
+        : '';
+      const cls = txn.amount >= 0 ? 'pos' : 'neg';
+      const amt = txn.amount >= 0 ? `+${txn.amount}` : `${txn.amount}`;
+      html += `<div class="s15-txn">
+        <div class="s15-txn-icon">${icon}</div>
+        <div class="s15-txn-body"><div class="s15-txn-title">${txn.title}</div><div class="s15-txn-meta">${roleTag}${txn.meta}</div></div>
+        <div class="s15-txn-amount ${cls}">${amt}</div>
+      </div>`;
+    });
+    list.innerHTML = html;
+  }
+
   function openProfile() {
     document.querySelectorAll('.screen').forEach(s => s.classList.add('hidden'));
     document.getElementById('screen15').classList.remove('hidden');
@@ -4279,6 +4304,8 @@
     if (actionRow) actionRow.innerHTML = `
       <button class="s15-action-btn">Modifier le profil</button>
       <button class="s15-action-btn" style="background:#6685f1;color:#fff;">Partager le profil</button>`;
+
+    renderCreditsPane();
 
     s15Tab('annonces', document.querySelector('#s15-tabs .s15-tab'));
     renderProfileAnnounces();
@@ -4337,7 +4364,7 @@
     document.getElementById('s17-textarea').value = preMsg;
     document.getElementById('s17-sum-course').textContent  = item.title;
     document.getElementById('s17-sum-credits').textContent = `−${item.credits} cr.`;
-    document.getElementById('s17-sum-rest').textContent    = `Il vous restera ${Math.max(0, 45 - item.credits)} cr. après réservation`;
+    document.getElementById('s17-sum-rest').textContent    = `Il vous restera ${Math.max(0, userCredits - item.credits)} cr. après réservation`;
     s17SelectedSlot = 0;
     s17RenderSlots(item);
     navigate('screen10', 'screen17');
@@ -4420,9 +4447,24 @@
     if (slotEl)   slotEl.textContent   = `${sl.date} · ${sl.hours.split(' – ')[0]}`;
     if (credEl)   credEl.textContent   = `-${item.credits} cr.`;
 
+    // Déduire les crédits et enregistrer la transaction
+    userCredits  = Math.max(0, userCredits - item.credits);
+    userSpent   += item.credits;
+    userSessions += 1;
+    const _mn = ['Janvier','Février','Mars','Avril','Mai','Juin','Juillet','Août','Septembre','Octobre','Novembre','Décembre'];
+    const _d  = new Date();
+    userTransactions.unshift({
+      type: 'learns',
+      title: item.title,
+      meta: `Avec ${item.author} · ${sl.date.replace(/^[A-Za-zÀ-ÿ]+\.\s/,'')}`,
+      month: `${_mn[_d.getMonth()]} ${_d.getFullYear()}`,
+      amount: -item.credits,
+      img: item.img || null
+    });
+
     navigate('screen17', 'screen21');
 
-    // Après 3 sec : confirmer automatiquement
+    // Après 8 sec : confirmer automatiquement
     const convRef = convData[0]; // la conv vient d'être créée en tête
     setTimeout(() => {
       if (!convRef) return;
