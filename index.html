@@ -1427,6 +1427,153 @@
     .cancel-btn-keep    { width:100%; padding:15px; background:transparent; border:1.5px solid #dde0ee; border-radius:14px; font-size:15px; font-weight:500; color:#555; cursor:pointer; }
     .cancel-btn-close   { width:100%; padding:15px; background:#6685f1; color:#fff; border:none; border-radius:14px; font-size:15px; font-weight:700; cursor:pointer; }
 
+    /* ── BADGE GALLERY SCREEN ── */
+    #screen-badge-gallery { background:#f2f4fb; }
+    .sbg-header { display:flex; align-items:center; gap:12px; padding:16px 20px 12px; background:#fff; border-bottom:1px solid #f0f2f8; flex-shrink:0; }
+    .sbg-back { background:none; border:none; cursor:pointer; padding:4px; }
+    .sbg-title { font-size:18px; font-weight:800; color:#111; flex:1; }
+    .sbg-progress-wrap { padding:14px 20px 16px; background:#fff; border-bottom:1px solid #f0f2f8; flex-shrink:0; }
+    .sbg-progress-header { display:flex; justify-content:space-between; font-size:13px; color:#9898B0; margin-bottom:8px; }
+    .sbg-progress-track { height:6px; background:#E8E8F4; border-radius:3px; }
+    .sbg-progress-fill { height:100%; background:#6B7FD7; border-radius:3px; transition:width 0.4s; }
+    .sbg-scroll { flex:1; overflow-y:auto; padding:4px 20px 32px; }
+    .sbg-section-title { font-size:15px; font-weight:700; color:#1C1C2E; margin:18px 0 10px; }
+    .sbg-grid { display:grid; grid-template-columns:repeat(3,1fr); gap:10px; }
+
+    /* ── BADGE UNLOCK OVERLAY ── */
+    .badge-unlock-overlay {
+      position:absolute; inset:0; z-index:800; background:#fff;
+      display:none; flex-direction:column; align-items:center; justify-content:center;
+      padding:32px 28px; text-align:center;
+    }
+    .badge-unlock-overlay.show { display:flex; }
+    .buo-icon-wrap {
+      width:110px; height:110px; border-radius:28px; background:#EEF0FA;
+      display:flex; align-items:center; justify-content:center;
+      margin-bottom:24px; border:2px solid #6B7FD7;
+      animation:buo-pop 0.45s cubic-bezier(.22,.68,0,1.3);
+    }
+    @keyframes buo-pop { from{transform:scale(0.3);opacity:0} to{transform:scale(1);opacity:1} }
+    .buo-icon-wrap svg * { stroke:#6B7FD7; fill:none; stroke-width:2; stroke-linecap:round; stroke-linejoin:round; }
+    .buo-label { font-size:12px; font-weight:700; color:#6B7FD7; letter-spacing:0.8px; text-transform:uppercase; margin-bottom:8px; }
+    .buo-name { font-size:24px; font-weight:800; color:#1C1C2E; margin-bottom:10px; }
+    .buo-credits { font-size:20px; font-weight:700; color:#EF9F27; margin-bottom:6px; }
+    .buo-balance { font-size:13px; color:#9898B0; margin-bottom:36px; }
+    .buo-btn { width:100%; padding:17px; background:#6685f1; color:#fff; border:none; border-radius:16px; font-size:17px; font-weight:700; cursor:pointer; }
+
+    /* ── BADGE DETAIL MODAL ── */
+    .badge-detail-overlay {
+      position:absolute; inset:0; z-index:700;
+      background:rgba(0,0,0,0.35); display:none; align-items:flex-end;
+    }
+    .badge-detail-overlay.show { display:flex; }
+    .badge-detail-sheet {
+      width:100%; background:#fff; border-radius:24px 24px 0 0;
+      padding:20px 24px 40px; box-sizing:border-box;
+      animation:sheet-up 0.3s cubic-bezier(.22,.68,0,1.1);
+    }
+    @keyframes sheet-up { from{transform:translateY(100%)} to{transform:translateY(0)} }
+    .bds-handle { width:36px; height:4px; background:#e8eaf5; border-radius:2px; margin:0 auto 20px; }
+    .bds-icon-wrap { width:72px; height:72px; border-radius:18px; display:flex; align-items:center; justify-content:center; margin:0 auto 14px; }
+    .bds-icon-wrap.bc-earned { background:#EEF0FA; border:1.5px solid #6B7FD7; }
+    .bds-icon-wrap.bc-locked { background:#F4F4FB; border:1.5px solid #E8E8F4; }
+    .bds-icon-wrap.bc-earned svg * { stroke:#6B7FD7; fill:none; stroke-width:2; stroke-linecap:round; stroke-linejoin:round; }
+    .bds-icon-wrap.bc-locked svg * { stroke:#9898B0; fill:none; stroke-width:2; stroke-linecap:round; stroke-linejoin:round; }
+    .bds-name { font-size:18px; font-weight:800; color:#1C1C2E; text-align:center; margin-bottom:4px; }
+    .bds-cat  { font-size:12px; color:#9898B0; text-align:center; margin-bottom:12px; }
+    .bds-desc { font-size:14px; color:#555; text-align:center; margin-bottom:16px; line-height:1.55; }
+    .bds-status-earned { display:flex; align-items:center; justify-content:center; gap:6px; color:#16A34A; font-size:13px; font-weight:600; margin-bottom:14px; }
+    .bds-progress-section { margin-bottom:16px; }
+    .bds-prog-header { display:flex; justify-content:space-between; font-size:12px; color:#9898B0; margin-bottom:6px; }
+    .bds-prog-track { height:6px; background:#E8E8F4; border-radius:3px; }
+    .bds-prog-fill { height:100%; background:#6B7FD7; border-radius:3px; }
+    .bds-credits-tag { display:flex; align-items:center; justify-content:center; gap:4px; background:#FFF8EC; border:1px solid #EF9F27; border-radius:8px; padding:8px 16px; color:#EF9F27; font-size:13px; font-weight:700; }
+
+    /* ── BADGE TOAST ── */
+    .badge-toast {
+      position:absolute; top:54px; left:12px; right:12px; z-index:900;
+      background:#1C1C2E; border-radius:14px; padding:12px 14px;
+      display:flex; align-items:center; gap:12px;
+      transform:translateY(-120%); opacity:0;
+      transition:transform 0.35s cubic-bezier(.22,.68,0,1.2), opacity 0.3s;
+      box-shadow:0 4px 20px rgba(0,0,0,0.2);
+    }
+    .badge-toast.show { transform:translateY(0); opacity:1; }
+    .btoast-icon { width:38px; height:38px; border-radius:10px; background:#EEF0FA; display:flex; align-items:center; justify-content:center; flex-shrink:0; }
+    .btoast-icon svg * { stroke:#6B7FD7; fill:none; stroke-width:2; stroke-linecap:round; stroke-linejoin:round; }
+    .btoast-body { flex:1; }
+    .btoast-label { font-size:10px; color:#9898B0; font-weight:700; text-transform:uppercase; letter-spacing:0.5px; margin-bottom:2px; }
+    .btoast-name { font-size:13px; font-weight:700; color:#fff; margin-bottom:2px; }
+    .btoast-credits { font-size:12px; color:#EF9F27; font-weight:600; }
+
+    /* Badge dans l'historique crédits */
+    .s15-txn-badge-icon { width:44px; height:44px; border-radius:12px; background:#EEF0FA; border:1.5px solid #6B7FD7; display:flex; align-items:center; justify-content:center; flex-shrink:0; }
+    .s15-txn-badge-icon svg * { stroke:#6B7FD7; fill:none; stroke-width:2; stroke-linecap:round; stroke-linejoin:round; }
+
+    /* ── BADGE ROW ── */
+    .badge-row-wrap { margin: 4px 0 18px; }
+    .badge-row-header { display:flex; align-items:center; justify-content:space-between; margin-bottom:10px; }
+    .badge-row-title  { font-size:16px; font-weight:700; color:#1C1C2E; }
+    .badge-row-meta   { display:flex; align-items:center; gap:12px; }
+    .badge-row-count  { font-size:13px; color:#9898B0; }
+    .badge-row-voir   { font-size:13px; font-weight:600; color:#6B7FD7; cursor:pointer; }
+    .badge-row-scroll {
+      display:flex; gap:8px; overflow-x:auto; padding-bottom:6px;
+      -webkit-overflow-scrolling:touch; scrollbar-width:none;
+    }
+    .badge-row-scroll::-webkit-scrollbar { display:none; }
+    .badge-row-empty  { font-size:13px; color:#9898B0; padding:6px 2px; }
+
+    /* ── BADGE CHIPS ── */
+    .badge-chip {
+      display: inline-flex; align-items: center; gap: 5px;
+      border: 1.5px solid transparent; cursor: pointer; flex-shrink: 0;
+      transition: opacity 0.2s, transform 0.15s;
+      font-family: inherit;
+    }
+    .badge-chip:active { transform: scale(0.95); }
+
+    /* Petite — 24px */
+    .badge-chip-sm {
+      height: 24px; padding: 0 8px; border-radius: 6px;
+      font-size: 11px; font-weight: 600;
+    }
+    .badge-chip-sm .bc-icon { width: 12px; height: 12px; }
+
+    /* Moyenne — 36px */
+    .badge-chip-md {
+      height: 36px; padding: 0 12px; border-radius: 8px;
+      font-size: 12px; font-weight: 600; gap: 7px;
+    }
+    .badge-chip-md .bc-icon { width: 16px; height: 16px; }
+    .badge-chip-md .bc-credits { font-size: 11px; font-weight: 700; color: #EF9F27; margin-left: 2px; }
+
+    /* Grande — 100×90px */
+    .badge-chip-lg {
+      width: 100px; height: 90px; flex-direction: column;
+      justify-content: center; align-items: center;
+      border-radius: 14px; padding: 10px 8px;
+      font-size: 11px; font-weight: 600; text-align: center; gap: 5px;
+    }
+    .badge-chip-lg .bc-icon { width: 28px; height: 28px; }
+    .badge-chip-lg .bc-credits { font-size: 10px; font-weight: 700; color: #EF9F27; }
+    .badge-chip-lg .bc-cond   { font-size: 10px; color: #9898B0; line-height: 1.3; }
+
+    /* État gagné */
+    .badge-chip.bc-earned {
+      background: #EEF0FA; border-color: #6B7FD7; color: #1C1C2E;
+    }
+    /* État verrouillé */
+    .badge-chip.bc-locked {
+      background: #F4F4FB; border-color: #E8E8F4; color: #9898B0; opacity: 0.55;
+    }
+
+    /* Icône SVG interne */
+    .bc-icon { display: flex; align-items: center; justify-content: center; flex-shrink: 0; }
+    .bc-icon svg { width: 100%; height: 100%; display: block; overflow: visible; }
+    .bc-earned .bc-icon svg * { stroke: #6B7FD7; fill: none; stroke-width: 2; stroke-linecap: round; stroke-linejoin: round; }
+    .bc-locked .bc-icon svg * { stroke: #9898B0; fill: none; stroke-width: 2; stroke-linecap: round; stroke-linejoin: round; }
+
     /* ── TOAST NOTIFICATION ── */
     .toast-notif {
       position: absolute; top: 54px; left: 12px; right: 12px; z-index: 999;
@@ -1578,6 +1725,48 @@
     </div>
   </div>
 
+  <!-- Badge toast -->
+  <div class="badge-toast" id="badge-toast">
+    <div class="btoast-icon"><svg id="btoast-svg" width="20" height="20" viewBox="0 0 24 24"></svg></div>
+    <div class="btoast-body">
+      <p class="btoast-label">Badge débloqué</p>
+      <p class="btoast-name" id="btoast-name">—</p>
+      <p class="btoast-credits" id="btoast-credits">—</p>
+    </div>
+  </div>
+
+  <!-- Badge unlock overlay (plein écran) -->
+  <div class="badge-unlock-overlay" id="badge-unlock-overlay">
+    <div class="buo-icon-wrap">
+      <svg id="buo-svg" width="44" height="44" viewBox="0 0 24 24"></svg>
+    </div>
+    <p class="buo-label">Badge débloqué !</p>
+    <p class="buo-name" id="buo-name">—</p>
+    <p class="buo-credits" id="buo-credits">—</p>
+    <p class="buo-balance" id="buo-balance">—</p>
+    <button class="buo-btn" id="buo-btn">Super !</button>
+  </div>
+
+  <!-- Badge detail modal (bottom sheet) -->
+  <div class="badge-detail-overlay" id="badge-detail-overlay" onclick="closeBadgeDetail(event)">
+    <div class="badge-detail-sheet">
+      <div class="bds-handle"></div>
+      <div class="bds-icon-wrap bc-locked" id="bds-icon-wrap">
+        <svg id="bds-svg" width="32" height="32" viewBox="0 0 24 24"></svg>
+      </div>
+      <p class="bds-name" id="bds-name">—</p>
+      <p class="bds-cat"  id="bds-cat">—</p>
+      <p class="bds-desc" id="bds-desc">—</p>
+      <div id="bds-status"></div>
+      <div id="bds-progress-section" class="bds-progress-section" style="display:none">
+        <div class="bds-prog-header">
+          <span>Progression</span><span id="bds-prog-count">—</span>
+        </div>
+        <div class="bds-prog-track"><div class="bds-prog-fill" id="bds-prog-fill" style="width:0%"></div></div>
+      </div>
+      <div class="bds-credits-tag" id="bds-credits-tag">—</div>
+    </div>
+  </div>
 
   <!-- ══════════════ SCREEN 0 – HOME TÉLÉPHONE ══════════════ -->
   <div class="screen" id="screen0">
@@ -2696,6 +2885,7 @@
               <button class="s10-view-profile" style="margin-left:auto" onclick="openInstructorProfile()">Voir profil</button>
             </div>
             <p class="s10-since" id="s10-since"></p>
+            <div id="s10-instr-badges" style="display:none;flex-wrap:wrap;gap:5px;margin-top:6px;"></div>
           </div>
         </div>
         <p class="s10-instr-rating" id="s10-instr-rating"></p>
@@ -3233,6 +3423,27 @@
 
   </div>
 
+  <!-- ══════════════ SCREEN BADGE GALLERY ══════════════ -->
+  <div class="screen hidden" id="screen-badge-gallery">
+    <div class="sbg-header">
+      <button class="sbg-back" onclick="openProfile()">
+        <svg width="9" height="16" viewBox="0 0 9 16" fill="none"><path d="M8 1L1 8l7 7" stroke="#333" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      </button>
+      <span class="sbg-title">Mes badges</span>
+    </div>
+    <div class="sbg-progress-wrap">
+      <div class="sbg-progress-header">
+        <span id="sbg-prog-text">0 badge débloqué</span>
+        <span id="sbg-prog-total">/ 12</span>
+      </div>
+      <div class="sbg-progress-track">
+        <div class="sbg-progress-fill" id="sbg-prog-fill" style="width:0%"></div>
+      </div>
+    </div>
+    <div class="sbg-scroll" id="sbg-scroll"></div>
+    <div class="home-indicator"><div class="home-bar dark"></div></div>
+  </div>
+
   <!-- ══════════════ SCREEN 17 – RÉSERVER UNE SESSION ══════════════ -->
   <div class="screen hidden" id="screen17">
 
@@ -3405,6 +3616,9 @@
         <p class="s15-bio">Passionnée d'art et de photo argentique. J'aime transmettre ce que j'ai appris au fil des années.</p>
       </div>
 
+      <!-- Badges -->
+      <div id="s15-badge-row-container" style="padding:0 16px;display:none;"></div>
+
       <!-- Onglets -->
       <div class="s15-tabs" id="s15-tabs">
         <div class="s15-tab active" onclick="s15Tab('annonces',this)">Annonces</div>
@@ -3421,7 +3635,7 @@
 
       <!-- ─ Onglet Avis ─ -->
       <div class="s15-pane" id="s15-pane-avis">
-        <div class="s15-rating-overview">
+        <div id="s15-avis-overview" class="s15-rating-overview">
           <div class="s15-big-rating">
             <div class="s15-big-num">4.5</div>
             <div class="s15-stars">★★★★☆</div>
@@ -3436,14 +3650,17 @@
           </div>
         </div>
         <p class="s15-reviews-title">Évaluations des membres</p>
-        <div class="s15-reviews-row">
+        <div id="s15-avis-empty" style="display:none;text-align:center;padding:28px 0 16px;">
+          <p style="font-size:14px;color:#aaa;line-height:1.6">Ce membre n'a pas encore<br>d'évaluation</p>
+        </div>
+        <div id="s15-avis-reviews-row" class="s15-reviews-row">
           <div class="s15-review-card">
             <div style="display:flex;align-items:center;gap:8px;margin-bottom:6px">
               <img style="width:36px;height:36px;border-radius:50%;object-fit:cover" src="https://i.pravatar.cc/60?img=36" alt="">
-              <div><div style="font-size:13px;font-weight:700;color:#111">Hélène V. <span style="width:12px;height:12px;background:#6685f1;border-radius:50%;display:inline-flex;align-items:center;justify-content:center"><svg width="7" height="6" viewBox="0 0 7 6" fill="none"><path d="M1 3l1.5 1.5L6 1" stroke="white" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/></svg></span></div><div style="font-size:11px;color:#aaa">2 ans sur Filum</div></div>
+              <div><div style="font-size:13px;font-weight:700;color:#111">Hélène V.</div><div style="font-size:11px;color:#aaa">2 ans sur Filum</div></div>
             </div>
             <div style="font-size:12px;color:#f5a623;margin-bottom:6px">★ 3.6/5 <span style="color:#aaa">· il y a 2 semaines</span></div>
-            <p style="font-size:12px;color:#555;line-height:1.5">J'ai enfin compris comment régler mon vieil appareil argentique. <a style="color:#555;text-decoration:underline;cursor:pointer">Afficher plus</a></p>
+            <p style="font-size:12px;color:#555;line-height:1.5">J'ai enfin compris comment régler mon vieil appareil argentique.</p>
           </div>
           <div class="s15-review-card">
             <div style="display:flex;align-items:center;gap:8px;margin-bottom:6px">
@@ -3451,10 +3668,10 @@
               <div><div style="font-size:13px;font-weight:700;color:#111">Marc T.</div><div style="font-size:11px;color:#aaa">8 mois sur Filum</div></div>
             </div>
             <div style="font-size:12px;color:#f5a623;margin-bottom:6px">★ 5.0/5 <span style="color:#aaa">· il y a 1 mois</span></div>
-            <p style="font-size:12px;color:#555;line-height:1.5">J'adore la photo. <a style="color:#555;text-decoration:underline;cursor:pointer">Afficher plus</a></p>
+            <p style="font-size:12px;color:#555;line-height:1.5">J'adore la photo.</p>
           </div>
         </div>
-        <button class="s15-show-all">Afficher les 14 commentaires</button>
+        <button class="s15-show-all" id="s15-avis-show-all">Afficher les 14 commentaires</button>
       </div>
 
       <!-- ─ Onglet Crédits ─ -->
@@ -3748,6 +3965,387 @@
   let userTransactions = [
     { type:'welcome', title:'Crédits de bienvenue', meta:'Inscription · mai 2025', month:'Mai 2025', amount:60 }
   ];
+
+  // ── BADGE SYSTEM – Étape 1 : Constantes et définitions ──────────────────
+
+  const BADGE_DS = {
+    primary:       '#6B7FD7',
+    bgEarned:      '#EEF0FA',
+    bgLocked:      '#F4F4FB',
+    credits:       '#EF9F27',
+    validation:    '#16A34A',
+    textMain:      '#1C1C2E',
+    textSecondary: '#9898B0',
+    border:        '#E8E8F4',
+  };
+
+  const BADGE_CATEGORIES = {
+    experience: 'Expérience',
+    confiance:  'Confiance',
+    savoir:     'Savoir',
+    special:    'Spécial',
+  };
+
+  // Icônes Feather inline (paths SVG)
+  const BADGE_ICONS = {
+    star:         '<path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/>',
+    award:        '<circle cx="12" cy="8" r="6"/><path d="M15.477 12.89L17 22l-5-3-5 3 1.523-9.11"/>',
+    shield:       '<path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>',
+    'book-open':  '<path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"/><path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"/>',
+    'thumbs-up':  '<path d="M14 9V5a3 3 0 0 0-3-3l-4 9v11h11.28a2 2 0 0 0 2-1.7l1.38-9a2 2 0 0 0-2-2.3H14z"/><path d="M7 22H4a2 2 0 0 1-2-2v-7a2 2 0 0 1 2-2h3"/>',
+    heart:        '<path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/>',
+    zap:          '<polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/>',
+    target:       '<circle cx="12" cy="12" r="10"/><circle cx="12" cy="12" r="6"/><circle cx="12" cy="12" r="2"/>',
+    layers:       '<polygon points="12 2 2 7 12 12 22 7 12 2"/><polyline points="2 17 12 22 22 17"/><polyline points="2 12 12 17 22 12"/>',
+    globe:        '<circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/>',
+    repeat:       '<polyline points="17 1 21 5 17 9"/><path d="M3 11V9a4 4 0 0 1 4-4h14"/><polyline points="7 23 3 19 7 15"/><path d="M21 13v2a4 4 0 0 1-4 4H3"/>',
+    users:        '<path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/>',
+    lock:         '<rect x="3" y="11" width="18" height="11" rx="2" ry="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/>',
+  };
+
+  const BADGES = [
+    // ── Expérience
+    { id:'first_session',     name:'Première session',     category:'experience', desc:'1 session donnée',                         credits:10, icon:'star',
+      condition: s => s.sessionsTaught >= 1,
+      progress:  s => ({ current: Math.min(s.sessionsTaught, 1),  total: 1  }) },
+    { id:'confirmed_teacher', name:'Enseignant confirmé',  category:'experience', desc:'5 sessions données',                       credits:25, icon:'award',
+      condition: s => s.sessionsTaught >= 5,
+      progress:  s => ({ current: Math.min(s.sessionsTaught, 5),  total: 5  }) },
+    { id:'ambassador',        name:'Ambassadeur Filum',    category:'experience', desc:'20 sessions données',                      credits:60, icon:'shield',
+      condition: s => s.sessionsTaught >= 20,
+      progress:  s => ({ current: Math.min(s.sessionsTaught, 20), total: 20 }) },
+    { id:'loyal_learner',     name:'Fidèle apprenant',     category:'experience', desc:'5 sessions réservées',                     credits:15, icon:'book-open',
+      condition: s => s.sessionsBooked >= 5,
+      progress:  s => ({ current: Math.min(s.sessionsBooked, 5),  total: 5  }) },
+    // ── Confiance
+    { id:'well_rated',        name:'Bien noté',            category:'confiance',  desc:'Moyenne 4+ sur 5 avis minimum',            credits:20, icon:'thumbs-up',
+      condition: s => s.reviewCount >= 5  && s.avgRating >= 4.0,
+      progress:  s => ({ current: Math.min(s.reviewCount, 5),     total: 5  }) },
+    { id:'highly_appreciated',name:'Très apprécié',        category:'confiance',  desc:'Moyenne 4.5+ sur 10 avis',                 credits:40, icon:'heart',
+      condition: s => s.reviewCount >= 10 && s.avgRating >= 4.5,
+      progress:  s => ({ current: Math.min(s.reviewCount, 10),    total: 10 }) },
+    { id:'crush',             name:'Coup de cœur',         category:'confiance',  desc:'3 avis 5 étoiles consécutifs',             credits:30, icon:'zap',
+      condition: s => s.consecutive5Stars >= 3,
+      progress:  s => ({ current: Math.min(s.consecutive5Stars, 3), total: 3 }) },
+    // ── Savoir
+    { id:'specialist',        name:'Spécialiste',          category:'savoir',     desc:'3 sessions dans la même catégorie',        credits:15, icon:'target',
+      condition: s => Math.max(0, ...Object.values(s.sessionsByCategory)) >= 3,
+      progress:  s => ({ current: Math.min(Math.max(0, ...Object.values(s.sessionsByCategory)), 3), total: 3 }) },
+    { id:'versatile',         name:'Polyvalent',           category:'savoir',     desc:'Sessions dans 3 catégories différentes',   credits:20, icon:'layers',
+      condition: s => Object.keys(s.sessionsByCategory).length >= 3,
+      progress:  s => ({ current: Math.min(Object.keys(s.sessionsByCategory).length, 3), total: 3 }) },
+    { id:'knowledge_master',  name:'Maître du savoir',     category:'savoir',     desc:'Sessions dans 5 catégories différentes',   credits:40, icon:'globe',
+      condition: s => Object.keys(s.sessionsByCategory).length >= 5,
+      progress:  s => ({ current: Math.min(Object.keys(s.sessionsByCategory).length, 5), total: 5 }) },
+    // ── Spécial
+    { id:'knowledge_passer',  name:'Passeur de savoir',    category:'special',    desc:'1er échange de savoirs accepté',           credits:10, icon:'repeat',
+      condition: s => s.exchangesCompleted >= 1,
+      progress:  s => ({ current: Math.min(s.exchangesCompleted, 1), total: 1 }) },
+    { id:'community',         name:'Communauté',           category:'special',    desc:'3 échanges de savoirs réalisés',           credits:30, icon:'users',
+      condition: s => s.exchangesCompleted >= 3,
+      progress:  s => ({ current: Math.min(s.exchangesCompleted, 3), total: 3 }) },
+  ];
+
+  // État mutable des badges de l'utilisateur
+  let userBadgeState = {
+    earned: {},            // { badgeId: { earnedAt: string, creditsReceived: number } }
+    pendingUnlock: [],     // [ badgeId ] — file d'attente pour affichage
+    stats: {
+      sessionsTaught:      0,
+      sessionsBooked:      0,
+      reviewCount:         0,
+      avgRating:           0,
+      consecutive5Stars:   0,
+      sessionsByCategory:  {},  // { catId: count }
+      exchangesCompleted:  0,
+    },
+  };
+
+  // ── Fin Étape 1 ─────────────────────────────────────────────────────────
+
+  // ── BADGE SYSTEM – Étape 2 : Vérification et attribution ────────────────
+
+  function checkBadges() {
+    BADGES.forEach(badge => {
+      if (userBadgeState.earned[badge.id]) return;
+      if (badge.condition(userBadgeState.stats)) _unlockBadge(badge.id);
+    });
+  }
+
+  function _unlockBadge(badgeId) {
+    const badge = BADGES.find(b => b.id === badgeId);
+    if (!badge || userBadgeState.earned[badgeId]) return;
+
+    const now = new Date();
+    const months = ['Janvier','Février','Mars','Avril','Mai','Juin','Juillet','Août','Septembre','Octobre','Novembre','Décembre'];
+    const monthLabel = `${months[now.getMonth()]} ${now.getFullYear()}`;
+
+    // Marquer comme gagné
+    userBadgeState.earned[badgeId] = {
+      earnedAt:        now.toISOString(),
+      month:           monthLabel,
+      creditsReceived: badge.credits,
+    };
+
+    // Crédits
+    userCredits += badge.credits;
+    userEarned  += badge.credits;
+
+    // Transaction dans l'historique
+    userTransactions.unshift({
+      type:    'badge',
+      badgeId: badgeId,
+      title:   `Badge · ${badge.name}`,
+      meta:    badge.desc,
+      month:   monthLabel,
+      amount:  badge.credits,
+      img:     null,
+    });
+
+    // Mise en file pour notification
+    userBadgeState.pendingUnlock.push(badgeId);
+    _processBadgeQueue();
+  }
+
+  let _badgeQueueBusy = false;
+  function _processBadgeQueue() {
+    if (_badgeQueueBusy || userBadgeState.pendingUnlock.length === 0) return;
+    _badgeQueueBusy = true;
+    const id = userBadgeState.pendingUnlock.shift();
+    showBadgeToast(id); // implémenté étape 8 — stub ci-dessous
+    setTimeout(() => { _badgeQueueBusy = false; _processBadgeQueue(); }, 5000);
+  }
+
+  // ── BADGE SYSTEM – Étape 8 : BadgeToast ─────────────────────────────────
+  function showBadgeToast(badgeId) {
+    const badge = BADGES.find(b => b.id === badgeId);
+    if (!badge) return;
+    const toast = document.getElementById('badge-toast');
+    const svg   = document.getElementById('btoast-svg');
+    const nm    = document.getElementById('btoast-name');
+    const cr    = document.getElementById('btoast-credits');
+    if (svg) svg.innerHTML = BADGE_ICONS[badge.icon] || '';
+    if (nm)  nm.textContent = badge.name;
+    if (cr)  cr.textContent = `+${badge.credits} crédits`;
+    if (toast) { toast.classList.add('show'); setTimeout(() => toast.classList.remove('show'), 4000); }
+  }
+
+  // ── BADGE SYSTEM – Étape 7 : BadgeUnlockScreen ───────────────────────────
+  function showBadgeUnlockScreen(badgeId, callback) {
+    const badge = BADGES.find(b => b.id === badgeId);
+    if (!badge) { if (callback) callback(); return; }
+    const overlay = document.getElementById('badge-unlock-overlay');
+    const svg = document.getElementById('buo-svg');
+    const nm  = document.getElementById('buo-name');
+    const cr  = document.getElementById('buo-credits');
+    const bal = document.getElementById('buo-balance');
+    const btn = document.getElementById('buo-btn');
+    if (svg) svg.innerHTML = BADGE_ICONS[badge.icon] || '';
+    if (nm)  nm.textContent  = badge.name;
+    if (cr)  cr.textContent  = `+${badge.credits} crédits`;
+    if (bal) bal.textContent = `Nouveau solde : ${userCredits} crédits`;
+    if (btn) btn.onclick = () => { hideBadgeUnlockScreen(); if (callback) callback(); };
+    if (overlay) overlay.classList.add('show');
+  }
+
+  function hideBadgeUnlockScreen() {
+    const o = document.getElementById('badge-unlock-overlay');
+    if (o) o.classList.remove('show');
+  }
+
+  // Mise à jour des stats + vérification automatique
+  function updateBadgeStats(delta) {
+    const s = userBadgeState.stats;
+    if (delta.sessionsTaught)     s.sessionsTaught     += delta.sessionsTaught;
+    if (delta.sessionsBooked)     s.sessionsBooked     += delta.sessionsBooked;
+    if (delta.exchangesCompleted) s.exchangesCompleted += delta.exchangesCompleted;
+    if (delta.category) {
+      s.sessionsByCategory[delta.category] = (s.sessionsByCategory[delta.category] || 0) + 1;
+    }
+    if (delta.rating !== undefined) {
+      const prevTotal = s.avgRating * s.reviewCount;
+      s.reviewCount  += 1;
+      s.avgRating     = (prevTotal + delta.rating) / s.reviewCount;
+      s.consecutive5Stars = (delta.rating === 5) ? s.consecutive5Stars + 1 : 0;
+    }
+    checkBadges();
+  }
+
+  // ── Points d'entrée publics ──────────────────────────────────────────────
+
+  function onSessionBooked(category) {
+    updateBadgeStats({ sessionsBooked: 1, category: category || 'autre' });
+  }
+
+  function onSessionTaught(category) {
+    updateBadgeStats({ sessionsTaught: 1, category: category || 'autre' });
+  }
+
+  function onReviewReceived(rating) {
+    updateBadgeStats({ rating });
+  }
+
+  function onExchangeCompleted() {
+    updateBadgeStats({ exchangesCompleted: 1 });
+  }
+
+  // ── BADGE SYSTEM – Étape 6 : Badges sur la fiche annonce ────────────────
+
+  function getListingBadgeIds(det) {
+    const reviews = det.reviews || [];
+    const total   = det.reviewsTotal || reviews.length;
+    const avg     = reviews.length ? reviews.reduce((s, r) => s + r.rating, 0) / reviews.length : 0;
+    const ids     = [];
+    // Badge d'expérience le plus élevé
+    if      (total >= 20) ids.push('ambassador');
+    else if (total >= 5)  ids.push('confirmed_teacher');
+    else if (total >= 1)  ids.push('first_session');
+    // Badge de confiance (2e badge si applicable)
+    if      (total >= 10 && avg >= 4.5) ids.push('highly_appreciated');
+    else if (total >= 5  && avg >= 4.0) ids.push('well_rated');
+    return ids.slice(0, 2);
+  }
+
+  // ── Fin Étape 2+6 ────────────────────────────────────────────────────────
+
+  // ── BADGE SYSTEM – Étape 3 : Composant BadgeChip ─────────────────────────
+
+  function badgeChipHTML(badgeId, size, forceEarned) {
+    size = size || 'md';
+    const badge = BADGES.find(b => b.id === badgeId);
+    if (!badge) return '';
+    const isEarned  = (forceEarned !== undefined) ? !!forceEarned : !!userBadgeState.earned[badgeId];
+    const sizeClass = { sm:'badge-chip-sm', md:'badge-chip-md', lg:'badge-chip-lg' }[size] || 'badge-chip-md';
+    const stateClass = isEarned ? 'bc-earned' : 'bc-locked';
+    const iconPath   = isEarned ? (BADGE_ICONS[badge.icon] || '') : BADGE_ICONS.lock;
+    const iconHTML   = `<span class="bc-icon"><svg viewBox="0 0 24 24">${iconPath}</svg></span>`;
+
+    if (size === 'sm') {
+      return `<div class="badge-chip ${sizeClass} ${stateClass}" onclick="openBadgeDetail('${badgeId}')" title="${badge.name}">${iconHTML}<span class="bc-name">${badge.name}</span></div>`;
+    }
+
+    if (size === 'lg') {
+      const bottom = isEarned
+        ? `<span class="bc-credits">+${badge.credits} cr.</span>`
+        : `<span class="bc-cond">${badge.desc}</span>`;
+      return `<div class="badge-chip ${sizeClass} ${stateClass}" onclick="openBadgeDetail('${badgeId}')">${iconHTML}<span class="bc-name">${badge.name}</span>${bottom}</div>`;
+    }
+
+    // md (défaut)
+    const creditsTag = isEarned ? `<span class="bc-credits">+${badge.credits} cr.</span>` : '';
+    return `<div class="badge-chip ${sizeClass} ${stateClass}" onclick="openBadgeDetail('${badgeId}')">${iconHTML}<span class="bc-name">${badge.name}</span>${creditsTag}</div>`;
+  }
+
+  // ── BADGE SYSTEM – Étape 9 : BadgeDetailModal ───────────────────────────
+
+  function openBadgeDetail(badgeId) {
+    const badge = BADGES.find(b => b.id === badgeId);
+    if (!badge) return;
+    const isEarned  = !!userBadgeState.earned[badgeId];
+    const stateClass = isEarned ? 'bc-earned' : 'bc-locked';
+    const iconPath   = isEarned ? (BADGE_ICONS[badge.icon] || '') : BADGE_ICONS.lock;
+
+    const _s = id => document.getElementById(id);
+    const iconWrap = _s('bds-icon-wrap');
+    if (iconWrap) iconWrap.className = `bds-icon-wrap ${stateClass}`;
+    const svg = _s('bds-svg'); if (svg) svg.innerHTML = iconPath;
+    const nm  = _s('bds-name'); if (nm)  nm.textContent  = badge.name;
+    const ct  = _s('bds-cat');  if (ct)  ct.textContent  = BADGE_CATEGORIES[badge.category] || badge.category;
+    const ds  = _s('bds-desc'); if (ds)  ds.textContent  = badge.desc;
+    const crd = _s('bds-credits-tag'); if (crd) crd.textContent = `+${badge.credits} cr. à débloquer`;
+
+    const statusEl = _s('bds-status');
+    const progSec  = _s('bds-progress-section');
+    const progFill = _s('bds-prog-fill');
+    const progCnt  = _s('bds-prog-count');
+
+    if (isEarned) {
+      const earnedAt = userBadgeState.earned[badgeId]?.earnedAt;
+      const dateStr  = earnedAt ? new Date(earnedAt).toLocaleDateString('fr-FR', {day:'numeric',month:'long',year:'numeric'}) : '';
+      if (statusEl) statusEl.innerHTML = `<div class="bds-status-earned"><svg width="16" height="16" viewBox="0 0 24 24"><path d="M20 6L9 17l-5-5" stroke="#16A34A" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" fill="none"/></svg>Obtenu le ${dateStr}</div>`;
+      if (progSec) progSec.style.display = 'none';
+    } else {
+      if (statusEl) statusEl.innerHTML = '';
+      const prog = badge.progress(userBadgeState.stats);
+      const pct  = Math.round((prog.current / prog.total) * 100);
+      if (progCnt)  progCnt.textContent  = `${prog.current} / ${prog.total}`;
+      if (progFill) progFill.style.width = `${pct}%`;
+      if (progSec)  progSec.style.display = '';
+    }
+
+    const overlay = _s('badge-detail-overlay');
+    if (overlay) overlay.classList.add('show');
+  }
+
+  function closeBadgeDetail(e) {
+    if (e && e.target !== document.getElementById('badge-detail-overlay')) return;
+    const o = document.getElementById('badge-detail-overlay');
+    if (o) o.classList.remove('show');
+  }
+
+  // ── Fin Étape 3+9 ────────────────────────────────────────────────────────
+
+  // ── BADGE SYSTEM – Étape 4 : Composant BadgeRow ──────────────────────────
+
+  function badgeRowHTML() {
+    const earnedCount = Object.keys(userBadgeState.earned).length;
+    const total       = BADGES.length;
+
+    // Gagnés d'abord, puis verrouillés — max 8 dans la preview
+    const earnedIds = BADGES.filter(b =>  userBadgeState.earned[b.id]).map(b => b.id);
+    const lockedIds = BADGES.filter(b => !userBadgeState.earned[b.id]).map(b => b.id);
+    const displayIds = [...earnedIds, ...lockedIds].slice(0, 8);
+
+    const chips = displayIds.length
+      ? displayIds.map(id => badgeChipHTML(id, 'md')).join('')
+      : `<span class="badge-row-empty">Complète des sessions pour débloquer des badges</span>`;
+
+    return `
+      <div class="badge-row-wrap">
+        <div class="badge-row-header">
+          <span class="badge-row-title">Badges</span>
+          <div class="badge-row-meta">
+            <span class="badge-row-count">${earnedCount} / ${total}</span>
+            <span class="badge-row-voir" onclick="openBadgeGallery()">Voir tout</span>
+          </div>
+        </div>
+        <div class="badge-row-scroll">${chips}</div>
+      </div>`;
+  }
+
+  // ── BADGE SYSTEM – Étape 10 : BadgeGalleryScreen ────────────────────────
+
+  function openBadgeGallery() {
+    renderBadgeGallery();
+    document.querySelectorAll('.screen').forEach(s => s.classList.add('hidden'));
+    document.getElementById('screen-badge-gallery').classList.remove('hidden');
+  }
+
+  function renderBadgeGallery() {
+    const earnedCount = Object.keys(userBadgeState.earned).length;
+    const total = BADGES.length;
+    const pct   = Math.round((earnedCount / total) * 100);
+    const progText = document.getElementById('sbg-prog-text');
+    const progFill = document.getElementById('sbg-prog-fill');
+    const progTot  = document.getElementById('sbg-prog-total');
+    if (progText) progText.textContent = `${earnedCount} badge${earnedCount !== 1 ? 's' : ''} débloqué${earnedCount !== 1 ? 's' : ''}`;
+    if (progFill) progFill.style.width = `${pct}%`;
+    if (progTot)  progTot.textContent  = `/ ${total}`;
+
+    const scroll = document.getElementById('sbg-scroll');
+    if (!scroll) return;
+    let html = '';
+    Object.entries(BADGE_CATEGORIES).forEach(([key, label]) => {
+      const catBadges = BADGES.filter(b => b.category === key);
+      html += `<p class="sbg-section-title">${label}</p><div class="sbg-grid">`;
+      catBadges.forEach(b => { html += badgeChipHTML(b.id, 'lg'); });
+      html += `</div>`;
+    });
+    scroll.innerHTML = html;
+  }
+
+  // ── Fin Étape 4+10 ───────────────────────────────────────────────────────
+
   const tagToCat = {
     // Démarches & vie pro
     "Déclaration d'impôts":'business','Préparer un entretien':'business','Créer son CV':'business',
@@ -4095,6 +4693,14 @@
     document.getElementById('s10-since').textContent = det.authorSince || '3 mois sur Filum';
     document.getElementById('s10-bio').textContent = det.authorBio || '';
 
+    // Étape 6 — badges instructeur
+    const badgeIds = getListingBadgeIds(det);
+    const badgeEl  = document.getElementById('s10-instr-badges');
+    if (badgeEl) {
+      badgeEl.style.display = badgeIds.length ? 'flex' : 'none';
+      badgeEl.innerHTML = badgeIds.map(bid => badgeChipHTML(bid, 'sm', true)).join('');
+    }
+
     const reviews = det.reviews || [];
     const extra   = s10ExtraReviews[id] || [];
     const total   = det.reviewsTotal || reviews.length;
@@ -4233,6 +4839,8 @@
       <button class="s15-action-btn" onclick="openMessages()" style="background:#6685f1;color:#fff;border-color:#6685f1;">Message</button>
       <button class="s15-action-btn" style="color:#6685f1;">Partager le profil</button>`;
 
+    renderS15BadgeRow(false);
+
     // Afficher screen15 sans réinitialiser
     document.querySelectorAll('.screen').forEach(s => s.classList.add('hidden'));
     document.getElementById('screen15').classList.remove('hidden');
@@ -4263,9 +4871,16 @@
     userTransactions.forEach(txn => {
       const m = txn.month || `${monthNames[new Date().getMonth()]} ${new Date().getFullYear()}`;
       if (m !== lastMonth) { html += `<p class="s15-month">${m}</p>`; lastMonth = m; }
-      const icon = txn.img
-        ? `<img src="${txn.img}" alt="" onerror="this.style.display='none'">`
-        : txn.type === 'welcome' ? '🎁' : txn.type === 'bonus' ? '⭐' : '📚';
+      let icon;
+      if (txn.type === 'badge') {
+        const b = BADGES.find(b => b.id === txn.badgeId);
+        const p = b ? (BADGE_ICONS[b.icon] || BADGE_ICONS.award) : BADGE_ICONS.award;
+        icon = `<div class="s15-txn-badge-icon"><svg width="22" height="22" viewBox="0 0 24 24">${p}</svg></div>`;
+      } else if (txn.img) {
+        icon = `<img src="${txn.img}" alt="" onerror="this.style.display='none'">`;
+      } else {
+        icon = txn.type === 'welcome' ? '🎁' : txn.type === 'bonus' ? '⭐' : '📚';
+      }
       const roleTag = txn.type === 'learns'
         ? `<span class="s15-txn-role a">J'apprends</span>`
         : txn.type === 'teaches'
@@ -4306,10 +4921,31 @@
       <button class="s15-action-btn" style="background:#6685f1;color:#fff;">Partager le profil</button>`;
 
     renderCreditsPane();
+    renderAvisPane(false);
+    renderS15BadgeRow(true);
 
     s15Tab('annonces', document.querySelector('#s15-tabs .s15-tab'));
     renderProfileAnnounces();
     document.querySelector('#screen15 .s15-scroll').scrollTop = 0;
+  }
+
+  function renderAvisPane(hasReviews) {
+    const overview   = document.getElementById('s15-avis-overview');
+    const reviewsRow = document.getElementById('s15-avis-reviews-row');
+    const showAll    = document.getElementById('s15-avis-show-all');
+    const empty      = document.getElementById('s15-avis-empty');
+    if (overview)   overview.style.display   = hasReviews ? '' : 'none';
+    if (reviewsRow) reviewsRow.style.display = hasReviews ? '' : 'none';
+    if (showAll)    showAll.style.display    = hasReviews ? '' : 'none';
+    if (empty)      empty.style.display      = hasReviews ? 'none' : '';
+  }
+
+  function renderS15BadgeRow(show) {
+    const el = document.getElementById('s15-badge-row-container');
+    if (!el) return;
+    if (!show) { el.style.display = 'none'; return; }
+    el.style.display = '';
+    el.innerHTML = badgeRowHTML();
   }
 
   function renderProfileAnnounces() {
@@ -4451,6 +5087,7 @@
     userCredits  = Math.max(0, userCredits - item.credits);
     userSpent   += item.credits;
     userSessions += 1;
+    onSessionBooked(item.cats ? item.cats[0] : 'autre');
     const _mn = ['Janvier','Février','Mars','Avril','Mai','Juin','Juillet','Août','Septembre','Octobre','Novembre','Décembre'];
     const _d  = new Date();
     userTransactions.unshift({
@@ -4480,6 +5117,9 @@
         `${convRef.name.split(' ')[0]} a accepté ta session !`,
         `${convRef.course} · ${convRef.sessionDay} ${convRef.sessionMonth}`
       );
+
+      // Étape 12 — session réservée confirmée → vérifier badges apprenant
+      // (onSessionBooked déjà appelé à l'envoi ; ici on ne re-déclenche pas)
     }, 8000);
   }
 
@@ -4652,6 +5292,9 @@
       profileBtn.textContent = `Voir le profil de ${reviewedName}`;
       profileBtn.onclick = () => openConvProfile(conv);
     }
+
+    // Étape 12 — déclencher la vérification badges après un avis
+    onReviewReceived(rating);
 
     navigate('screen19', 'screen20');
   }
