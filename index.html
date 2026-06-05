@@ -109,6 +109,17 @@
     .s0-dock { background:rgba(255,255,255,0.52); backdrop-filter:blur(12px); border-radius:28px; margin:12px 16px 0; padding:14px 20px; display:flex; justify-content:space-around; align-items:center; flex-shrink:0; }
     .s0-dock-icon { width:60px; height:60px; border-radius:15px; display:flex; align-items:center; justify-content:center; overflow:hidden; box-shadow:0 2px 8px rgba(0,0,0,0.1); cursor:pointer; }
 
+    /* ── SCREEN 2B – Nom / Prénom ── */
+    #screen2b { background: #f2f4fb; }
+    .s2b-content { flex:1; display:flex; flex-direction:column; justify-content:center; padding:0 28px; }
+    .s2b-emoji { font-size:52px; margin-bottom:20px; }
+    .s2b-title { font-size:26px; font-weight:800; color:#111; letter-spacing:-0.5px; margin-bottom:8px; }
+    .s2b-subtitle { font-size:15px; color:#888; line-height:1.5; margin-bottom:32px; }
+    .s2b-label { font-size:14px; font-weight:600; color:#333; margin-bottom:8px; }
+    .s2b-input { width:100%; padding:15px 16px; border:1.5px solid #e8eaf5; border-radius:14px; font-size:15px; color:#111; font-family:inherit; outline:none; background:#fff; box-sizing:border-box; margin-bottom:18px; }
+    .s2b-input:focus { border-color:#6685f1; box-shadow:0 0 0 3px rgba(102,133,241,0.1); }
+    .s2b-bottom { padding:0 28px 32px; display:flex; flex-direction:column; gap:10px; }
+
     /* ── SCREEN 2 ── */
     #screen2 { background: #f2f4fb; }
 
@@ -1948,13 +1959,59 @@
     <div class="s2-bottom">
       <h2 class="s2-title">Bienvenue sur Filum</h2>
       <p class="s2-desc">Apprenez et transmettez des savoirs près de chez vous. Créez du lien et valorisez vos compétences au sein de votre communauté locale.</p>
-      <button class="btn-primary" onclick="goToScreen3()">Commencer</button>
+      <button class="btn-primary" onclick="navigate('screen2','screen2b')">Commencer</button>
       <button class="btn-secondary" onclick="navigate('screen2','screen16')">Se connecter</button>
     </div>
 
     <div class="home-indicator">
       <div class="home-bar dark"></div>
     </div>
+
+  </div>
+
+  <!-- ══════════════ SCREEN 2B – NOM / PRÉNOM ══════════════ -->
+  <div class="screen hidden" id="screen2b">
+
+    <div class="s2-status">
+      <span class="time">9:41</span>
+      <div class="icons">
+        <svg width="17" height="12" viewBox="0 0 17 12"><rect x="0" y="7" width="3" height="5" rx="0.5"/><rect x="4" y="5" width="3" height="7" rx="0.5"/><rect x="8" y="3" width="3" height="9" rx="0.5"/><rect x="12" y="0" width="3" height="12" rx="0.5"/></svg>
+        <svg width="16" height="12" viewBox="0 0 16 12"><path d="M8 9.5a1.5 1.5 0 1 1 0 3 1.5 1.5 0 0 1 0-3z"/><path d="M8 6.2a5.1 5.1 0 0 1 3.6 1.5l1.4-1.4A7.1 7.1 0 0 0 8 4a7.1 7.1 0 0 0-5 2.3l1.4 1.4A5.1 5.1 0 0 1 8 6.2z"/><path d="M8 2.9a8.5 8.5 0 0 1 6 2.5L15.4 4A10.5 10.5 0 0 0 8 0.9a10.5 10.5 0 0 0-7.4 3.1L2 5.4A8.5 8.5 0 0 1 8 2.9z"/></svg>
+        <svg width="25" height="12" viewBox="0 0 25 12"><rect x="0" y="1" width="21" height="10" rx="2.5" stroke="black" stroke-width="1" fill="none"/><rect x="22" y="3.5" width="2" height="5" rx="1" fill="black" opacity="0.4"/><rect x="1.5" y="2.5" width="17" height="7" rx="1.5" fill="black"/></svg>
+      </div>
+    </div>
+
+    <div class="s3-nav">
+      <button class="s3-back" onclick="navigate('screen2b','screen2')">‹</button>
+    </div>
+
+    <div class="progress-bar">
+      <div class="progress-seg done"></div>
+      <div class="progress-seg"></div>
+      <div class="progress-seg"></div>
+      <div class="progress-seg"></div>
+      <div class="progress-seg"></div>
+      <div class="progress-seg"></div>
+    </div>
+
+    <div class="s2b-content">
+      <div class="s2b-emoji">👋</div>
+      <h2 class="s2b-title">Comment tu t'appelles ?</h2>
+      <p class="s2b-subtitle">Ton prénom et ton nom seront affichés sur ton profil Filum.</p>
+
+      <p class="s2b-label">Prénom</p>
+      <input class="s2b-input" id="s2b-firstname" type="text" placeholder="Ex : Léa" oninput="validateName2b()">
+
+      <p class="s2b-label">Nom</p>
+      <input class="s2b-input" id="s2b-lastname" type="text" placeholder="Ex : Martin" oninput="validateName2b()">
+    </div>
+
+    <div class="s2b-bottom">
+      <button class="btn-primary" id="s2b-continue-btn" onclick="saveNameAndContinue()" style="opacity:0.45;pointer-events:none;">Continuer</button>
+      <button class="btn-secondary" onclick="navigate('screen2b','screen2')">Retour</button>
+    </div>
+
+    <div class="home-indicator"><div class="home-bar dark"></div></div>
 
   </div>
 
@@ -1986,7 +2043,7 @@
 
     <!-- Back / Skip -->
     <div class="s3-nav">
-      <button class="s3-back" onclick="goToScreen2()">‹</button>
+      <button class="s3-back" onclick="navigate('screen3','screen2b')">‹</button>
     </div>
 
     <!-- Progress bar: 2/6 done -->
@@ -2516,7 +2573,7 @@
       </div>
 
       <!-- Greeting -->
-      <h1 class="s8-greeting">Bonjour Sofiane</h1>
+      <h1 class="s8-greeting" id="s8-greeting">Bonjour Sofiane</h1>
       <p class="s8-subtext">Qu'allez-vous apprendre aujourd'hui&nbsp;?</p>
 
       <!-- Search bar -->
@@ -3775,7 +3832,27 @@
     document.getElementById(toId).classList.remove('hidden');
   }
 
-  function goToScreen2() { navigate('screen3', 'screen2'); navigate('screen4', 'screen2'); }
+  /* ── Nom / Prénom de l'utilisateur (saisi à l'onboarding) ── */
+  let userFirstName = '';
+  let userLastName  = '';
+
+  function validateName2b() {
+    const first = document.getElementById('s2b-firstname').value.trim();
+    const last  = document.getElementById('s2b-lastname').value.trim();
+    const btn   = document.getElementById('s2b-continue-btn');
+    if (!btn) return;
+    const ok = first.length > 0 && last.length > 0;
+    btn.style.opacity       = ok ? '1'    : '0.45';
+    btn.style.pointerEvents = ok ? 'auto' : 'none';
+  }
+
+  function saveNameAndContinue() {
+    userFirstName = document.getElementById('s2b-firstname').value.trim();
+    userLastName  = document.getElementById('s2b-lastname').value.trim();
+    navigate('screen2b', 'screen3');
+  }
+
+  function goToScreen2() { navigate('screen2b', 'screen2'); navigate('screen3', 'screen2'); navigate('screen4', 'screen2'); }
   function goToScreen3() { navigate('screen4', 'screen3'); }
 
   function goToScreen4() {
@@ -4478,6 +4555,8 @@
   }
 
   function renderS8Grid() {
+    const greetingEl = document.getElementById('s8-greeting');
+    if (greetingEl && userFirstName) greetingEl.textContent = `Bonjour ${userFirstName}`;
     const isFiltered = s8ActiveCat !== 'all';
     const filtered   = isFiltered ? listings.filter(l => l.cats.includes(s8ActiveCat)) : listings;
 
@@ -4970,9 +5049,18 @@
     const nameEl     = document.querySelector('#screen15 .s15-name');
     const locationEl = document.querySelector('#screen15 .s15-location');
     const bioEl      = document.querySelector('#screen15 .s15-bio');
-    if (avatarEl)   avatarEl.src = 'https://i.pravatar.cc/160?img=68';
-    if (usernameEl) usernameEl.textContent = '@sofiane.lath';
-    if (nameEl)     nameEl.textContent = 'Sofiane P.';
+    const avatarUrl = userFirstName
+      ? `https://i.pravatar.cc/160?u=${encodeURIComponent(userFirstName + userLastName)}`
+      : 'https://i.pravatar.cc/160?img=68';
+    if (avatarEl)   avatarEl.src = avatarUrl;
+    const displayName = userFirstName
+      ? `${userFirstName} ${userLastName.charAt(0).toUpperCase()}.`
+      : 'Sofiane P.';
+    const displayUsername = userFirstName
+      ? `@${userFirstName.toLowerCase()}.${userLastName.toLowerCase().substring(0,4)}`
+      : '@sofiane.lath';
+    if (usernameEl) usernameEl.textContent = displayUsername;
+    if (nameEl)     nameEl.textContent = displayName;
     if (locationEl) locationEl.textContent = 'Nantes  •  Depuis mars 2024';
     if (bioEl)      bioEl.textContent = 'Passionnée d\'art et de photo argentique. J\'aime transmettre ce que j\'ai appris au fil des années.';
 
@@ -5519,6 +5607,15 @@
     document.getElementById('s16-pw').classList.toggle('error', !pw);
     if (!id || !pw) { err.style.display = 'block'; return; }
     err.style.display = 'none';
+    // Extraire prénom et nom depuis l'identifiant (format "prenom.nom")
+    const parts = id.split('.');
+    if (parts.length >= 2) {
+      userFirstName = parts[0].charAt(0).toUpperCase() + parts[0].slice(1);
+      userLastName  = parts[1].charAt(0).toUpperCase() + parts[1].slice(1);
+    } else {
+      userFirstName = id.charAt(0).toUpperCase() + id.slice(1);
+      userLastName  = '';
+    }
     navigate('screen16', 'screen8');
     renderS8Grid();
   }
@@ -5833,7 +5930,12 @@
 
   function closeQRCode() {
     if (qrTimerInterval) clearInterval(qrTimerInterval);
+    const conv = convData.find(c => c.id === currentChatConvId);
+    if (conv && conv.state === 'day-j-presentiel') {
+      conv.state = 'ended';
+    }
     navigate('screen13', 'screen12');
+    if (currentChatConvId) openChat(currentChatConvId);
   }
 
   function updateQRTimer(s) {
