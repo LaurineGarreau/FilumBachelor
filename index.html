@@ -5033,6 +5033,17 @@
     list.innerHTML = html;
   }
 
+  function getUserAvatarUrl() {
+    if (!userFirstName) return 'https://i.pravatar.cc/160?img=68';
+    const femaleNames = ['sophie','marie','claire','julie','emma','alice','léa','lea','laura','camille','manon','chloé','chloe','inès','ines','lucie','sarah','charlotte','aurélie','aurelie','mathilde','pauline','margot','anaïs','anais','elise','élise','justine','marion','amélie','amelie','céline','celine','zoé','zoe','yasmine','nathalie','sandrine','virginie','hélène','helene','lucie','lola','jade','lisa','eva'];
+    const isFemale   = femaleNames.includes(userFirstName.toLowerCase());
+    const femaleImgs = [5, 9, 11, 14, 16, 21, 26, 33, 36, 44, 47, 49, 56, 57, 65];
+    const maleImgs   = [3, 6, 7, 8, 12, 15, 22, 23, 52, 53, 54, 60, 61, 68, 70];
+    const pool = isFemale ? femaleImgs : maleImgs;
+    const seed = (userFirstName + userLastName).split('').reduce((acc, c) => acc + c.charCodeAt(0), 0);
+    return `https://i.pravatar.cc/160?img=${pool[seed % pool.length]}`;
+  }
+
   function openProfile() {
     // Fermer les overlays badges si ouverts
     const _do = document.getElementById('badge-detail-overlay');
@@ -5049,10 +5060,7 @@
     const nameEl     = document.querySelector('#screen15 .s15-name');
     const locationEl = document.querySelector('#screen15 .s15-location');
     const bioEl      = document.querySelector('#screen15 .s15-bio');
-    const avatarUrl = userFirstName
-      ? `https://i.pravatar.cc/160?u=${encodeURIComponent(userFirstName + userLastName)}`
-      : 'https://i.pravatar.cc/160?img=68';
-    if (avatarEl)   avatarEl.src = avatarUrl;
+    if (avatarEl)   avatarEl.src = getUserAvatarUrl();
     const displayName = userFirstName
       ? `${userFirstName} ${userLastName.charAt(0).toUpperCase()}.`
       : 'Sofiane P.';
